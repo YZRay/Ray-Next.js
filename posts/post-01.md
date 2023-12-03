@@ -1,9 +1,0 @@
----
-title: First post
-date: 2023-12-02
-Image:
-Introduction: test
-author: Ray
----
-
-Ullamco et nostrud magna commodo nostrud ...

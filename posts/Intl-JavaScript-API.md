@@ -1,0 +1,131 @@
+---
+title: Intl JavaScript API
+date: 2023-12-02
+Image:
+Introduction: test
+author: Ray
+excerpt: test
+tags:
+  - My First Tag
+  - Another Tag
+---
+
+# Intl JavaScript API
+
+Intl 對象是提供國際化的命名空間，提供了精確的字串、數字格式化和日期、時間格式化。可以提供更好的可讀性。
+
+---
+
+## DateTimeFormat
+
+```javascript
+const formatter = new Intl.DateTimeFormat("en-US");
+
+console.log(formatter.format(new Date())); // output 13/3/2023
+
+// ()裡面放的是各國語言代碼表(zh-TW, zh-CN,en-US...)
+// (undefined)如果()放的是，就會根據用戶當前位置設定
+
+// 可以在後面傳入第二個參數
+
+const formatter = new Intl.DateTimeFormat(undefined, { year: "2-digit" });
+
+// or { dateStyle: "full" } 、 { dateStyle: "short" }....
+// 根據自己想要的結果去設定第二個參數
+```
+
+第二個參數還有這些可以設定
+
+- year
+- month
+- day
+- hour
+- minute
+- second
+- hour12 (設定是否為 24 小時制 type: Boolean)
+- timeZone
+
+---
+
+## RelativeTimeFormat
+
+這是一個用於相對時間的格式化
+
+```javascript
+const formatter = new Intl.RelativeTimeFormat(undefined);
+
+console.log(formatter.format(43, "minutes")); // 43 分鐘後
+//如果把前面的值改成負數，就會變成43 分鐘前
+
+const formatter = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" });
+
+console.log(formatter.format(1, "day")); // output 明天
+```
+
+---
+
+## NumberFormat
+
+可以讓數字在特定語系環境下進行格式化，因各國常用習慣去呈現不同的數字寫法
+
+```javascript
+const formatter = new Intl.NumberFormat(undefined, {
+  style: "currency",
+  currency: "TWD",
+});
+
+console.log(formatter.format(123459879));
+//output $123,459,879.00
+
+//currency為貨幣格式
+// EUR、USD、JPY...
+```
+
+如果想要帶有單位進行格式化可以這樣做
+
+```javascript
+console.log(
+  new Intl.NumberFormat(undefined, {
+    style: "unit",
+    unit: "kilometer-per-hour",
+  }).format(50)
+); // 50 公里/小時
+
+console.log(
+  new Intl.NumberFormat(undefined, {
+    style: "unit",
+    unit: "liter",
+    untitDisplay: "long",
+  }).format(5486)
+); // 5,486 升
+
+console.log(
+  new Intl.NumberFormat(undefined, {
+    notation: "compact",
+  }).format(548687486)
+); // 5.5億
+```
+
+maximumSignificantDigits 限制有幾位有效數字
+
+- maximumSignificantDigits: 3 限制三位有效數字
+
+---
+
+## PluralRules
+
+是用於復數敏感的格式化和復數相關的語言規則
+
+```javascript
+const formatter = new Intl.PluralRules("en-US");
+
+console.log(formatter.select(1)); //output one
+
+// 當如果數字不是1時 則顯示 other
+```
+
+參考資料
+
+[Intl Api](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl)
+
+[Formatting Is So Easy With The Intl JavaScript API](https://www.youtube.com/watch?v=4oGWpTAY_hc)
