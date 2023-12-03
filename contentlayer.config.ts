@@ -93,6 +93,7 @@ export default makeSource({
          * Enhances code blocks with syntax highlighting, line numbers,
          * titles, and allows highlighting specific lines and words
          */
+        // @ts-ignore
         rehypePrettyCode,
         {
           theme: {
