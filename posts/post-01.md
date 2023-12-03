@@ -4,6 +4,7 @@ date: 2023-12-02
 Image:
 Introduction: test
 author: Ray
+excerpt: test
 tags:
   - My First Tag
   - Another Tag

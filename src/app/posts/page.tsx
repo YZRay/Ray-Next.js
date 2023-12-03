@@ -17,10 +17,6 @@ function PostCard(post: Post) {
       </time>
       <span>{post.author}</span>
       <span>{post.Introduction}</span>
-      <div
-        className="text-sm [&>*]:mb-3 [&>*:last-child]:mb-0"
-        dangerouslySetInnerHTML={{ __html: post.body.html }}
-      />
     </Link>
   );
 }
