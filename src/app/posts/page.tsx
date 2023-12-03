@@ -15,8 +15,9 @@ function PostCard(post: Post) {
       <time dateTime={post.date} className="mb-2 block text-xs text-gray-600">
         {format(parseISO(post.date), "LLLL d, yyyy")}
       </time>
+      <span>{post.readTime} minutes read</span>
       <span>{post.author}</span>
-      <span>{post.Introduction}</span>
+      <span>{post.excerpt}</span>
     </Link>
   );
 }
@@ -27,7 +28,7 @@ export default function Posts() {
   );
 
   return (
-    <div className="mx-auto max-w-xl py-8">
+    <div className="mx-auto w-4/5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 py-8">
       {posts.map((post, idx) => (
         <PostCard key={idx} {...post} />
       ))}

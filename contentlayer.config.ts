@@ -18,7 +18,6 @@ export const Post = defineDocumentType(() => ({
     title: { type: "string", required: true },
     date: { type: "date", required: true },
     Image: { type: "string", required: false },
-    Introduction: { type: "string", required: true },
     excerpt: {
       type: "string",
       required: true,
@@ -37,7 +36,7 @@ export const Post = defineDocumentType(() => ({
     readTime: {
       type: "string",
       resolve: (post) => {
-        const wordsPerMinute = 200;
+        const wordsPerMinute = 100;
         const noOfWords = post.body.raw.split(/\s/g).length;
         const minutes = noOfWords / wordsPerMinute;
         const readTime = Math.ceil(minutes);
