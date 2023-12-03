@@ -8,6 +8,7 @@ interface IProps {
 
 const MDXContent: FC<IProps> = ({ code }) => {
   const Component = useMDXComponent(code);
+  // @ts-ignore
   return <Component components={mdxComponents} />;
 };
 
