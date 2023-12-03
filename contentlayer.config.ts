@@ -96,10 +96,25 @@ export default makeSource({
         rehypePrettyCode,
         {
           theme: {
-            // light: "github-light",
-            dark: "github-dark",
+            light: "github-light",
+            dark: "one-dark-pro",
           },
-        } satisfies Partial<PrettyCodeOptions>,
+          grid: false,
+          keepBackground: false,
+          onVisitLine(node: any) {
+            if (node.children.length === 0) {
+              node.children = [{ type: "text", value: " " }];
+            }
+          },
+          onVisitHighlightedLine(node: any) {
+            node.properties.className.push("highlighted");
+          },
+          onVisitHighlightedWord(node: any) {
+            node.properties.className = ["word"];
+          },
+        } as Partial<
+          PrettyCodeOptions & { onVisitHighlightedWord(node: any): void }
+        >,
       ],
     ],
   },

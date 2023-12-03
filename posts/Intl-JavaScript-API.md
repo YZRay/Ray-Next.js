@@ -1,5 +1,5 @@
 ---
-title: First post
+title: Intl JavaScript API
 date: 2023-12-02
 Image:
 Introduction: test
@@ -18,19 +18,17 @@ Intl 對象是提供國際化的命名空間，提供了精確的字串、數字
 
 ## DateTimeFormat
 
-```javascript=
+```javascript
 const formatter = new Intl.DateTimeFormat("en-US");
 
-console.log(formatter.format(new Date()));  // output 13/3/2023
+console.log(formatter.format(new Date())); // output 13/3/2023
 
 // ()裡面放的是各國語言代碼表(zh-TW, zh-CN,en-US...)
 // (undefined)如果()放的是，就會根據用戶當前位置設定
 
-
 // 可以在後面傳入第二個參數
 
-const formatter = new Intl.DateTimeFormat(undefined,
-{ year: "2-digit" });
+const formatter = new Intl.DateTimeFormat(undefined, { year: "2-digit" });
 
 // or { dateStyle: "full" } 、 { dateStyle: "short" }....
 // 根據自己想要的結果去設定第二個參數
@@ -53,17 +51,15 @@ const formatter = new Intl.DateTimeFormat(undefined,
 
 這是一個用於相對時間的格式化
 
-```javascript=
+```javascript
 const formatter = new Intl.RelativeTimeFormat(undefined);
 
 console.log(formatter.format(43, "minutes")); // 43 分鐘後
 //如果把前面的值改成負數，就會變成43 分鐘前
 
-const formatter = new Intl.RelativeTimeFormat(undefined,
- {numeric: "auto"});
+const formatter = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" });
 
 console.log(formatter.format(1, "day")); // output 明天
-
 ```
 
 ---
@@ -72,9 +68,11 @@ console.log(formatter.format(1, "day")); // output 明天
 
 可以讓數字在特定語系環境下進行格式化，因各國常用習慣去呈現不同的數字寫法
 
-```javascript=
-const formatter = new Intl.NumberFormat(undefined,
-{ style: 'currency', currency: 'TWD' });
+```javascript
+const formatter = new Intl.NumberFormat(undefined, {
+  style: "currency",
+  currency: "TWD",
+});
 
 console.log(formatter.format(123459879));
 //output $123,459,879.00
@@ -85,26 +83,27 @@ console.log(formatter.format(123459879));
 
 如果想要帶有單位進行格式化可以這樣做
 
-```javascript=
+```javascript
 console.log(
   new Intl.NumberFormat(undefined, {
     style: "unit",
     unit: "kilometer-per-hour",
-  }).format(50),
+  }).format(50)
 ); // 50 公里/小時
 
-console.log( new Intl.NumberFormat(undefined, {
+console.log(
+  new Intl.NumberFormat(undefined, {
     style: "unit",
     unit: "liter",
     untitDisplay: "long",
-  }).format(5486),
+  }).format(5486)
 ); // 5,486 升
 
-console.log( new Intl.NumberFormat(undefined, {
-    notation: "compact"
-  }).format(548687486),
+console.log(
+  new Intl.NumberFormat(undefined, {
+    notation: "compact",
+  }).format(548687486)
 ); // 5.5億
-
 ```
 
 maximumSignificantDigits 限制有幾位有效數字
@@ -117,13 +116,12 @@ maximumSignificantDigits 限制有幾位有效數字
 
 是用於復數敏感的格式化和復數相關的語言規則
 
-```javascript=
-const formatter = new Intl.PluralRules("en-US")
+```javascript
+const formatter = new Intl.PluralRules("en-US");
 
-console.log(formatter.select(1)) //output one
+console.log(formatter.select(1)); //output one
 
 // 當如果數字不是1時 則顯示 other
-
 ```
 
 參考資料
