@@ -29,6 +29,10 @@ pre[data-theme="dark"] {
   color-scheme: dark;
 }
 
+.rehype-code-title {
+  @apply mt-3 rounded-tl rounded-tr bg-slate-700 px-4 py-2 font-mono text-base text-gray-200;
+}
+
 @media (prefers-color-scheme: dark) {
   pre[data-theme="light"] {
     display: none;
@@ -42,10 +46,10 @@ pre[data-theme="dark"] {
 }
 pre {
   padding: 15px 20px;
-  border-radius: 10px;
+  border-radius: 0px 0px 10px 10px;
   overflow: auto;
   font-size: 0.9rem;
-  margin: 40px 0;
+  margin-bottom: 2rem;
 }
 
 article p {

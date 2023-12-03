@@ -1,5 +1,6 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { FC } from "react";
+import mdxComponents from "@/lib/mdxComponents";
 
 interface IProps {
   code: string;
@@ -7,7 +8,8 @@ interface IProps {
 
 const MDXContent: FC<IProps> = ({ code }) => {
   const Component = useMDXComponent(code);
-  return <Component components={MDXComponents} />;
+  // @ts-ignore
+  return <Component components={mdxComponents} />;
 };
 
 export default MDXContent;

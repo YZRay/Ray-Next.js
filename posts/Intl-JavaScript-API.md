@@ -2,7 +2,6 @@
 title: Intl JavaScript API
 date: 2023-12-02
 Image:
-Introduction: test
 author: Ray
 excerpt: test
 tags:
@@ -18,7 +17,7 @@ Intl 對象是提供國際化的命名空間，提供了精確的字串、數字
 
 ## DateTimeFormat
 
-```javascript
+```javascript:index.js
 const formatter = new Intl.DateTimeFormat("en-US");
 
 console.log(formatter.format(new Date())); // output 13/3/2023
@@ -51,7 +50,7 @@ const formatter = new Intl.DateTimeFormat(undefined, { year: "2-digit" });
 
 這是一個用於相對時間的格式化
 
-```javascript
+```javascript:index.js showLineNumbers
 const formatter = new Intl.RelativeTimeFormat(undefined);
 
 console.log(formatter.format(43, "minutes")); // 43 分鐘後
@@ -68,7 +67,7 @@ console.log(formatter.format(1, "day")); // output 明天
 
 可以讓數字在特定語系環境下進行格式化，因各國常用習慣去呈現不同的數字寫法
 
-```javascript
+```javascript:index.js
 const formatter = new Intl.NumberFormat(undefined, {
   style: "currency",
   currency: "TWD",
@@ -83,7 +82,7 @@ console.log(formatter.format(123459879));
 
 如果想要帶有單位進行格式化可以這樣做
 
-```javascript
+```javascript:index.js
 console.log(
   new Intl.NumberFormat(undefined, {
     style: "unit",
@@ -116,7 +115,7 @@ maximumSignificantDigits 限制有幾位有效數字
 
 是用於復數敏感的格式化和復數相關的語言規則
 
-```javascript
+```javascript:index.js
 const formatter = new Intl.PluralRules("en-US");
 
 console.log(formatter.select(1)); //output one
