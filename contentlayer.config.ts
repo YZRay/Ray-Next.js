@@ -7,6 +7,7 @@ import rehypePrettyCode, {
   type Options as PrettyCodeOptions,
 } from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
+import rehypeCodeTitles from "rehype-code-titles";
 import { s } from "hastscript";
 
 export const Post = defineDocumentType(() => ({
@@ -56,6 +57,7 @@ export default makeSource({
        * Adds ids to headings
        */
       rehypeSlug,
+      rehypeCodeTitles,
       [
         /**
          * Adds auto-linking button after h1, h2, h3 headings

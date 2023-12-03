@@ -18,7 +18,7 @@ Intl 對象是提供國際化的命名空間，提供了精確的字串、數字
 
 ## DateTimeFormat
 
-```javascript
+```javascript:index.js
 const formatter = new Intl.DateTimeFormat("en-US");
 
 console.log(formatter.format(new Date())); // output 13/3/2023
@@ -51,7 +51,7 @@ const formatter = new Intl.DateTimeFormat(undefined, { year: "2-digit" });
 
 這是一個用於相對時間的格式化
 
-```javascript
+```javascript showLineNumbers
 const formatter = new Intl.RelativeTimeFormat(undefined);
 
 console.log(formatter.format(43, "minutes")); // 43 分鐘後
