@@ -48,6 +48,18 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
   if (!post) notFound();
   // throw new Error(`Post not found for slug: ${params.slug}`);
+  const postIndex = allPosts.findIndex(
+    (post) => post._raw.flattenedPath === params.slug
+  );
+  //設定上下篇文章
+  const prevPostIndex = allPosts[postIndex - 1];
+  const prePost = prevPostIndex
+    ? { title: prevPostIndex.title, url: prevPostIndex._raw.flattenedPath }
+    : null;
+  const nextPostIndex = allPosts[postIndex + 1];
+  const nextPost = nextPostIndex
+    ? { title: nextPostIndex.title, url: nextPostIndex._raw.flattenedPath }
+    : null;
 
   return (
     <div className="flex justify-center gap-8">
