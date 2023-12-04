@@ -2,17 +2,19 @@ import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 const { format, parseISO } = require("date-fns");
 import MDXContent from "@/components/mdx-content";
+import { notFound } from "next/navigation";
+import TableOfContents from "@/components/TableOfContents";
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
-
 export const generateMetadata = ({
   params,
 }: {
   params: { slug: string };
 }): Metadata => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
+  if (!post) notFound();
+  // throw new Error(`Post not found for slug: ${params.slug}`);
 
   const { excerpt, title, date } = post;
 
@@ -44,18 +46,27 @@ export const generateMetadata = ({
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
+  if (!post) notFound();
+  // throw new Error(`Post not found for slug: ${params.slug}`);
 
   return (
-    <article className="mx-auto max-w-xl py-8">
-      <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold">{post.title}</h1>
-        <time dateTime={post?.date} className="uppercase font-bold">
-          {format(parseISO(post?.date), "MMM dd, yyyy")}
-        </time>
-      </div>
-      <MDXContent code={post.body.code} />
-    </article>
+    <div className="flex justify-center gap-8">
+      <aside>
+        <div className="hidden lg:sticky lg:top-28 lg:block">
+          <TableOfContents source={post.body.raw} />
+        </div>
+      </aside>
+      <article className="max-w-xl py-6">
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold mt-0">{post.title}</h1>
+          <time dateTime={post?.date} className="uppercase font-bold">
+            {format(parseISO(post?.date), "MMM dd, yyyy")}
+          </time>
+          <span>{post.readTime} minutes read</span>
+        </div>
+        <MDXContent code={post.body.code} />
+      </article>
+    </div>
   );
 };
 

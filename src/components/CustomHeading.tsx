@@ -1,6 +1,7 @@
 type CustomHeadingProps = React.ComponentPropsWithRef<
   "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 > & { Component: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" };
+import { GoHash } from "react-icons/go";
 
 function CustomHeading({
   Component,
@@ -11,17 +12,17 @@ function CustomHeading({
   return (
     <Component
       id={id}
-      className="group scroll-mt-24 whitespace-pre-wrap"
+      className="group scroll-mt-24 whitespace-pre-wrap flex items-center gap-2"
       {...otherProps}
     >
-      <span className="mr-3">{children}</span>
       <a
         href={id && `#${id}`}
-        className="inline-flex h-6 w-6 items-center justify-center rounded-md text-lg text-slate-400 no-underline opacity-0 shadow-sm ring-1 ring-slate-900/5 transition-all hover:bg-slate-100 hover:text-slate-700 hover:shadow hover:ring-slate-900/10 group-hover:opacity-100 dark:text-slate-400 dark:ring-slate-400/20 dark:hover:text-slate-700"
+        className="inline-flex h-6 w-6 items-center justify-center text-lg text-slate-400 no-underline opacity-80 transition-all hover:text-slate-700 group-hover:opacity-100 dark:text-slate-400 dark:hover:text-slate-700"
         aria-label="Anchor"
       >
-        #
+        <GoHash className="h-4 w-4" />
       </a>
+      <span>{children}</span>
     </Component>
   );
 }

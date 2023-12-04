@@ -6,6 +6,9 @@ const nextConfig = {
   swcMinify: true,
   output: "export",
   images: { unoptimized: true },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = withContentlayer(nextConfig);

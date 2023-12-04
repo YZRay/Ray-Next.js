@@ -7,6 +7,7 @@ import {
   CustomH5,
   CustomH6,
 } from "@/components/CustomHeading";
+import CustomLink from "@/components/CustomLink";
 
 // Custom components/renderers to pass to MDX.
 const mdxComponents = {
@@ -17,6 +18,7 @@ const mdxComponents = {
   h4: CustomH4,
   h5: CustomH5,
   h6: CustomH6,
+  a: CustomLink,
 };
 
 export default mdxComponents;

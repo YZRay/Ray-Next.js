@@ -26,7 +26,7 @@ const Navigator = () => {
       <Link
         href="/posts"
         className={`${
-          pathname === "/posts" ? "bg-slate-800 text-white" : ""
+          pathname.startsWith("/posts") ? "bg-slate-800 text-white" : ""
         } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center md:gap-2 text-lg`}
       >
         Posts
