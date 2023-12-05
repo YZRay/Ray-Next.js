@@ -12,12 +12,12 @@ import { s } from "hastscript";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `**/*.md`,
+  filePathPattern: `**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
-    Image: { type: "string", required: false },
+    Image: { type: "string", required: false, default: "/assets/img/git.jpg" },
     excerpt: {
       type: "string",
       required: true,
