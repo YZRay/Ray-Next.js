@@ -22,7 +22,7 @@
   text-decoration: none;
 }
 body {
-  min-height: 100%;
+  min-height: 100dvh;
 }
 
 pre[data-theme="dark"] {
@@ -107,14 +107,6 @@ article li {
   font-size: 1.1rem;
   line-height: 1.3rem;
   margin-top: 20px;
-}
-article a {
-  transition: 0.2s ease;
-  color: #0170f2;
-  font-size: 1.1rem;
-}
-article a:hover {
-  border-bottom: #0170f2 1px solid;
 }
 
 article code {

@@ -25,7 +25,7 @@ const CustomLink = ({ href, children, ...rest }: Props) => {
 
   return (
     <a
-      className="flex items-center gap-2"
+      className="flex items-center gap-2 py-1 text-sky-900 decoration-0 hover:text-sky-700 border-b-1 border-transparent hover:border-sky-700 transition-all duration-300"
       target="_blank"
       rel="noopener noreferrer"
       href={href}

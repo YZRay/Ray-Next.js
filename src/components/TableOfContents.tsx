@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import GithubSlugger from "github-slugger";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 // eslint-disable-next-line no-unused-vars
 type UseIntersectionObserverType = (setActiveId: (id: string) => void) => void;
@@ -81,7 +82,7 @@ const TableOfContents = ({ source }: Props) => {
   useIntersectionObserver(setActiveId);
 
   return (
-    <div className="flex flex-col items-start justify-start gap-3">
+    <div className="flex flex-col items-start justify-start gap-3 p-3">
       {headings.map((heading, index) => {
         return (
           <button
@@ -89,7 +90,7 @@ const TableOfContents = ({ source }: Props) => {
             type="button"
             className={clsx(
               heading.id === activeId
-                ? "font-bold text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 border-slate-800"
+                ? "font-bold text-slate-600 border-slate-700 hover:text-primary-600 dark:hover:text-sky-800"
                 : "font-normal text-gray-500 hover:text-gray-800 hover:border-slate-600 dark:text-gray-400 dark:hover:text-gray-200",
               heading.level === 3 && "pl-4",
               "text-left text-base transition-all duration-300 text-slate-700 px-6 py-1 border-l-2 border-transparent"
@@ -107,6 +108,12 @@ const TableOfContents = ({ source }: Props) => {
           </button>
         );
       })}
+      <Link
+        href="/posts"
+        className="px-6 py-1 hover:text-sky-800 font-bold text-base"
+      >
+        返回文章列表
+      </Link>
     </div>
   );
 };

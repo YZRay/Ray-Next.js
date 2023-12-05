@@ -10,11 +10,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        "theme-dark": "#16213E",
-        "theme-darker": "#041C32",
-        "theme-light": "#FAF6F0",
-        "theme-lighter": "#FFFBF5",
+      // colors: {
+      //   "theme-dark": "#16213E",
+      //   "theme-darker": "#041C32",
+      //   "theme-light": "#FAF6F0",
+      //   "theme-lighter": "#FFFBF5",
+      // },
+      backgroundImage: {
+        "theme-dark": "linear-gradient(45deg, #16213E 30%, #041C32 100%)",
+        "theme-light": "linear-gradient(45deg, #FAF6F0 30%, #FFFBF5 100%)",
       },
     },
   },
