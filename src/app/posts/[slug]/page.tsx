@@ -4,6 +4,7 @@ const { format, parseISO } = require("date-fns");
 import MDXContent from "@/components/mdx-content";
 import { notFound } from "next/navigation";
 import TableOfContents from "@/components/TableOfContents";
+import Link from "next/link";
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
@@ -78,6 +79,14 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         </div>
         <MDXContent code={post.body.code} />
       </article>
+      <div>
+        {prePost && <h6>{prePost.title}</h6>}
+        {prePost && <Link href={prePost.url}>上一篇文章</Link>}
+      </div>
+      <div>
+        {nextPost && <h6>{nextPost.title}</h6>}
+        {nextPost && <Link href={nextPost.url}>下一篇文章</Link>}
+      </div>
     </div>
   );
 };
