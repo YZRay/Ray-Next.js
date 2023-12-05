@@ -4,8 +4,7 @@ const { format, parseISO } = require("date-fns");
 import MDXContent from "@/components/mdx-content";
 import { notFound } from "next/navigation";
 import TableOfContents from "@/components/TableOfContents";
-import Link from "next/link";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import PreviousArticle from "@/components/PreviousArticle";
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
@@ -50,18 +49,6 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
   if (!post) notFound();
   // throw new Error(`Post not found for slug: ${params.slug}`);
-  const postIndex = allPosts.findIndex(
-    (post) => post._raw.flattenedPath === params.slug
-  );
-  //設定上下篇文章
-  const prevPostIndex = allPosts[postIndex - 1];
-  const prePost = prevPostIndex
-    ? { title: prevPostIndex.title, url: prevPostIndex._raw.flattenedPath }
-    : null;
-  const nextPostIndex = allPosts[postIndex + 1];
-  const nextPost = nextPostIndex
-    ? { title: nextPostIndex.title, url: nextPostIndex._raw.flattenedPath }
-    : null;
 
   return (
     <div className="flex justify-center gap-8 mt-4">
@@ -90,30 +77,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           </div>
           <MDXContent code={post.body.code} />
         </article>
-        <div className="w-10/12 mx-auto py-8 mb-12 border-t-2 border-slate-400 flex">
-          {prePost && (
-            <Link className="group" href={prePost.url}>
-              <h6 className="font-bold text-slate-800 text-lg">
-                {prePost.title}
-              </h6>
-              <div className="flex items-center gap-2">
-                <IoIosArrowBack className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                <span className="text-slate-700 text-base">上一篇文章</span>
-              </div>
-            </Link>
-          )}
-          {nextPost && (
-            <Link className="group" href={nextPost.url}>
-              <h6 className="font-bold text-slate-800 text-lg">
-                {nextPost.title}
-              </h6>
-              <div className="flex items-center gap-2">
-                <span className="text-slate-700 text-base">下一篇文章</span>
-                <IoIosArrowForward className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-              </div>
-            </Link>
-          )}
-        </div>
+        <PreviousArticle allPosts={allPosts} params={params} />
       </div>
     </div>
   );
