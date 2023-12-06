@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.19",
     "@nextui-org/react": "^2.2.9",
+    "clsx": "^2.0.0",
     "contentlayer": "^0.3.4",
     "date-fns": "^3.0.0-alpha.2",
     "framer-motion": "^10.16.12",

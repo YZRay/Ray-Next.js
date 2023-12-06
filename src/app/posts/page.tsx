@@ -1,14 +1,9 @@
+"use client";
 import Link from "next/link";
 import { allPosts, Post } from "contentlayer/generated";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Image,
-  Button,
-  CardFooter,
-} from "@nextui-org/react";
+import { Card, CardHeader, Image, Button, CardFooter } from "@nextui-org/react";
 const { compareDesc, format, parseISO } = require("date-fns");
+import { useRouter } from "next/navigation";
 
 function PostCard(post: Post) {
   // {post.tags &&
@@ -17,9 +12,9 @@ function PostCard(post: Post) {
   //       {tag}
   //     </span>
   //   ))}
-
+  const router = useRouter();
   return (
-    <Link href={post.url}>
+    <div>
       <Card
         isFooterBlurred
         className="w-full h-full col-span-12 sm:col-span-7 dark:border dark:border-white/30"
@@ -54,12 +49,12 @@ function PostCard(post: Post) {
               </p>
             </div>
           </div>
-          <Button radius="full" size="sm">
+          <Button radius="full" size="sm" onClick={() => router.push(post.url)}>
             Read more
           </Button>
         </CardFooter>
       </Card>
-    </Link>
+    </div>
   );
 }
 

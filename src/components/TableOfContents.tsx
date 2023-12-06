@@ -1,6 +1,4 @@
-// ref: https://github.com/ekomenyong/kommy-mdx/blob/main/src/components/TOC.tsx
 "use client";
-import clsx from "clsx";
 import GithubSlugger from "github-slugger";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -88,13 +86,15 @@ const TableOfContents = ({ source }: Props) => {
           <button
             key={index}
             type="button"
-            className={clsx(
-              heading.id === activeId
-                ? "font-bold text-slate-600 border-slate-700 hover:text-primary-600 dark:hover:text-sky-800"
-                : "font-normal text-gray-500 hover:text-gray-800 hover:border-slate-600 dark:text-gray-400 dark:hover:text-gray-200",
-              heading.level === 3 && "pl-4",
-              "text-left text-base transition-all duration-300 text-slate-700 px-6 py-1 border-l-2 border-transparent"
-            )}
+            className={`
+             ${
+               heading.id === activeId
+                 ? "font-bold text-slate-600 border-slate-700 hover:text-primary-600 dark:hover:text-sky-800"
+                 : "font-normal text-gray-500 border-transparent hover:text-gray-800 hover:border-slate-600 dark:text-gray-400 dark:hover:text-gray-200"
+             }
+              ${
+                heading.level === 3 && "pl-4"
+              } text-left text-base transition-all duration-300 text-slate-700 px-6 py-1 border-l-2`}
             onClick={(e) => {
               e.preventDefault();
               document.querySelector(`#${heading.id}`)?.scrollIntoView({
