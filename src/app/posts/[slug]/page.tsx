@@ -59,18 +59,18 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
       </aside>
       <div className="w-11/12 md:max-w-3xl xl:max-w-5xl">
         <article className="w-10/12 mx-auto py-6 mt-0">
-          <div className="pb-6 border-b-1 border-slate-600 text-center">
-            <h1 className="text-4xl text-slate-800 font-bold mt-2">
+          <div className="pb-6 border-b-1 border-slate-600 dark:border-slate-100 text-center">
+            <h1 className="text-4xl text-slate-800 dark:text-slate-300 font-bold mt-2">
               {post.title}
             </h1>
             <div className="flex flex-col mt-4 gap-2">
               <time
                 dateTime={post?.date}
-                className="uppercase font-bold text-slate-800"
+                className="uppercase font-bold text-slate-800 dark:text-slate-300"
               >
                 {format(parseISO(post?.date), "MMM dd, yyyy")}
               </time>
-              <span className="text-slate-600">
+              <span className="text-slate-600 dark:text-slate-400">
                 {post.readTime} minutes read
               </span>
             </div>

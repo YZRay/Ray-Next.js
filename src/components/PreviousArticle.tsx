@@ -40,30 +40,34 @@ const PreviousArticle = ({
     <div className="w-10/12 mx-auto py-8 mb-12 border-t-2 border-slate-400 flex justify-between">
       {prePost && (
         <Link
-          className="group pb-2 relative after:content-[''] after:absolute after:w-full after:left-0 after:scale-x-0 after:h-0.5 after:bg-slate-700 after:transition-transform after:duration-300 after:origin-bottom-left hover:after:scale-x-100 hover:after:origin-bottom-right ease-out"
+          className="group pb-2 relative after:content-[''] after:absolute after:w-full after:left-0 after:scale-x-0 after:h-0.5 after:bg-slate-700 after:transition-transform after:duration-300 dark:after:bg-slate-200 after:origin-bottom-left hover:after:scale-x-100 hover:after:origin-bottom-right ease-out"
           href={prePost.url}
         >
           <div className="flex items-center gap-2 pb-2">
-            <IoIosArrowBack className="w-6 h-6 group-hover:text-slate-700 group-hover:-translate-x-2 transition-all duration-300" />
-            <span className="text-slate-700 text-base font-bold">
+            <IoIosArrowBack className="w-6 h-6 group-hover:text-slate-700 dark:group-hover:text-slate-200 group-hover:-translate-x-2 transition-all duration-300" />
+            <span className="text-slate-700 dark:text-slate-200 text-base font-bold">
               上一篇文章
             </span>
           </div>
-          <h6 className="font-bold text-slate-800 text-lg">{prePost.title}</h6>
+          <h6 className="font-bold text-slate-800 dark:text-slate-200 text-lg">
+            {prePost.title}
+          </h6>
         </Link>
       )}
       {nextPost && (
         <Link
-          className="group pb-2 relative after:content-[''] after:absolute after:w-full after:left-0 after:scale-x-0 after:h-0.5 after:bg-slate-700 after:transition-transform after:duration-300 after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left ease-out"
+          className="group pb-2 relative after:content-[''] after:absolute after:w-full after:left-0 after:scale-x-0 after:h-0.5 after:bg-slate-700 after:transition-transform after:duration-300 dark:after:bg-slate-200 after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left ease-out"
           href={nextPost.url}
         >
           <div className="flex items-center gap-2 flex-row-reverse pb-2">
-            <IoIosArrowForward className="w-6 h-6 group-hover:text-slate-700 group-hover:translate-x-2 transition-all duration-300" />
-            <span className="text-slate-700 text-base font-bold">
+            <IoIosArrowForward className="w-6 h-6 group-hover:text-slate-700 dark:group-hover:text-slate-200 group-hover:translate-x-2 transition-all duration-300" />
+            <span className="text-slate-700 dark:text-slate-200 text-base font-bold">
               下一篇文章
             </span>
           </div>
-          <h6 className={`font-bold text-slate-800 text-lg`}>
+          <h6
+            className={`font-bold text-slate-800 dark:text-slate-200 text-lg`}
+          >
             {nextPost.title}
           </h6>
         </Link>

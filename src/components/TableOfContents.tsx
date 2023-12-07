@@ -89,8 +89,8 @@ const TableOfContents = ({ source }: Props) => {
             className={`
              ${
                heading.id === activeId
-                 ? "font-bold text-slate-600 border-slate-700 hover:text-primary-600 dark:hover:text-sky-800"
-                 : "font-normal text-gray-500 border-transparent hover:text-gray-800 hover:border-slate-600 dark:text-gray-400 dark:hover:text-gray-200"
+                 ? "font-bold text-slate-600 border-slate-700 dark:text-slate-100 dark:border-slate-400 hover:text-primary-600 dark:hover:text-sky-200"
+                 : "font-normal text-gray-500 border-transparent hover:text-gray-800 hover:border-slate-600 dark:hover:border-slate-200 dark:text-slate-400 dark:hover:text-slate-200"
              }
               ${
                 heading.level === 3 && "pl-4"
@@ -110,7 +110,7 @@ const TableOfContents = ({ source }: Props) => {
       })}
       <Link
         href="/posts"
-        className="px-6 py-1 hover:text-sky-800 font-bold text-base"
+        className="px-6 py-1 hover:text-sky-800 dark:hover:text-sky-200 font-bold text-base"
       >
         返回文章列表
       </Link>

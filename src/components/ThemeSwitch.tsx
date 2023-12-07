@@ -29,8 +29,6 @@ export default function ThemeSwitch() {
           <IoMdSunny className={className} />
         )
       }
-    >
-      {/* Dark mode */}
-    </Switch>
+    ></Switch>
   );
 }
