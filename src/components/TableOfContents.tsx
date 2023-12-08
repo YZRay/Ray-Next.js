@@ -89,12 +89,12 @@ const TableOfContents = ({ source }: Props) => {
             className={`
              ${
                heading.id === activeId
-                 ? "font-bold text-slate-600 border-slate-700 dark:text-slate-100 dark:border-slate-400 hover:text-primary-600 dark:hover:text-sky-200"
-                 : "font-normal text-gray-500 border-transparent hover:text-gray-800 hover:border-slate-600 dark:hover:border-slate-200 dark:text-slate-400 dark:hover:text-slate-200"
+                 ? "font-bold text-neutral-600 border-neutral-700 dark:text-neutral-100 dark:border-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-300"
+                 : "font-normal text-gray-500 border-transparent hover:text-gray-800 hover:border-neutral-600 dark:hover:border-neutral-200 dark:text-neutral-400 dark:hover:text-neutral-200"
              }
               ${
                 heading.level === 3 && "pl-4"
-              } text-left text-base transition-all duration-300 text-slate-700 px-6 py-1 border-l-2`}
+              } text-left text-base transition-all duration-300 text-neutral-700 px-6 py-1 border-l-2`}
             onClick={(e) => {
               e.preventDefault();
               document.querySelector(`#${heading.id}`)?.scrollIntoView({
@@ -110,7 +110,7 @@ const TableOfContents = ({ source }: Props) => {
       })}
       <Link
         href="/posts"
-        className="px-6 py-1 hover:text-sky-800 dark:hover:text-sky-200 font-bold text-base"
+        className="px-6 py-1 text-neutral-600 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 font-bold text-base transition-all duration-300"
       >
         返回文章列表
       </Link>

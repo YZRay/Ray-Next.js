@@ -17,7 +17,7 @@ function PostCard(post: Post) {
     <div>
       <Card
         isFooterBlurred
-        className="w-full h-full col-span-12 sm:col-span-7 dark:border dark:border-white/30"
+        className="w-full h-full col-span-12 sm:col-span-7 dark:border-2 dark:border-neutral-100/30"
       >
         <CardHeader className="absolute z-10 top-1 flex-col items-start bg-black/10">
           <p className="text-base text-white/60 uppercase font-bold">
@@ -31,7 +31,7 @@ function PostCard(post: Post) {
           className="z-0 w-full h-full object-cover"
           src={post.Image}
         />
-        <CardFooter className="absolute dark:bg-black/50 bg-white/20 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+        <CardFooter className="absolute dark:bg-neutral-900/50 bg-white/20 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">
             <Image
               alt="Breathing app icon"

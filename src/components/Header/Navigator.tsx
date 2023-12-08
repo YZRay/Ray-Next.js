@@ -10,24 +10,30 @@ const Navigator = () => {
       <Link
         href="/"
         className={`${
-          pathname === "/" ? "bg-slate-800 text-white" : ""
-        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center md:gap-2 text-lg`}
+          pathname === "/"
+            ? "bg-neutral-700 text-white dark:bg-neutral-600 dark:text-neutral-50"
+            : ""
+        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-neutral-800 hover:dark:bg-neutral-600 dark:text-neutral-100 hover:text-white transition-all duration-500 rounded-full justify-center flex items-center md:gap-2 text-lg font-semibold`}
       >
         Home
       </Link>
       <Link
         href="/about"
         className={`${
-          pathname === "/about" ? "bg-slate-800 text-white" : ""
-        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center md:gap-2 text-lg`}
+          pathname === "/about"
+            ? "bg-neutral-700 text-white dark:bg-neutral-600 dark:text-neutral-50"
+            : ""
+        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-neutral-800 hover:dark:bg-neutral-600 dark:text-neutral-100 hover:text-white transition-all duration-500 rounded-full justify-center flex items-center md:gap-2 text-lg font-semibold`}
       >
         About
       </Link>
       <Link
         href="/posts"
         className={`${
-          pathname.startsWith("/posts") ? "bg-slate-800 text-white" : ""
-        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center md:gap-2 text-lg`}
+          pathname.startsWith("/posts")
+            ? "bg-neutral-700 text-white dark:bg-neutral-600 dark:text-neutral-50"
+            : ""
+        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-neutral-800 hover:dark:bg-neutral-600 dark:text-neutral-100 hover:text-white transition-all duration-500 rounded-full justify-center flex items-center md:gap-2 text-lg font-semibold`}
       >
         Posts
       </Link>

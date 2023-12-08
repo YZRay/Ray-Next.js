@@ -51,26 +51,26 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   // throw new Error(`Post not found for slug: ${params.slug}`);
 
   return (
-    <div className="flex justify-center gap-8 mt-4">
+    <div className="block lg:flex justify-center gap-8 mt-4">
       <aside>
         <div className="hidden lg:sticky lg:top-28 lg:block">
           <TableOfContents source={post.body.raw} />
         </div>
       </aside>
-      <div className="w-11/12 md:max-w-3xl xl:max-w-5xl">
+      <div className="w-11/12 md:max-w-3xl mx-auto lg:mx-0 xl:max-w-5xl">
         <article className="w-10/12 mx-auto py-6 mt-0">
-          <div className="pb-6 border-b-1 border-slate-600 dark:border-slate-100 text-center">
-            <h1 className="text-4xl text-slate-800 dark:text-slate-300 font-bold mt-2">
+          <div className="pb-6 border-b-1 border-neutral-600 dark:border-neutral-100 text-center">
+            <h1 className="text-4xl text-neutral-800 dark:text-neutral-300 font-bold mt-2">
               {post.title}
             </h1>
             <div className="flex flex-col mt-4 gap-2">
               <time
                 dateTime={post?.date}
-                className="uppercase font-bold text-slate-800 dark:text-slate-300"
+                className="uppercase font-bold text-neutral-800 dark:text-neutral-300"
               >
                 {format(parseISO(post?.date), "MMM dd, yyyy")}
               </time>
-              <span className="text-slate-600 dark:text-slate-400">
+              <span className="text-neutral-600 dark:text-neutral-400">
                 {post.readTime} minutes read
               </span>
             </div>

@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <Fragment>
       <Headroom className="mb-4 xl:mb-0">
-        <div className="px-2 md:px-6 lg:px-8 z-30 xl:hidden flex items-center justify-between bg-opacity-95 bg-slate-200 dark:bg-slate-800 shadow-md py-2">
+        <div className="px-2 md:px-6 lg:px-8 z-30 xl:hidden flex items-center justify-between bg-opacity-95 bg-neutral-200 dark:bg-neutral-800 shadow-md py-2">
           <button
             className="text-lg p-2 right-0"
             onClick={() => setShow(!show)}
@@ -29,7 +29,7 @@ const Header = () => {
       </Headroom>
       <Headroom>
         <div
-          className={`hidden xl:w-full xl:flex rounded-md gap-1 justify-around items-center z-30 bg-opacity-95 bg-slate-200 dark:bg-slate-800 shadow-md py-3`}
+          className={`hidden xl:w-full xl:flex rounded-md gap-1 justify-around items-center z-30 bg-opacity-95 bg-neutral-200 dark:bg-neutral-800 shadow-md py-3`}
         >
           <Navigator />
           <ThemeSwitch />
