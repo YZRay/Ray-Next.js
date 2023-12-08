@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import { ThemeProviders } from "@/components/Providers/ThemeProvider";
+import CommandPalette from "@/components/CommandPalette";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +23,10 @@ export default function RootLayout({
         <body
           className={`${inter.className} bg-theme-light dark:bg-theme-dark`}
         >
-          <Header />
-          {children}
+          <CommandPalette>
+            <Header />
+            {children}
+          </CommandPalette>
         </body>
       </ThemeProviders>
     </html>

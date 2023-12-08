@@ -33,23 +33,18 @@ function PostCard(post: Post) {
         />
         <CardFooter className="absolute dark:bg-neutral-900/50 bg-white/20 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">
-            <Image
-              alt="Breathing app icon"
-              className="rounded-full w-10 h-11 bg-black"
-              src="/images/breathing-app-icon.jpeg"
-            />
             <div className="flex flex-col">
-              <p className="text-sm dark:text-white/90 text-slate-200">
+              <p className="text-sm dark:text-white/90 text-neutral-200">
                 <time dateTime={post.date}>
                   {format(parseISO(post.date), "LLLL d, yyyy")}
                 </time>
               </p>
-              <p className="text-sm dark:text-white/90 text-slate-200">
+              <p className="text-sm dark:text-white/90 text-neutral-200">
                 {post.readTime} minutes read
               </p>
             </div>
           </div>
-          <Button radius="full" size="sm" onClick={() => router.push(post.url)}>
+          <Button radius="full" size="md" onClick={() => router.push(post.url)}>
             Read more
           </Button>
         </CardFooter>
