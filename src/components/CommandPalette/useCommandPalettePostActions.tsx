@@ -4,11 +4,6 @@ import { useRegisterActions } from "kbar";
 import { useRouter } from "next/navigation";
 import { allPosts } from "contentlayer/generated";
 
-interface PostForCommandPalette {
-  title: string;
-  url: string;
-}
-
 export const useCommandPalettePostActions = () => {
   const router = useRouter();
 
