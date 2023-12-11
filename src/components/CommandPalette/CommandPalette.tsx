@@ -1,7 +1,8 @@
 "use client";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import { HiHome } from "react-icons/hi2";
-import { HiLightBulb } from "react-icons/hi";
+import { HiPuzzle, HiLightBulb } from "react-icons/hi";
+import { FaPenSquare } from "react-icons/fa";
 import {
   ActionId,
   ActionImpl,
@@ -16,13 +17,11 @@ import {
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import React, { forwardRef, useMemo } from "react";
-
 import { KBarSearch } from "./KBarSearch";
 
 type Props = {
   children: React.ReactNode;
 };
-
 export default function CommandPalette({ children }: Props) {
   const router = useRouter();
   const { setTheme } = useTheme();
@@ -40,7 +39,24 @@ export default function CommandPalette({ children }: Props) {
         priority: Priority.HIGH,
       },
     },
-    // Operation section
+    {
+      id: "about",
+      name: "關於",
+      keywords: "about 關於",
+      perform: () => router.push("/about"),
+      icon: <HiPuzzle className="h-6 w-6" />,
+      section: {
+        name: "頁面",
+        priority: Priority.HIGH,
+      },
+    },
+    {
+      id: "posts",
+      name: "文章",
+      keywords: "posts article 貼文 文章 寫作 search words",
+      icon: <FaPenSquare className="h-6 w-6" />,
+      section: "搜尋文章",
+    },
     // - Theme toggle
     {
       id: "theme",
@@ -81,7 +97,7 @@ function CommandBar() {
   return (
     <KBarPortal>
       <KBarPositioner className="z-20 flex items-center bg-gray-400/70 p-2 backdrop-blur-sm dark:bg-gray-900/80">
-        <KBarAnimator className="box-content w-full max-w-[600px] overflow-hidden rounded-xl border border-gray-400 bg-white/80 p-2 dark:border-gray-600 dark:bg-gray-700/80">
+        <KBarAnimator className="box-content w-full max-w-[600px] overflow-hidden rounded-xl border  border-gray-400 bg-white/80 p-2 dark:border-gray-600 dark:bg-gray-700/80">
           <KBarSearch className="flex h-16 w-full bg-transparent px-4 outline-none" />
           <RenderResults />
         </KBarAnimator>

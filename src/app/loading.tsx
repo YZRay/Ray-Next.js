@@ -6,8 +6,8 @@ const loading = () => {
       <Spinner
         size="lg"
         label="Loading..."
-        color="primary"
-        labelColor="primary"
+        color="warning"
+        labelColor="warning"
       />
     </div>
   );

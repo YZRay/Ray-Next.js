@@ -14,6 +14,8 @@ export const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: `**/*.mdx`,
   contentType: "mdx",
+  disableImportAliasWarning: true,
+  baseUrl: ".",
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },

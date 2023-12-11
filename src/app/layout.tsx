@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <ThemeProviders>
         <body
-          className={`${inter.className} bg-theme-light dark:bg-theme-dark`}
+          className={`${inter.className} bg-theme-light dark:bg-theme-dark text-neutral-800 dark:text-neutral-300`}
         >
           <CommandPalette>
             <Header />

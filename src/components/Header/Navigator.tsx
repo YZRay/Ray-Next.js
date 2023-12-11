@@ -1,12 +1,14 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeSwitch from "../ThemeSwitch";
+import CommandPaletteToggle from "@/components/CommandPalette/CommandPaletteToggle";
 
 const Navigator = () => {
   const pathname = usePathname();
 
   return (
-    <div className="w-full xl:w-max xl:flex gap-4">
+    <div className="w-full xl:w-max xl:flex gap-4 items-center">
       <Link
         href="/"
         className={`${
@@ -37,6 +39,8 @@ const Navigator = () => {
       >
         Posts
       </Link>
+      <ThemeSwitch />
+      <CommandPaletteToggle />
     </div>
   );
 };

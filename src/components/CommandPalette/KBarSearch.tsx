@@ -1,6 +1,6 @@
 import { useKBar, VisualState } from "kbar";
 import React, { useState } from "react";
-
+import { useCommandPalettePostActions } from "@/components/CommandPalette/useCommandPalettePostActions";
 export const KBAR_LISTBOX = "kbar-listbox";
 export const getListboxItemId = (id: number) => `kbar-listbox-item-${id}`;
 
@@ -29,6 +29,8 @@ export function KBarSearch(
   const ownRef = React.useRef<HTMLInputElement>(null);
 
   const { defaultPlaceholder, ...rest } = props;
+
+  useCommandPalettePostActions();
 
   React.useEffect(() => {
     query.setSearch("");

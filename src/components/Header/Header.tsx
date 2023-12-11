@@ -33,8 +33,6 @@ const Header = () => {
           className={`hidden xl:w-full xl:flex rounded-md gap-1 justify-around items-center z-30 bg-opacity-95 bg-neutral-200 dark:bg-neutral-800 shadow-md py-3`}
         >
           <Navigator />
-          <ThemeSwitch />
-          <CommandPaletteToggle />
         </div>
       </Headroom>
       <MobileNav show={show} toggleShow={toggleShow} />

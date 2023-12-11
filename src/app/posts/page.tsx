@@ -1,18 +1,12 @@
 "use client";
-import Link from "next/link";
 import { allPosts, Post } from "contentlayer/generated";
 import { Card, CardHeader, Image, Button, CardFooter } from "@nextui-org/react";
 const { compareDesc, format, parseISO } = require("date-fns");
 import { useRouter } from "next/navigation";
 
 function PostCard(post: Post) {
-  // {post.tags &&
-  //   post.tags.map((tag) => (
-  //     <span key={tag} className="text-sm text-gray-600">
-  //       {tag}
-  //     </span>
-  //   ))}
   const router = useRouter();
+
   return (
     <div>
       <Card
@@ -57,7 +51,6 @@ export default function Posts() {
   const posts = allPosts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
-
   return (
     <div className="mx-auto w-4/5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 py-8 gap-4">
       {posts.map((post, idx) => (
