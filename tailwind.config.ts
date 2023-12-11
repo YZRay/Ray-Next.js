@@ -17,7 +17,7 @@ const config: Config = {
       //   "theme-lighter": "#FFFBF5",
       // },
       backgroundImage: {
-        "theme-dark": "linear-gradient(45deg, #16213E 30%, #041C32 100%)",
+        "theme-dark": "linear-gradient(-45deg, #1b1b1b 50%, #191919 80%)",
         "theme-light": "linear-gradient(45deg, #FAF6F0 30%, #FFFBF5 100%)",
       },
     },

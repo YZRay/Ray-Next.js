@@ -2,7 +2,7 @@
 import { Fragment, useEffect } from "react";
 import Navigator from "./Navigator";
 import { RxCross1 } from "react-icons/rx";
-
+import ThemeSwitch from "../ThemeSwitch";
 interface IProps {
   show: boolean;
   toggleShow: () => void;
@@ -30,7 +30,7 @@ const MobileNav = ({ show, toggleShow }: IProps) => {
   return (
     <Fragment>
       <div
-        className={`border shadow-md w-1/2 sm:w-1/3 w h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-slate-200 fixed top-0 transition-all ease-linear duration-700  z-50 ${
+        className={`shadow-md w-1/2 sm:w-1/3 w h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-neutral-300 dark:bg-neutral-800 fixed top-0 transition-all ease-linear duration-700 z-50 ${
           show ? "right-0" : "-right-full"
         }`}
       >
@@ -38,9 +38,10 @@ const MobileNav = ({ show, toggleShow }: IProps) => {
           className="p-2 mb-2 hover:rotate-180 transition-all duration-300"
           onClick={() => toggleShow()}
         >
-          <RxCross1 className="w-8 h-8" />
+          <RxCross1 className="w-8 h-8 dark:text-neutral-200" />
         </button>
         <Navigator />
+        <ThemeSwitch />
       </div>
       {show ? <ModalOverlay /> : <></>}
     </Fragment>

@@ -14,6 +14,8 @@ export const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: `**/*.mdx`,
   contentType: "mdx",
+  disableImportAliasWarning: true,
+  baseUrl: ".",
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
@@ -66,11 +68,11 @@ export default makeSource({
         rehypePrettyCode,
         {
           theme: {
-            light: "github-light",
+            // light: "github-light",
             dark: "one-dark-pro",
           },
           grid: false,
-          keepBackground: false,
+          keepBackground: true,
           onVisitLine(node: any) {
             if (node.children.length === 0) {
               node.children = [{ type: "text", value: " " }];

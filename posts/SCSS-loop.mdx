@@ -18,13 +18,13 @@ List 需要設定的東西比較少。
 
 先寫好你想要的參數值
 
-```sass
+```sass:style.scss
 $font-size: 10px, 25px, 40px;
 ```
 
 再透過迴圈的方式快速生成
 
-```sass
+```sass:style.scss:style.scss
 @each $size in $font-size {
     .size-#{$size} {
         font-size: $size;
@@ -35,7 +35,7 @@ $font-size: 10px, 25px, 40px;
 這種方式比較簡單，設定的東西比較少
 生成後的 css 長這樣
 
-```sass
+```sass:style.scss
 .size-10px {
   font-size: 10px;
 }
@@ -57,7 +57,7 @@ map 相較於 list 要設定的東西多了一點，這方法也可以透過迴�
 
 先將想要的顏色設定好
 
-```sass
+```sass:style.scss
 $main-color01: #106b57;
 $main-color02: #5fb7a4;
 $main-color03: #e9ecef;
@@ -66,7 +66,7 @@ $main-color03: #e9ecef;
 接著就可以在其他地方透過名稱來使用這些參數。
 如果需要透過迴圈生成樣式可以透過以下方法。
 
-```sass
+```sass:style.scss
 $types: (
     main-color01: $main-color01,
     main-color02: $main-color02,
@@ -101,7 +101,7 @@ $types: (
 
 自動生成出來的結果就會是這樣
 
-```sass
+```sass:style.scss
 .btn-main-color01 {
   background-color: #106b57;
   color: #fff;
