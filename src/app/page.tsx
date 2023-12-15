@@ -1,9 +1,10 @@
 import ParticleContainer from "@/components/ParticleContainer";
+import Hero from "@/components/Home/Hero";
 
 export default function Home() {
   return (
-    <div className="w-full h-full relative">
-      <h1>Home</h1>
+    <div className="container mx-auto h-full relative">
+      <Hero />
       <ParticleContainer />
     </div>
   );
