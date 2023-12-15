@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import ThemeSwitch from "../ThemeSwitch";
 import CommandPaletteToggle from "@/components/CommandPalette/CommandPaletteToggle";
 import Transition from "../Transition";
+import { Divider } from "@nextui-org/react";
 
 const Navigator = () => {
   const [isRouting, setIsRouting] = useState(false);
