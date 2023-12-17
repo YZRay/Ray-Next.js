@@ -19,6 +19,7 @@ const config: Config = {
       backgroundImage: {
         "theme-dark": "linear-gradient(-45deg, #1b1b1b 50%, #191919 80%)",
         "theme-light": "linear-gradient(45deg, #FAF6F0 30%, #FFFBF5 100%)",
+        "hero-bg": "url('/assets/img/bg-img.png')",
       },
     },
   },

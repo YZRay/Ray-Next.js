@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="zh-Hant-TW">
       <ThemeProviders>
         <body
           className={`${notoSans.className} bg-theme-light dark:bg-theme-dark text-neutral-800 dark:text-neutral-300`}
