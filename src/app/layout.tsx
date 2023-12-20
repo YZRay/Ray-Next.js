@@ -24,11 +24,11 @@ export default function RootLayout({
     <html lang="zh-Hant-TW">
       <ThemeProviders>
         <body
-          className={`${notoSans.className} bg-theme-light dark:bg-theme-dark text-neutral-800 dark:text-neutral-300`}
+          className={`${notoSans.className} overflow-x-hidden bg-theme-light dark:bg-theme-dark text-neutral-800 dark:text-neutral-300`}
         >
           <CommandPalette>
             <Header />
-            <div className="rainbow absolute -inset-[10px] opacity-40"></div>
+            <div className="rainbow absolute top-0 left-0 right-0 bottom-0 opacity-40"></div>
             {children}
           </CommandPalette>
         </body>
