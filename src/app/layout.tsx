@@ -28,6 +28,7 @@ export default function RootLayout({
         >
           <CommandPalette>
             <Header />
+            <div className="rainbow absolute -inset-[10px] opacity-40"></div>
             {children}
           </CommandPalette>
         </body>

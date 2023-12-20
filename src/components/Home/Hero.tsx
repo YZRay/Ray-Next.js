@@ -40,7 +40,7 @@ const Hero = () => {
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="max-w-sm xl:max-w-xl mx-auto text-base xl:text-lg"
+          className="w-full xl:w-9/12 text-base xl:text-lg"
         >
           I graduated from the Department of Art Industry at National Taitung
           University.
@@ -50,11 +50,19 @@ const Hero = () => {
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="max-w-sm xl:max-w-xl mx-auto text-base xl:text-lg"
+          className="w-full xl:w-9/12 text-base xl:text-lg"
         >
           Additionally, I utilized my spare time to learn and enhance my skills
           in frontend development.
         </motion.p>
+      </div>
+      <div className="col-span-5">
+        <Image
+          src="assets/img/avatar.png"
+          width={700}
+          height={700}
+          alt="avatar"
+        ></Image>
       </div>
     </section>
   );
