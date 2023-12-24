@@ -2,7 +2,6 @@
 import { Fragment, useEffect } from "react";
 import Navigator from "./Navigator";
 import { RxCross1 } from "react-icons/rx";
-import ThemeSwitch from "../ThemeSwitch";
 interface IProps {
   show: boolean;
   toggleShow: () => void;
@@ -41,7 +40,6 @@ const MobileNav = ({ show, toggleShow }: IProps) => {
           <RxCross1 className="w-8 h-8 dark:text-neutral-200" />
         </button>
         <Navigator />
-        <ThemeSwitch />
       </div>
       {show ? <ModalOverlay /> : <></>}
     </Fragment>

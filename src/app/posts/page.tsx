@@ -8,7 +8,7 @@ function PostCard(post: Post) {
   const router = useRouter();
 
   return (
-    <div>
+    <div className="relative z-0">
       <Card
         isFooterBlurred
         className="w-full h-full col-span-12 sm:col-span-7 dark:border-2 dark:border-neutral-100/30"

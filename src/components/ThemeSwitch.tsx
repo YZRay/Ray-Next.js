@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Switch, Button } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import { useTheme } from "next-themes";
 

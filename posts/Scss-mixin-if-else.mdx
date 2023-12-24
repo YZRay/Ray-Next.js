@@ -1,0 +1,106 @@
+---
+title: Scss @mixin & @if @else
+date: 2023-12-13
+Image:
+author: Ray
+excerpt: 簡單介紹scss的mixin搭配 if else 做法
+tags:
+  - Css
+  - SCSS Tag
+---
+
+## @mixin
+
+mixin 可以讓我們把 scss 包裝成一個常用的 component 在透過 @include 來引用它
+
+```css:style.css
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  @include flex-center();
+}
+```
+
+像上面這樣就可以快速地套用 @mixin 裡面的樣式
+
+除了這樣子寫，我們也可以在 mixin 裡面加入參數進行套用
+
+```css:style.css
+@mixin textt($font-weight, $line-height: normal) {
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+.text {
+  @include text(700, 100%);
+}
+```
+
+像這樣子我們就可以讓文字套用 font-weight: 700; line-height: 100%的設定
+在$line-height: normal 裡面指的是，如果沒有填入這格參數就會套用預設值 normal
+
+## @if @else
+
+除了在 js 裡面寫判斷之外，有時候也可以用 scss 裡面的 if else 來寫判斷
+
+用法大概是這樣
+
+```css:style.css
+$type: color @if $type == red {
+  color: red;
+} @else if $type == blue {
+  color: blue;
+} @else {
+  color: yellow;
+}
+```
+
+像這樣就可以去進行判斷，通常都會把它跟 mixin 結合，我們就可以快速地建立出很多組件出來
+
+像是這樣
+
+```css:style.css
+@mixin test($color, $icon: null) {
+  padding: 12px 8px;
+  display: flex;
+  background-color: $color;
+  align-items: center;
+  justify-content: space-between;
+  width: 20%;
+  text-decoration: none;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 16px;
+  &::after {
+    @if $icon {
+      content: $icon;
+      font-family: "FontAwesome";
+      font-size: 24px;
+    } @else {
+      content: none; // 如果沒有傳入 icon，設為 none
+    }
+  }
+}
+
+.test-icon1 {
+  @include test(#092635, "\f21a");
+}
+.test-icon2 {
+  @include test(#31304d, "\f236");
+}
+.test-icon3 {
+  @include test(#b31312, "\f03e");
+}
+.test-no-icon {
+  @include test(#0766ad);
+}
+```
+
+我們先用 mixin 建立好，並設定想要傳進去改變的參數，並寫好當沒有 icon 的時候傳入的值是 null，接著我們就可以在裡面進行 if else 的判斷，不然沒有寫的話會有錯誤，if $icon 指的是當有傳入值的時候就執行裡面的 css，else 則是當沒有值時，也就是 null，這樣就不會建立出 icon 出來。
+
+以下是 code pen 上的 Demo
+
+[@mixin & @if @else](https://codepen.io/YZRay/pen/BaMeQZO)
