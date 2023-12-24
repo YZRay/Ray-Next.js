@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="grid grid-cols-1 xl:grid-cols-2 min-h-full">
+    <section className="grid grid-cols-1 xl:grid-cols-2 min-h-full justify-items-center gap-4 md:gap-2 lx:gap-0">
       <div className="flex flex-col gap-2 md:gap-4 lg:gap-5 justify-center container mx-auto">
         <motion.h1
           variants={fadeIn("down", 0.2)}
@@ -56,12 +56,13 @@ const Hero = () => {
           in frontend development.
         </motion.p>
       </div>
-      <div>
+      <div className="flex justify-center items-center rounded-full overflow-clip drop-shadow-xl w-3/4">
         <Image
           src="assets/img/avatar.png"
           width={700}
           height={700}
           alt="avatar"
+          className="w-full h-auto"
         ></Image>
       </div>
     </section>
