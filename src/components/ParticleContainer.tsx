@@ -15,13 +15,15 @@ const ParticleContainer = () => {
     });
   }, []);
 
-  const particlesLoaded = useCallback(async () => {}, []);
+  const particlesLoaded = useCallback(async () => {
+    // console.log("Particles loaded!");
+  }, []);
 
   return (
     <div>
       {init && (
         <Particles
-          id="tsparticles"
+          id={`tsparticles-${Math.random().toString(36).substring(7)}`}
           particlesLoaded={particlesLoaded}
           options={{
             background: {
