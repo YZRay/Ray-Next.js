@@ -64,7 +64,7 @@ const Hero = () => {
         className="flex justify-center items-center rounded-full overflow-clip drop-shadow-xl w-3/4"
       >
         <Image
-          src="assets/img/avatar.png"
+          src="assets/img/avatar.webp"
           width={700}
           height={700}
           alt="avatar"

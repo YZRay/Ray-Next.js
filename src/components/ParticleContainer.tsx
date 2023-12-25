@@ -20,7 +20,7 @@ const ParticleContainer = () => {
   }, []);
 
   return (
-    <div>
+    <div className="hidden xl:block">
       {init && (
         <Particles
           id={`tsparticles-${Math.random().toString(36).substring(7)}`}
