@@ -1,7 +1,11 @@
 "use client";
 import { Fragment, useEffect } from "react";
-import Navigator from "./Navigator";
+import dynamic from "next/dynamic";
 import { RxCross1 } from "react-icons/rx";
+
+const Navigator = dynamic(() => import("./Navigator"), {
+  ssr: false,
+});
 interface IProps {
   show: boolean;
   toggleShow: () => void;

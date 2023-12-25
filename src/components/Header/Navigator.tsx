@@ -2,11 +2,19 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import ThemeSwitch from "../ThemeSwitch";
-import CommandPaletteToggle from "@/components/CommandPalette/CommandPaletteToggle";
-import Transition from "../Transition";
-import { Divider } from "@nextui-org/react";
-
+import dynamic from "next/dynamic";
+const CommandPaletteToggle = dynamic(
+  () => import("@/components/CommandPalette/CommandPaletteToggle"),
+  {
+    ssr: false,
+  }
+);
+const ThemeSwitch = dynamic(() => import("../ThemeSwitch"), {
+  ssr: false,
+});
+const Transition = dynamic(() => import("../Transition"), {
+  ssr: false,
+});
 const Navigator = () => {
   const [isRouting, setIsRouting] = useState(false);
   const pathname = usePathname();

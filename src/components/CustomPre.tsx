@@ -1,7 +1,6 @@
 "use client";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
-
 import { copyToClipboard } from "@/lib/copyToClipboard";
 import { removeDuplicateNewLine } from "@/lib/removeDuplicateNewLine";
 

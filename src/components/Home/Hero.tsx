@@ -20,13 +20,13 @@ const Hero = () => {
           <TypeAnimation
             sequence={[
               "Ray",
-              1300,
+              1000,
               "Designer",
-              1300,
+              1000,
               "Frontend Developer",
-              1300,
+              1000,
               "Pokemon holic",
-              1300,
+              1000,
             ]}
             wrapper="span"
             speed={30}
@@ -56,15 +56,22 @@ const Hero = () => {
           in frontend development.
         </motion.p>
       </div>
-      <div className="flex justify-center items-center rounded-full overflow-clip drop-shadow-xl w-3/4">
+      <motion.div
+        variants={fadeIn("down", 0.2)}
+        initial="hidden"
+        animate="show"
+        exit="hidden"
+        className="flex justify-center items-center rounded-full overflow-clip drop-shadow-xl w-3/4"
+      >
         <Image
           src="assets/img/avatar.png"
           width={700}
           height={700}
           alt="avatar"
           className="w-full h-auto"
+          loading="lazy"
         ></Image>
-      </div>
+      </motion.div>
     </section>
   );
 };
