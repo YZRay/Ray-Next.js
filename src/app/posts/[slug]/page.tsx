@@ -3,8 +3,13 @@ import { Metadata } from "next";
 const { format, parseISO } = require("date-fns");
 import MDXContent from "@/components/mdx-content";
 import { notFound } from "next/navigation";
-import TableOfContents from "@/components/TableOfContents";
-import PreviousArticle from "@/components/PreviousArticle";
+import dynamic from "next/dynamic";
+const TableOfContents = dynamic(() => import("@/components/TableOfContents"), {
+  ssr: false,
+});
+const PreviousArticle = dynamic(() => import("@/components/PreviousArticle"), {
+  ssr: false,
+});
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));

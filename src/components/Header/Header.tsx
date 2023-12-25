@@ -4,8 +4,6 @@ import Navigator from "./Navigator";
 import Headroom from "react-headroom";
 import { HiBars3 } from "react-icons/hi2";
 import dynamic from "next/dynamic";
-import ThemeSwitch from "../ThemeSwitch";
-import CommandPaletteToggle from "@/components/CommandPalette/CommandPaletteToggle";
 
 const MobileNav = dynamic(() => import("./MobileNav"), {
   ssr: false,
