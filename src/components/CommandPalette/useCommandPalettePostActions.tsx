@@ -1,4 +1,3 @@
-// useCommandPalettePostActions.ts
 "use client";
 import { useRegisterActions } from "kbar";
 import { useRouter } from "next/navigation";

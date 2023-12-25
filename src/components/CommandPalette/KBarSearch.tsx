@@ -1,3 +1,4 @@
+"use client";
 import { useKBar, VisualState } from "kbar";
 import React, { useState } from "react";
 import { useCommandPalettePostActions } from "@/components/CommandPalette/useCommandPalettePostActions";
