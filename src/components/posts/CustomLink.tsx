@@ -26,7 +26,7 @@ const CustomLink = ({ href, children, ...rest }: Props) => {
 
   return (
     <a
-      className="flex items-center gap-2 py-1 text-neutral-900 dark:text-neutral-400 decoration-0 hover:text-neutral-700 dark:hover:text-neutral-200 border-b-1 border-transparent hover:border-neutral-700 dark:hover:border-neutral-200 transition-all duration-300 font-semibold"
+      className="flex items-center gap-2 py-1 decoration-0 border-b-1 border-transparent hover:border-darker-400 dark:hover:border-lighter-400 transition-all duration-300 font-semibold"
       target="_blank"
       rel="noopener noreferrer"
       href={href}

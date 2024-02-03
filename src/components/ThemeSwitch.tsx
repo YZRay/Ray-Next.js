@@ -22,7 +22,6 @@ export default function ThemeSwitch() {
       onClick={handleThemeChange}
       variant="shadow"
       isIconOnly
-      radius="full"
       size="md"
       color={resolvedTheme === "dark" ? "warning" : "default"}
     >

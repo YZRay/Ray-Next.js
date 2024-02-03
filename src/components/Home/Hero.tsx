@@ -4,7 +4,8 @@ import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { fadeIn } from "../fadeIn";
 import Image from "next/image";
-
+import { Link, Button, Divider } from "@nextui-org/react";
+import { FaGithub, FaLaptopCode } from "react-icons/fa6";
 const Hero = () => {
   return (
     <section className="grid grid-cols-1 xl:grid-cols-2 min-h-full justify-items-center gap-4 md:gap-2 lx:gap-0">
@@ -32,7 +33,7 @@ const Hero = () => {
             speed={30}
             style={{ fontSize: "1em", display: "inline-block" }}
             repeat={Infinity}
-            className="text-rose-950 dark:text-rose-300"
+            className="text-sky-600"
           />
         </motion.h1>
         <motion.p
@@ -55,6 +56,42 @@ const Hero = () => {
           Additionally, I utilized my spare time to learn and enhance my skills
           in frontend development.
         </motion.p>
+        <motion.div
+          variants={fadeIn("down", 0.3)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+        >
+          <Divider className="my-4" />
+        </motion.div>
+        <motion.div
+          variants={fadeIn("down", 0.3)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          className="flex gap-4 items-center"
+        >
+          <Button
+            href="https://github.com/YZRay"
+            as={Link}
+            isIconOnly
+            variant="shadow"
+            target="_blank"
+            size="lg"
+          >
+            <FaGithub className="w-6 h-6" />
+          </Button>
+          <Button
+            href="https://www.cakeresume.com/me/ray-yao/portfolios"
+            as={Link}
+            variant="shadow"
+            target="_blank"
+            size="lg"
+          >
+            <FaLaptopCode className="w-6 h-6" />
+            作品集
+          </Button>
+        </motion.div>
       </div>
       <motion.div
         variants={fadeIn("down", 0.2)}

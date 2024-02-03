@@ -8,10 +8,11 @@ export default function CommandPaletteToggle() {
     <Button
       aria-label="Toggle Command Palette"
       color="default"
-      variant="shadow"
+      variant="flat"
       size="md"
       startContent={<HiMagnifyingGlass />}
       onClick={query.toggle}
+      className="border border-transparent dark:bg-darker-400/80 dark:border-darker-100/40"
     >
       快速搜尋
       <Kbd keys={["command"]}>K</Kbd>

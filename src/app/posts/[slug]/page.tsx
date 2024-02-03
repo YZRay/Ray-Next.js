@@ -7,9 +7,12 @@ import dynamic from "next/dynamic";
 const TableOfContents = dynamic(() => import("@/components/TableOfContents"), {
   ssr: false,
 });
-const PreviousArticle = dynamic(() => import("@/components/PreviousArticle"), {
-  ssr: false,
-});
+const PreviousArticle = dynamic(
+  () => import("@/components/posts/PreviousArticle"),
+  {
+    ssr: false,
+  }
+);
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));

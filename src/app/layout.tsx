@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="zh-Hant-TW">
       <body
-        className={`${notoSans.className} overflow-x-hidden bg-theme-light dark:bg-theme-dark text-neutral-800 dark:text-neutral-300`}
+        className={`${notoSans.className} overflow-x-hidden bg-theme-light dark:bg-theme-dark`}
       >
         <ThemeProviders>
           <CommandPalette>

@@ -167,7 +167,7 @@ const ResultItem = forwardRef<Ref, ResultItemProps>(
         ref={ref}
         className={`${
           active
-            ? "rounded-lg bg-primary-500 text-gray-100"
+            ? "rounded-lg bg-lighter-400 dark:bg-darker-400"
             : "text-gray-600 dark:text-gray-300"
         } flex cursor-pointer items-center justify-between rounded-lg px-4 py-2`}
       >

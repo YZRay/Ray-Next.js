@@ -17,14 +17,12 @@ function CustomHeading({
     >
       <a
         href={id && `#${id}`}
-        className="inline-flex h-6 w-6 items-center justify-center text-lg text-neutral-400 no-underline decoration-0 opacity-80 transition-all hover:text-neutral-700 group-hover:opacity-100 dark:text-neutral-400 dark:hover:text-neutral-200"
+        className="inline-flex h-6 w-6 items-center justify-center text-lg no-underline decoration-0"
         aria-label="Anchor"
       >
         <GoHash className="h-4 w-4" />
       </a>
-      <span className="font-bold text-neutral-700 dark:text-neutral-200">
-        {children}
-      </span>
+      <span className="font-bold">{children}</span>
     </Component>
   );
 }
