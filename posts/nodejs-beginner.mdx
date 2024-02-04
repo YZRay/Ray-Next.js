@@ -1,0 +1,56 @@
+---
+title: Node.js後端-1
+date: 2024-01-07
+Image:
+author: Ray
+excerpt: 紀錄一下nodeJS後端
+tags:
+  - nodeJS
+  - javascript
+---
+
+# nodeJS 後端 => express.js 框架
+
+先透過指令安裝好環境
+
+> npm install express --save
+
+接著在新增 app.js 檔案
+
+```javascript:index.js
+const express = require("express");
+
+const app = express();
+
+app.listen(3000);
+```
+
+這樣子就建立好一個本地伺服器了
+
+接下來要引用靜態資源 像是 css、圖片等等，我們要告訴 express 怎麼引用他
+先在跟目錄建立好一個 pubilc 的資料夾
+
+```javascript:index.js
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "public")));
+```
+
+在渲染出畫面可以透過幾個模板語法去渲染出來像是 pug、ejs、handlebars
+pug 跟 ejs 都是 express 裡面就有內建的了
+先建立一個 views 的資料夾再新增 ejs 的檔案，再透過 express 渲染出來
+
+```javascript:index.js
+const express = require("express");
+
+const router = express.Router();
+
+router.get("/", (req, res, next) => {
+  res.render("index", {
+    path: "/",
+    pageTitle: "Index",
+  });
+});
+```
+
+這樣就可以渲染出 index 裡面的檔案了

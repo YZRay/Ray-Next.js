@@ -1,16 +1,22 @@
 "use client";
 import { allPosts } from "contentlayer/generated";
 const { compareDesc, format, parseISO } = require("date-fns");
-import { Suspense, useState, Fragment } from "react";
+import { Suspense, useState, Fragment, useEffect, useCallback } from "react";
 import PostCard from "@/components/posts/PostCard";
 import SkeletonCard from "@/components/posts/SkeletonCard";
 import { Pagination } from "@nextui-org/react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Posts() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const queryPage = searchParams.get("page");
+  const page = Number(queryPage);
+
   const posts = allPosts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(page || 1);
   const postsPerPage = 6;
 
   const startIndex = (currentPage - 1) * postsPerPage;
@@ -18,6 +24,20 @@ export default function Posts() {
   const endIndex = startIndex + postsPerPage;
   const displayPosts = posts.slice(startIndex, endIndex);
   const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  const handlePageChange = useCallback(
+    (newPage: number) => {
+      setCurrentPage(newPage);
+      router.push(`/posts?page=${newPage}`);
+    },
+    [setCurrentPage, router]
+  );
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      handlePageChange(1);
+    }
+  }, [currentPage, totalPages, handlePageChange]);
 
   return (
     <Fragment>
@@ -44,7 +64,7 @@ export default function Posts() {
           color="primary"
           boundaries={2}
           variant="bordered"
-          onChange={(page) => setCurrentPage(page)}
+          onChange={handlePageChange}
         />
       </div>
     </Fragment>
