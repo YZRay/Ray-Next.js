@@ -19,7 +19,7 @@ export const Post = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
-    Image: { type: "string", required: false, default: "/assets/img/git.jpg" },
+    Image: { type: "string", required: false, default: "/assets/img/git.webp" },
     excerpt: {
       type: "string",
       required: true,

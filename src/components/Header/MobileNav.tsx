@@ -13,7 +13,7 @@ interface IProps {
 const MobileNav = ({ show, toggleShow }: IProps) => {
   const ModalOverlay = () => (
     <div
-      className={`flex xl:hidden fixed top-0 right-0 bottom-0 left-0 bg-zinc-950/60 z-30 transition-all duration-500`}
+      className={`flex xl:hidden fixed top-0 right-0 bottom-0 left-0 bg-zinc-900/60 z-30 transition-all duration-500`}
       onClick={() => toggleShow()}
     />
   );
@@ -33,7 +33,7 @@ const MobileNav = ({ show, toggleShow }: IProps) => {
   return (
     <Fragment>
       <div
-        className={`shadow-md w-1/2 sm:w-1/3 w h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-neutral-300 dark:bg-neutral-800 fixed top-0 transition-all ease-linear duration-700 z-50 ${
+        className={`shadow-md w-1/2 sm:w-1/3 w h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-lighter-300 dark:bg-darker-400 fixed top-0 transition-all ease-linear duration-700 z-50 ${
           show ? "right-0" : "-right-full"
         }`}
       >
@@ -41,9 +41,9 @@ const MobileNav = ({ show, toggleShow }: IProps) => {
           className="p-2 mb-2 hover:rotate-180 transition-all duration-300"
           onClick={() => toggleShow()}
         >
-          <RxCross1 className="w-8 h-8 dark:text-neutral-200" />
+          <RxCross1 className="w-8 h-8" />
         </button>
-        <Navigator />
+        <Navigator toggleShow={toggleShow} />
       </div>
       {show ? <ModalOverlay /> : <></>}
     </Fragment>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_TC } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
 import { ThemeProviders } from "@/components/Providers/ThemeProvider";
@@ -11,12 +12,48 @@ const Header = dynamic(() => import("@/components/Header/Header"), {
 });
 const notoSans = Noto_Sans_TC({
   subsets: ["latin"],
-  weight: ["400", "700", "900"],
+  weight: ["400", "500", "700", "900"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ray-next-psi.vercel.app/"),
+  openGraph: {
+    title: "Ray's Blog",
+    description: "個人的學習筆記加紀錄一些有的沒的",
+    url: "https://ray-next-psi.vercel.app/",
+    siteName: "Ray's Blog",
+    locale: "zh-TW",
+    type: "website",
+    // images: [
+    //   {
+    //     url: "/assets/og.jpg",
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "Ray's Blog",
+    //   },
+    // ],
+  },
   title: "Ray's Blog",
   description: "個人的學習筆記加紀錄一些有的沒的",
+  // icons: [
+  //   {
+  //     rel: "icon",
+  //     type: "image/png",
+  //     sizes: "32x32",
+  //     url: "/assets/favicon-32x32.png",
+  //   },
+  //   {
+  //     rel: "icon",
+  //     type: "image/png",
+  //     sizes: "16x16",
+  //     url: "/assets/favicon-16x16.png",
+  //   },
+  //   {
+  //     rel: "apple-touch-icon",
+  //     sizes: "180x180",
+  //     url: "/assets/apple-touch-icon.png",
+  //   },
+  // ],
 };
 
 export default function RootLayout({
@@ -27,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="zh-Hant-TW">
       <body
-        className={`${notoSans.className} overflow-x-hidden bg-theme-light dark:bg-theme-dark text-neutral-800 dark:text-neutral-300`}
+        className={`${notoSans.className} overflow-x-hidden bg-theme-light dark:bg-theme-dark`}
       >
         <ThemeProviders>
           <CommandPalette>
@@ -37,6 +74,7 @@ export default function RootLayout({
           </CommandPalette>
         </ThemeProviders>
       </body>
+      <GoogleAnalytics gaId="G-4K2VLYRT3K" />
     </html>
   );
 }
