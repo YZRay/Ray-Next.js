@@ -22,7 +22,10 @@ const links = [
   { path: "/about", label: "關於" },
   { path: "/posts", label: "文章" },
 ];
-const Navigator = () => {
+interface IProps {
+  toggleShow: () => void;
+}
+const Navigator = ({ toggleShow }: IProps) => {
   const [isRouting, setIsRouting] = useState(false);
   const pathname = usePathname();
   const [prevPath, setPrevPath] = useState("/");
@@ -54,12 +57,13 @@ const Navigator = () => {
             className={`${
               pathname === link.path ? "after:scale-x-100" : ""
             } py-1 px-2 text-lg relative after:content-[''] after:absolute after:w-full after:left-0 after:bottom-0 after:scale-x-0 after:h-[3px] rounded-lg after:bg-darker-400 after:transition-transform after:duration-300 dark:after:bg-lighter-400 after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left ease-out`}
+            onClick={() => toggleShow()}
           >
             {link.label}
           </Link>
         ))}
       </nav>
-      <div className="flex flex-col xl:flex-row items-center gap-6">
+      <div className="flex  flex-col xl:flex-row items-center gap-6">
         <div className="flex gap-4 items-center">
           {pathname !== "/" ? (
             <Button
@@ -70,6 +74,7 @@ const Navigator = () => {
               target="_blank"
               size="md"
               className="border border-transparent dark:bg-darker-400/80 dark:border-darker-100/40"
+              aria-label="Link to YZRay's GitHub"
             >
               <FaGithub className="w-5 h-5" />
             </Button>

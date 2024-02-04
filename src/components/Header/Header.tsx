@@ -21,6 +21,7 @@ const Header = () => {
           <button
             className="text-lg p-2 right-0"
             onClick={() => setShow(!show)}
+            aria-label="Toggle Navigation"
           >
             <HiBars3 className="w-8 h-8" />
           </button>
@@ -30,7 +31,7 @@ const Header = () => {
         <div
           className={`hidden xl:w-full xl:flex rounded-md gap-1 justify-around items-center z-30 bg-opacity-95 bg-lighter-200 dark:bg-darker-300 shadow-md py-3`}
         >
-          <Navigator />
+          <Navigator toggleShow={toggleShow} />
         </div>
       </Headroom>
       <MobileNav show={show} toggleShow={toggleShow} />

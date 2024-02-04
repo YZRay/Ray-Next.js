@@ -43,7 +43,7 @@ const MobileNav = ({ show, toggleShow }: IProps) => {
         >
           <RxCross1 className="w-8 h-8" />
         </button>
-        <Navigator />
+        <Navigator toggleShow={toggleShow} />
       </div>
       {show ? <ModalOverlay /> : <></>}
     </Fragment>

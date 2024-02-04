@@ -33,7 +33,7 @@ const Hero = () => {
             speed={30}
             style={{ fontSize: "1em", display: "inline-block" }}
             repeat={Infinity}
-            className="text-sky-600"
+            className="text-sky-500"
           />
         </motion.h1>
         <motion.p
@@ -87,6 +87,7 @@ const Hero = () => {
             variant="shadow"
             target="_blank"
             size="lg"
+            className="font-bold"
           >
             <FaLaptopCode className="w-6 h-6" />
             作品集

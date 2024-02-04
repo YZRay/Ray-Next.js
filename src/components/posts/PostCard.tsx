@@ -23,6 +23,7 @@ const PostCard = (post: Post) => {
           alt="card background"
           className="z-0 w-full h-full object-cover"
           src={post.Image}
+          loading="lazy"
         />
         <CardFooter className="absolute dark:bg-darker-400/70 bg-white/20 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">

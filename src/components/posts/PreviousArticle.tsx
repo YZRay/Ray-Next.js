@@ -36,7 +36,7 @@ const PreviousArticle = ({
     : { title: allPosts[0].title, url: allPosts[0].url };
 
   return (
-    <div className="w-10/12 mx-auto py-8 mb-12 border-t-2 border-neutral-400 flex justify-between">
+    <div className="w-10/12 mx-auto py-8 mb-12 border-t-2 border-neutral-400 flex flex-col justify-between md:flex-row">
       {prePost && (
         <Link
           className="group pb-2 relative after:content-[''] after:absolute after:w-full after:left-0 after:scale-x-0 after:h-0.5 after:bg-neutral-700 after:transition-transform after:duration-300 dark:after:bg-neutral-200 after:origin-bottom-left hover:after:scale-x-100 hover:after:origin-bottom-right ease-out"
@@ -48,7 +48,7 @@ const PreviousArticle = ({
               上一篇文章
             </span>
           </div>
-          <h6 className="font-bold text-neutral-800 dark:text-neutral-200 text-lg">
+          <h6 className="font-bold text-neutral-800 dark:text-neutral-200 text-lg w-fit">
             {prePost.title}
           </h6>
         </Link>
@@ -65,7 +65,7 @@ const PreviousArticle = ({
             </span>
           </div>
           <h6
-            className={`font-bold text-neutral-800 dark:text-neutral-200 text-lg`}
+            className={`font-bold text-neutral-800 dark:text-neutral-200 text-lg w-fit ms-auto`}
           >
             {nextPost.title}
           </h6>

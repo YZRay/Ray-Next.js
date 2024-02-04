@@ -12,9 +12,9 @@ export default function CommandPaletteToggle() {
       size="md"
       startContent={<HiMagnifyingGlass />}
       onClick={query.toggle}
-      className="border border-transparent dark:bg-darker-400/80 dark:border-darker-100/40"
+      className="border border-transparent dark:bg-darker-400/80 dark:border-darker-100/40 hidden xl:flex"
     >
-      快速搜尋
+      Quick search...
       <Kbd keys={["command"]}>K</Kbd>
     </Button>
   );
