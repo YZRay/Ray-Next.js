@@ -14,6 +14,7 @@ const notoSans = Noto_Sans_TC({
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
 });
+const isProduction = process.env.NODE_ENV === "production";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ray-next-psi.vercel.app/"),
@@ -74,7 +75,7 @@ export default function RootLayout({
           </CommandPalette>
         </ThemeProviders>
       </body>
-      <GoogleAnalytics gaId="G-4K2VLYRT3K" />
+      {isProduction && <GoogleAnalytics gaId="G-4K2VLYRT3K" />}
     </html>
   );
 }
