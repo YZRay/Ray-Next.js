@@ -21,6 +21,9 @@ body {
     @apply text-darker-400 dark:text-lighter-200;
   }
 }
+.snippet pre {
+  @apply m-0 text-medium p-0;
+}
 .rehype-code-title {
   @apply mt-3 rounded-tl-lg rounded-tr-lg bg-slate-700 px-4 py-2 font-mono text-base text-neutral-200;
 }

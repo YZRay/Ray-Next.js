@@ -1,0 +1,176 @@
+---
+title: Redux Basics
+date: 2024-02-18
+Image:
+author: Ray
+excerpt: 紀錄一下學習 Redux 基礎用法的筆記
+tags:
+  - React
+---
+
+import { Divider } from "@nextui-org/react";
+import CustomSnippet from "../src/components/MdxComponent/CustomSnippet.tsx";
+
+## Redux 介紹
+
+> Redux 是 JavaScript 應用的狀態容器，提供可預測的狀態管理。
+
+useContext & useReducer 也能做到類似 Redux 一樣的功能，但是在專案越來越大，有越來越多的狀態需要管理的時候，用 useContext 可能就會造成管理上越來越複雜。
+
+當你的專案需要頻繁的更新狀態，或是有很多元件需要共享狀態時，就可以考慮使用 Redux
+
+## Redux Toolkit
+
+當專案越來越大，越來越多的狀態要進行管理，裏頭的 action.type 也越來越多時，就會造成越來越難去維護，有可能會把 type 寫錯或是重複命名等等...
+
+這時就可以透過 Redux Toolkit 來讓整個專案更好的進行管理，這也是 Redux 官方文件裡面推薦使用的做法
+
+先放上原本的 Redux 結構
+
+```javascript:store/index.js
+import { createStore } from "redux";
+
+const initialState = { counter: 0, showCounter: true };
+
+const counterReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case "increment":
+        return {
+            ...state,
+            counter: state.counter + 1,
+        };
+        case "increase":
+        return {
+            ...state,
+            counter: state.counter + action.amount,
+        };
+        case "decrement":
+        return {
+            ...state,
+            counter: state.counter - 1,
+        };
+        case "toggle":
+        return {
+            ...state,
+            showCounter: !state.showCounter,
+        };
+        default:
+        return state;
+    }
+};
+
+const store = createStore(counterReducer);
+
+export default store;
+```
+
+先來安裝一下 Redux Toolkit
+
+<CustomSnippet>npm install @reduxjs/toolkit</CustomSnippet>
+
+```javascript:store/index.js
+import { createSlice } from "@reduxjs/toolkit";
+
+const counterSlice = createSlice({
+  name: "counter",
+  initialState,
+  reducers: {
+    increment(state) {
+      state.counter++;
+    },
+    decrement(state) {
+      state.counter--;
+    },
+    increase(state, action) {
+      state.counter = state.counter + action.payload;
+    },
+    toggleCounter(state) {
+      state.showCounter = !state.showCounter;
+    },
+  },
+});
+```
+
+可以看到上面的代碼簡潔了很多，每一個 slice 都會有個 name，這個 name 是自己命名的
+
+再來就是初始的狀態
+
+接著下方的 reducers 就是原本的 type 跟邏輯，裡面已經不用再自己寫上判斷 action.type
+
+<Divider className="my-4" />
+
+```javascript:store/index.js
+import { createSlice, configureStore } from "@reduxjs/toolkit";
+
+.
+.
+.
+
+const store = configureStore({
+  reducer: counterSlice.reducer,
+});
+
+export default store;
+
+```
+
+接著我們要引入 configureStore 來幫助我們使用這個 reducer
+裏頭要傳遞的是一個物件，但當我們有很多個 reducer 時，我們也可以把 reducer 的值也改成一個物件
+
+大概就像是這樣
+
+```javascript:store/index.js
+const store = configureStore({
+  reducer:{
+      count: counterSlice.reducer,
+      key: value.....,
+      .....
+  },
+});
+```
+
+接著我們要讓我們的組件去接收到是哪個 action，在這之前我們得必須把我們的 action 給 export 出去
+
+```javascript:store/index.js
+export const counterActions = counterSlice.actions;
+```
+
+再來到我們的組件
+
+```javascript:counter.jsx
+import { useSelector, useDispatch } from "react-redux";
+import { counterActions } from "../store/index";
+
+const Counter = () => {
+  const dispatch = useDispatch();
+  const counter = useSelector((state) => state.counter);
+  const show = useSelector((state) => state.showCounter);
+
+  const incrementHandler = () => {
+    dispatch(counterActions.increment());
+  };
+
+  const increaseHandler = () => {
+    dispatch(counterActions.increase(6));
+  };
+  const decrementHandler = () => {
+    dispatch(counterActions.decrement());
+  };
+
+  const toggleCounterHandler = () => {
+    dispatch(counterActions.toggleCounter());
+  };
+
+  return (
+    ......
+  );
+};
+
+export default Counter;
+```
+
+- useSelector => 指的是要選哪個狀態
+- useDispatch => 觸發的 action
+
+把剛剛從 redux 裡面 export 出來的 action 先 import 進來
+接著就可以直接透過他把需要的 action 給添加上去

@@ -16,7 +16,9 @@ const PostCard = (post: Post) => {
           <p className="text-base text-white/60 uppercase font-bold">
             {post.author}
           </p>
-          <h4 className="text-white font-medium text-xl">{post.title}</h4>
+          <h4 className="text-white font-medium text-lg md:text-xl">
+            {post.title}
+          </h4>
         </CardHeader>
         <Image
           isBlurred
@@ -38,7 +40,12 @@ const PostCard = (post: Post) => {
               </p>
             </div>
           </div>
-          <Button radius="full" size="md" onClick={() => router.push(post.url)}>
+          <Button
+            radius="full"
+            size="md"
+            onClick={() => router.push(post.url)}
+            aria-label="Read"
+          >
             Read more
           </Button>
         </CardFooter>

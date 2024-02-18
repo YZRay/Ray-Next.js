@@ -1,3 +1,4 @@
+"use client";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { FC } from "react";
 import mdxComponents from "@/lib/mdxComponents";
