@@ -6,6 +6,7 @@ const nextConfig = {
   swcMinify: true,
   output: "export",
   images: { unoptimized: true },
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   typescript: {
     ignoreBuildErrors: true,
   },

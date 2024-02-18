@@ -8,9 +8,6 @@ tags:
   - React
 ---
 
-import { Divider } from "@nextui-org/react";
-import CustomSnippet from "../src/components/MdxComponent/CustomSnippet.tsx";
-
 ## Redux 介紹
 
 > Redux 是 JavaScript 應用的狀態容器，提供可預測的狀態管理。
@@ -66,7 +63,7 @@ export default store;
 
 先來安裝一下 Redux Toolkit
 
-<CustomSnippet>npm install @reduxjs/toolkit</CustomSnippet>
+<Snippet text="npm install @reduxjs/toolkit" />
 
 ```javascript:store/index.js
 import { createSlice } from "@reduxjs/toolkit";
@@ -96,8 +93,6 @@ const counterSlice = createSlice({
 再來就是初始的狀態
 
 接著下方的 reducers 就是原本的 type 跟邏輯，裡面已經不用再自己寫上判斷 action.type
-
-<Divider className="my-4" />
 
 ```javascript:store/index.js
 import { createSlice, configureStore } from "@reduxjs/toolkit";
