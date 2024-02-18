@@ -2,7 +2,13 @@ import React from "react";
 import { Snippet } from "@nextui-org/react";
 import { FaCopy } from "react-icons/fa6";
 
-const CustomSnippet = ({ children }: { children: React.ReactNode }) => {
+const CustomSnippet = ({
+  children,
+  text,
+}: {
+  children: React.ReactNode;
+  text: string;
+}) => {
   return (
     <Snippet
       className="snippet mt-3 relative z-[0]"
@@ -10,7 +16,7 @@ const CustomSnippet = ({ children }: { children: React.ReactNode }) => {
       variant="bordered"
       copyIcon={<FaCopy />}
     >
-      {children}
+      {text}
     </Snippet>
   );
 };
