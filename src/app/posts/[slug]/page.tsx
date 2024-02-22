@@ -3,6 +3,7 @@ import { Metadata } from "next";
 const { format, parseISO } = require("date-fns");
 import MDXContent from "@/components/mdx-content";
 import { notFound } from "next/navigation";
+const { compareDesc } = require("date-fns");
 import dynamic from "next/dynamic";
 const TableOfContents = dynamic(() => import("@/components/TableOfContents"), {
   ssr: false,
@@ -55,6 +56,10 @@ export const generateMetadata = ({
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const postsFormat = allPosts.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date))
+  );
+
   if (!post) notFound();
   // throw new Error(`Post not found for slug: ${params.slug}`);
 
@@ -66,7 +71,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         </div>
       </aside>
       <div className="w-11/12 md:max-w-3xl mx-auto lg:mx-0 xl:max-w-5xl">
-        <article className="w-10/12 mx-auto py-6 mt-0">
+        <article className="w-10/12 mx-auto py-6 mt-0 prose md:prose-lg lg:prose-xl">
           <div className="pb-6 border-b-1 border-neutral-600 dark:border-neutral-100 text-center">
             <h1 className="text-4xl text-neutral-800 dark:text-neutral-300 font-bold mt-2">
               {post.title}
@@ -85,7 +90,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           </div>
           <MDXContent code={post.body.code} />
         </article>
-        <PreviousArticle allPosts={allPosts} params={params} />
+        <PreviousArticle allPosts={postsFormat} params={params} />
       </div>
     </div>
   );

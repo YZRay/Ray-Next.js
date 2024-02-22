@@ -1,7 +1,7 @@
 ---
 title: Redux Basics
 date: 2024-02-18
-Image:
+Image: /assets/img/React.webp
 author: Ray
 excerpt: 紀錄一下學習 Redux 基礎用法的筆記
 tags:
@@ -24,36 +24,37 @@ useContext & useReducer 也能做到類似 Redux 一樣的功能，但是在專�
 
 先放上原本的 Redux 結構
 
-```javascript:store/index.js
+```javascript
+//store/index.js;
 import { createStore } from "redux";
 
 const initialState = { counter: 0, showCounter: true };
 
 const counterReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case "increment":
-        return {
-            ...state,
-            counter: state.counter + 1,
-        };
-        case "increase":
-        return {
-            ...state,
-            counter: state.counter + action.amount,
-        };
-        case "decrement":
-        return {
-            ...state,
-            counter: state.counter - 1,
-        };
-        case "toggle":
-        return {
-            ...state,
-            showCounter: !state.showCounter,
-        };
-        default:
-        return state;
-    }
+  switch (action.type) {
+    case "increment":
+      return {
+        ...state,
+        counter: state.counter + 1,
+      };
+    case "increase":
+      return {
+        ...state,
+        counter: state.counter + action.amount,
+      };
+    case "decrement":
+      return {
+        ...state,
+        counter: state.counter - 1,
+      };
+    case "toggle":
+      return {
+        ...state,
+        showCounter: !state.showCounter,
+      };
+    default:
+      return state;
+  }
 };
 
 const store = createStore(counterReducer);
@@ -65,7 +66,8 @@ export default store;
 
 <Snippet text="npm install @reduxjs/toolkit" />
 
-```javascript:store/index.js
+```javascript
+//store/index.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const counterSlice = createSlice({
@@ -94,7 +96,8 @@ const counterSlice = createSlice({
 
 接著下方的 reducers 就是原本的 type 跟邏輯，裡面已經不用再自己寫上判斷 action.type
 
-```javascript:store/index.js
+```javascript
+//store/index.js
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 .
@@ -109,12 +112,13 @@ export default store;
 
 ```
 
-接著我們要引入 configureStore 來幫助我們使用這個 reducer
-裏頭要傳遞的是一個物件，但當我們有很多個 reducer 時，我們也可以把 reducer 的值也改成一個物件
+接著要引入 configureStore 來使用這個 reducer
+裏頭要傳遞的是一個物件，但當有很多個 reducer 時，也可以把 reducer 的值也改成一個物件
 
 大概就像是這樣
 
-```javascript:store/index.js
+```javascript
+//store/index.js
 const store = configureStore({
   reducer:{
       count: counterSlice.reducer,
@@ -124,15 +128,17 @@ const store = configureStore({
 });
 ```
 
-接著我們要讓我們的組件去接收到是哪個 action，在這之前我們得必須把我們的 action 給 export 出去
+接著要讓內層的組件去接收到是哪個 action，在這之前得必須把 action 給 export 出去
 
-```javascript:store/index.js
+```javascript
+//store/index.js
 export const counterActions = counterSlice.actions;
 ```
 
-再來到我們的組件
+再來到組件中
 
-```javascript:counter.jsx
+```javascript
+//counter.jsx
 import { useSelector, useDispatch } from "react-redux";
 import { counterActions } from "../store/index";
 

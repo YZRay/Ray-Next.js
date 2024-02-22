@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-# nodeJS 後端 => express.js 框架
+## nodeJS 後端 => express.js 框架
 
 先透過指令安裝好環境
 
@@ -17,7 +17,8 @@ tags:
 
 接著在新增 app.js 檔案
 
-```javascript:index.js
+```javascript
+//index.js
 const express = require("express");
 
 const app = express();
@@ -30,7 +31,8 @@ app.listen(3000);
 接下來要引用靜態資源 像是 css、圖片等等，我們要告訴 express 怎麼引用他
 先在跟目錄建立好一個 pubilc 的資料夾
 
-```javascript:index.js
+```javascript
+//index.js
 const path = require("path");
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -40,7 +42,8 @@ app.use(express.static(path.join(__dirname, "public")));
 pug 跟 ejs 都是 express 裡面就有內建的了
 先建立一個 views 的資料夾再新增 ejs 的檔案，再透過 express 渲染出來
 
-```javascript:index.js
+```javascript
+//index.js
 const express = require("express");
 
 const router = express.Router();

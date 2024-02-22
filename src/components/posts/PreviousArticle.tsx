@@ -24,12 +24,14 @@ const PreviousArticle = ({
 
   //設定上下篇文章
   const prevPostIndex = allPosts[postIndex - 1];
+
   const prePost = prevPostIndex
     ? { title: prevPostIndex.title, url: prevPostIndex._raw.flattenedPath }
     : {
         title: allPosts[postLength - 1].title,
         url: allPosts[postLength - 1].url,
       };
+
   const nextPostIndex = allPosts[postIndex + 1];
   const nextPost = nextPostIndex
     ? { title: nextPostIndex.title, url: nextPostIndex._raw.flattenedPath }

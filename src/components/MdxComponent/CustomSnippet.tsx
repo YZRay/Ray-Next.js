@@ -11,7 +11,7 @@ const CustomSnippet = ({
 }) => {
   return (
     <Snippet
-      className="snippet mt-3 relative z-[0]"
+      className="snippet my-2 relative z-[0] w-full"
       size="md"
       variant="bordered"
       copyIcon={<FaCopy />}

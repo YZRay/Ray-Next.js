@@ -9,7 +9,7 @@ tags:
   - JavaScript
 ---
 
-# MVC
+## MVC
 
 MVC 指的是 Models Views Controllers
 
@@ -22,7 +22,8 @@ MVC 指的是 Models Views Controllers
 我們已經有了 views 的資料夾，裏頭建立了一些模板
 接著建立一個 controllers 的資料夾
 
-```javascript:controllers/index.js
+```javascript
+//controllers/index.js
 exports.getIndex = (req, res, next) => {
   res.render("index", {
     path: "/",
@@ -31,7 +32,8 @@ exports.getIndex = (req, res, next) => {
 };
 ```
 
-```javascript:routes/admin.js
+```javascript
+//routes/admin.js
 const express = require("express");
 
 const indexController = require("../controllers/index");
@@ -43,7 +45,8 @@ router.get("/", indexController.getIndex);
 module.exports = router;
 ```
 
-```javascript:app.js
+```javascript
+//app.js
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");

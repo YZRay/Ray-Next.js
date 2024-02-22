@@ -40,6 +40,7 @@ const config: Config = {
     nextui({
       addCommonColors: true,
     }),
+    require("@tailwindcss/typography"),
   ],
 };
 export default config;

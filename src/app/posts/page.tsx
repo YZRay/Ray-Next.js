@@ -1,6 +1,6 @@
 "use client";
 import { allPosts } from "contentlayer/generated";
-const { compareDesc, format, parseISO } = require("date-fns");
+const { compareDesc } = require("date-fns");
 import { Suspense, useState, Fragment, useEffect, useCallback } from "react";
 import PostCard from "@/components/posts/PostCard";
 import SkeletonCard from "@/components/posts/SkeletonCard";
@@ -41,7 +41,7 @@ export default function Posts() {
 
   return (
     <Fragment>
-      <div className="mx-auto w-4/5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 py-8 gap-4">
+      <div className="mx-auto w-11/12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 py-8 gap-4">
         <Suspense fallback={<SkeletonCard />}>
           {displayPosts.map((post, idx) => (
             <PostCard key={idx} {...post} />
