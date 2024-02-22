@@ -25,60 +25,7 @@ body {
   @apply m-0 text-medium p-0;
 }
 .rehype-code-title {
-  @apply mt-3 rounded-tl-lg rounded-tr-lg bg-slate-700 px-4 py-2 font-mono text-base text-neutral-200;
-}
-pre {
-  @apply p-4 mb-8 rounded-b-lg overflow-auto text-sm dark:text-neutral-200;
-}
-
-article p {
-  @apply text-base leading-relaxed mt-4 dark:text-neutral-200;
-}
-article h1 {
-  @apply text-3xl leading-tight mt-16 font-semibold dark:text-neutral-200;
-}
-article h2 {
-  @apply text-2xl leading-tight mt-16 font-semibold dark:text-neutral-200;
-}
-article h3 {
-  @apply text-xl leading-tight mt-14 font-semibold dark:text-neutral-200;
-}
-article h4 {
-  @apply text-lg leading-tight mt-8 font-semibold dark:text-neutral-200;
-}
-article h5 {
-  @apply text-base leading-tight mt-8 font-medium dark:text-neutral-200;
-}
-article h6 {
-  @apply text-sm leading-tight mt-8 font-normal dark:text-neutral-200;
-}
-article ul {
-  @apply list-disc pl-6 mt-6 dark:text-neutral-200;
-}
-article ol {
-  @apply list-decimal pl-6 mt-6 dark:text-neutral-200;
-}
-article li {
-  @apply text-base leading-tight mt-4 dark:text-neutral-200;
-}
-article li:last-child,
-article ol:last-child {
-  @apply mb-4;
-}
-article code {
-  @apply bg-gray-200 py-1 px-3 rounded font-mono text-sm border border-gray-300 dark:text-neutral-200;
-}
-article pre code {
-  @apply bg-transparent p-0 rounded-none text-base border-none dark:text-neutral-200;
-}
-article {
-  @apply text-base leading-tight mt-8 text-gray-800 dark:text-neutral-200;
-}
-*::selection {
-  @apply bg-gray-200;
-}
-article img {
-  @apply w-full mt-14 mb-14 shadow-md rounded-2xl border border-gray-300 dark:text-neutral-200;
+  @apply mt-3 -mb-[2em] rounded-tl-lg rounded-tr-lg bg-slate-700 px-4 py-2 font-mono text-base text-neutral-200;
 }
 
 @keyframes rainbow {
