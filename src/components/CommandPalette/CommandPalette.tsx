@@ -52,10 +52,10 @@ export default function CommandPalette({ children }: Props) {
     },
     {
       id: "posts",
-      name: "文章",
-      keywords: "posts article 貼文 文章 寫作 search words",
+      name: "筆記",
+      keywords: "posts article 貼文 筆記 文章 note 寫作 search words",
       icon: <FaPenSquare className="h-6 w-6" />,
-      section: "搜尋文章",
+      section: "搜尋筆記",
     },
     // - Theme toggle
     {

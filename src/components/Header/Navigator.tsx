@@ -20,7 +20,7 @@ const Transition = dynamic(() => import("../Transition"), {
 const links = [
   { path: "/", label: "首頁" },
   // { path: "/about", label: "關於" },
-  { path: "/posts", label: "文章" },
+  { path: "/posts", label: "筆記" },
   // { path: "/portfolio", label: "作品" },
 ];
 interface IProps {
