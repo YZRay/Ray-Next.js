@@ -1,5 +1,5 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
-
+import rehypePrism from "rehype-prism-plus";
 import rehypeAutolinkHeadings, {
   type Options as AutolinkOptions,
 } from "rehype-autolink-headings";
@@ -54,16 +54,9 @@ export default makeSource({
   documentTypes: [Post],
   mdx: {
     rehypePlugins: [
-      /**
-       * Adds ids to headings
-       */
       rehypeSlug,
       rehypeCodeTitles,
       [
-        /**
-         * Enhances code blocks with syntax highlighting, line numbers,
-         * titles, and allows highlighting specific lines and words
-         */
         // @ts-ignore
         rehypePrettyCode,
         {
