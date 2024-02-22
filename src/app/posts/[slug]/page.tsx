@@ -3,6 +3,7 @@ import { Metadata } from "next";
 const { format, parseISO } = require("date-fns");
 import MDXContent from "@/components/mdx-content";
 import { notFound } from "next/navigation";
+const { compareDesc } = require("date-fns");
 import dynamic from "next/dynamic";
 const TableOfContents = dynamic(() => import("@/components/TableOfContents"), {
   ssr: false,
@@ -55,6 +56,10 @@ export const generateMetadata = ({
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const postsFormat = allPosts.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date))
+  );
+
   if (!post) notFound();
   // throw new Error(`Post not found for slug: ${params.slug}`);
 
@@ -85,7 +90,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           </div>
           <MDXContent code={post.body.code} />
         </article>
-        <PreviousArticle allPosts={allPosts} params={params} />
+        <PreviousArticle allPosts={postsFormat} params={params} />
       </div>
     </div>
   );

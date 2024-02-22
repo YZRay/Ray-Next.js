@@ -1,6 +1,6 @@
 "use client";
 import { allPosts } from "contentlayer/generated";
-const { compareDesc, format, parseISO } = require("date-fns");
+const { compareDesc } = require("date-fns");
 import { Suspense, useState, Fragment, useEffect, useCallback } from "react";
 import PostCard from "@/components/posts/PostCard";
 import SkeletonCard from "@/components/posts/SkeletonCard";
