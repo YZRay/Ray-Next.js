@@ -24,6 +24,7 @@
     "clsx": "^2.0.0",
     "contentlayer": "^0.3.4",
     "date-fns": "^3.0.0-alpha.2",
+    "firebase": "^10.8.1",
     "framer-motion": "^10.16.12",
     "github-slugger": "^2.0.0",
     "hastscript": "^8.0.0",
