@@ -39,10 +39,9 @@ const ProjectCard: React.FC<Props> = ({
               loading="lazy"
             />
           </div>
-          <div className="flex flex-col col-span-6 lg:col-span-8 gap-4">
-            <div className="flex flex-col gap-1">
+          <div className="flex flex-col col-span-6 lg:col-span-8 gap-6">
+            <div className="flex flex-col gap-3">
               <h1 className="font-semibold text-foreground/90">{name}</h1>
-              <p className="text-small text-foreground/80">12 Tracks</p>
               <p>{description}</p>
               <div className="flex align-center gap-2 flex-wrap">
                 {skill.map((s, index) => (
@@ -61,6 +60,8 @@ const ProjectCard: React.FC<Props> = ({
                 showAnchorIcon
                 variant="solid"
                 className="ms-auto w-fit"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 專案連結
               </Button>
