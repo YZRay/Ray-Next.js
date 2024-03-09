@@ -21,7 +21,7 @@ const links = [
   { path: "/", label: "首頁" },
   // { path: "/about", label: "關於" },
   { path: "/posts", label: "筆記" },
-  // { path: "/portfolio", label: "作品" },
+  { path: "/project", label: "專案" },
 ];
 interface IProps {
   toggleShow: () => void;
