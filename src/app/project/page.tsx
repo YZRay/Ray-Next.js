@@ -15,7 +15,6 @@ const ProjectPage = () => {
     content = data.map((project: any) => (
       <ProjectCard
         key={project.id}
-        id={project.id}
         title={project.title}
         description={project.description}
         imageUrl={project.imageUrl}
@@ -37,7 +36,7 @@ const ProjectPage = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 w-10/12 md:w-3/4 lg:w-1/2 mx-auto mt-8 lg:mt-12">
+    <div className="flex flex-col gap-4 w-10/12 md:w-3/4 lg:w-3/5 mx-auto my-8 lg:my-12">
       {content}
     </div>
   );
