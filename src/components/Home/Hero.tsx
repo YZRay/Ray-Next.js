@@ -6,6 +6,7 @@ import { fadeIn } from "../fadeIn";
 import Image from "next/image";
 import { Link, Button, Divider } from "@nextui-org/react";
 import { FaGithub, FaLaptopCode } from "react-icons/fa6";
+import { ImProfile } from "react-icons/im";
 const Hero = () => {
   return (
     <section className="grid grid-cols-1 xl:grid-cols-2 min-h-full justify-items-center gap-4 md:gap-2 lx:gap-0">
@@ -88,9 +89,23 @@ const Hero = () => {
             target="_blank"
             size="lg"
             className="font-bold"
+            rel="noopener noreferrer"
           >
             <FaLaptopCode className="w-6 h-6" />
             作品集
+          </Button>
+          <Button
+            href="https://www.cakeresume.com/s--0C6nGGN-GtoSZXn3EOt1nw--/ray-yao"
+            as={Link}
+            variant="shadow"
+            target="_blank"
+            size="lg"
+            className="font-bold"
+            about="resume"
+            rel="noopener noreferrer"
+          >
+            <ImProfile className="w-6 h-6" />
+            履歷
           </Button>
         </motion.div>
       </div>
