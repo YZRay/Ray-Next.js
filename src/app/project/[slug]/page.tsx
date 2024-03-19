@@ -1,16 +1,26 @@
 import { getData } from "@/components/api/firebase";
 export async function generateStaticParams() {
-  const get = await getData()
+  const data = await getData()
     .then((res) => res)
     .catch((err) => console.error(err));
-  return get.map((post: { slug: string }) => ({
+  return data.map((post: { slug: string }) => ({
     slug: post.slug,
   }));
 }
-const ProjectPage = ({ params }: { params: { slug: string } }) => {
-  const slug = params.slug;
+const ProjectPage = async ({ params }: { params: { slug: string } }) => {
+  const data = await getData()
+    .then((res) => res)
+    .catch((err) => console.error(err));
 
-  return <div>{slug}</div>;
+  const project = data.find((item: { slug: string }) => {
+    return item.slug === params.slug;
+  });
+
+  return (
+    <div>
+      <h2>{project.name}</h2>
+    </div>
+  );
 };
 
 export default ProjectPage;
