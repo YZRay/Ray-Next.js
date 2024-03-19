@@ -3,6 +3,7 @@ import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import { HiHome } from "react-icons/hi2";
 import { HiPuzzle, HiLightBulb } from "react-icons/hi";
 import { FaPenSquare } from "react-icons/fa";
+import { AiFillProject } from "react-icons/ai";
 import {
   ActionId,
   ActionImpl,
@@ -49,6 +50,14 @@ export default function CommandPalette({ children }: Props) {
         name: "頁面",
         priority: Priority.HIGH,
       },
+    },
+    {
+      id: "projects",
+      name: "專案",
+      perform: () => router.push("/project"),
+      keywords: "side sideProjects project work",
+      icon: <AiFillProject className="h-6 w-6" />,
+      section: "頁面",
     },
     {
       id: "posts",
