@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardBody, Image, Link, Button } from "@nextui-org/react";
 import GetSkillIcon from "./GetSkillIcon";
+import { useRouter } from "next/navigation";
 
 interface Props {
   title: string;
@@ -9,6 +10,7 @@ interface Props {
   name: string;
   skill: Array<string>;
   url: string;
+  slug: string;
 }
 const ProjectCard: React.FC<Props> = ({
   title,
@@ -17,7 +19,10 @@ const ProjectCard: React.FC<Props> = ({
   name,
   skill,
   url,
+  slug,
 }) => {
+  const router = useRouter();
+
   return (
     <Card
       isBlurred
@@ -51,20 +56,30 @@ const ProjectCard: React.FC<Props> = ({
                 ))}
               </div>
             </div>
-            {url && (
+            <div className="ms-auto flex items-center gap-3">
+              {url && (
+                <Button
+                  href={url}
+                  as={Link}
+                  color="default"
+                  showAnchorIcon
+                  variant="solid"
+                  className="w-fit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  專案連結
+                </Button>
+              )}
               <Button
-                href={url}
-                as={Link}
+                onClick={() => router.push(`project/${slug}`)}
                 color="default"
-                showAnchorIcon
                 variant="solid"
-                className="ms-auto w-fit"
-                target="_blank"
-                rel="noopener noreferrer"
+                className="w-fit"
               >
-                專案連結
+                詳細內容
               </Button>
-            )}
+            </div>
           </div>
         </div>
       </CardBody>

@@ -21,6 +21,7 @@ const ProjectPage = () => {
         name={project.name}
         skill={project.skill}
         url={project.url}
+        slug={project.slug}
       />
     ));
   }
