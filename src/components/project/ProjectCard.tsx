@@ -4,7 +4,6 @@ import GetSkillIcon from "./GetSkillIcon";
 import { useRouter } from "next/navigation";
 
 interface Props {
-  title: string;
   description: string;
   imageUrl: string;
   name: string;
@@ -13,7 +12,6 @@ interface Props {
   slug: string;
 }
 const ProjectCard: React.FC<Props> = ({
-  title,
   description,
   imageUrl,
   name,
