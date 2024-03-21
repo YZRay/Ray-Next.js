@@ -2,11 +2,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Button, Divider } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import dynamic from "next/dynamic";
 import { FaGithub } from "react-icons/fa6";
 const CommandPaletteToggle = dynamic(
-  () => import("@/components/commandPalette/CommandPaletteToggle"),
+  () => import("@/components/CommandPalette/CommandPaletteToggle"),
   {
     ssr: false,
   }

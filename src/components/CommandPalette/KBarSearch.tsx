@@ -1,7 +1,7 @@
 "use client";
 import { useKBar, VisualState } from "kbar";
 import React, { useState } from "react";
-import { useCommandPalettePostActions } from "@/components/commandPalette/useCommandPalettePostActions";
+import { useCommandPalettePostActions } from "@/components/CommandPalette/useCommandPalettePostActions";
 export const KBAR_LISTBOX = "kbar-listbox";
 export const getListboxItemId = (id: number) => `kbar-listbox-item-${id}`;
 
