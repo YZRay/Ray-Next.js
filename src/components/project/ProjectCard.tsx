@@ -1,24 +1,26 @@
-"use client";
 import React from "react";
 import { Card, CardBody, Image, Link, Button } from "@nextui-org/react";
 import GetSkillIcon from "./GetSkillIcon";
+import { useRouter } from "next/navigation";
 
 interface Props {
-  title: string;
   description: string;
   imageUrl: string;
   name: string;
   skill: Array<string>;
   url: string;
+  slug: string;
 }
 const ProjectCard: React.FC<Props> = ({
-  title,
   description,
   imageUrl,
   name,
   skill,
   url,
+  slug,
 }) => {
+  const router = useRouter();
+
   return (
     <Card
       isBlurred
@@ -39,10 +41,10 @@ const ProjectCard: React.FC<Props> = ({
               loading="lazy"
             />
           </div>
-          <div className="flex flex-col col-span-6 lg:col-span-8 gap-6">
+          <div className="flex flex-col col-span-6 lg:col-span-8 gap-6 px-0 md:px-5">
             <div className="flex flex-col gap-3">
               <h1 className="font-semibold text-foreground/90">{name}</h1>
-              <p>{description}</p>
+              <p className="line-clamp-2">{description}</p>
               <div className="flex align-center gap-2 flex-wrap">
                 {skill.map((s, index) => (
                   <div key={index} className="flex gap-1 items-center">
@@ -52,20 +54,30 @@ const ProjectCard: React.FC<Props> = ({
                 ))}
               </div>
             </div>
-            {url && (
+            <div className="ms-auto flex items-center gap-3">
+              {url && (
+                <Button
+                  href={url}
+                  as={Link}
+                  color="default"
+                  showAnchorIcon
+                  variant="solid"
+                  className="w-fit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  專案連結
+                </Button>
+              )}
               <Button
-                href={url}
-                as={Link}
+                onClick={() => router.push(`project/${slug}`)}
                 color="default"
-                showAnchorIcon
                 variant="solid"
-                className="ms-auto w-fit"
-                target="_blank"
-                rel="noopener noreferrer"
+                className="w-fit"
               >
-                專案連結
+                詳細內容
               </Button>
-            )}
+            </div>
           </div>
         </div>
       </CardBody>

@@ -3,6 +3,17 @@ import { getData } from "@/components/api/firebase";
 import { useQuery } from "@tanstack/react-query";
 import ProjectCard from "@/components/project/ProjectCard";
 import ProjectSkeletonCard from "@/components/project/ProjectSkeletonCard";
+interface Project {
+  id: number;
+  carousel: string[];
+  description: string;
+  imageUrl: string;
+  name: string;
+  skill: string[];
+  slug: string;
+  url: string;
+  isShow: boolean;
+}
 
 const ProjectPage = () => {
   const { data, isLoading, isError } = useQuery({
@@ -12,15 +23,17 @@ const ProjectPage = () => {
 
   let content;
   if (data) {
-    content = data.map((project: any) => (
+    const visibleProjects = data.filter((project: Project) => project.isShow);
+
+    content = visibleProjects.map((project: Project) => (
       <ProjectCard
         key={project.id}
-        title={project.title}
         description={project.description}
         imageUrl={project.imageUrl}
         name={project.name}
         skill={project.skill}
         url={project.url}
+        slug={project.slug}
       />
     ));
   }

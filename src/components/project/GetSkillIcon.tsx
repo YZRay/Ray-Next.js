@@ -8,9 +8,9 @@ interface SkillIcons {
 }
 
 const skillIcons: SkillIcons = {
-  tailwindcss: <SiTailwindcss />,
+  tailwindcss: <SiTailwindcss className="w-6 h-6" />,
   react: <FaReact />,
-  nextjs: <TbBrandNextjs />,
+  nextjs: <TbBrandNextjs className="w-6 h-6" />,
   javascript: <SiJavascript />,
   typescript: <SiTypescript />,
 };
