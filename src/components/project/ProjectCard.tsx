@@ -43,10 +43,10 @@ const ProjectCard: React.FC<Props> = ({
               loading="lazy"
             />
           </div>
-          <div className="flex flex-col col-span-6 lg:col-span-8 gap-6">
+          <div className="flex flex-col col-span-6 lg:col-span-8 gap-6 px-0 md:px-5">
             <div className="flex flex-col gap-3">
               <h1 className="font-semibold text-foreground/90">{name}</h1>
-              <p>{description}</p>
+              <p className="line-clamp-2">{description}</p>
               <div className="flex align-center gap-2 flex-wrap">
                 {skill.map((s, index) => (
                   <div key={index} className="flex gap-1 items-center">
