@@ -8,7 +8,7 @@ import {
   CustomH6,
 } from "@/components/posts/CustomHeading";
 import CustomLink from "@/components/posts/CustomLink";
-import CustomSnippet from "@/components/MdxComponent/CustomSnippet";
+import CustomSnippet from "@/components/mdxComponent/CustomSnippet";
 
 // Custom components/renderers to pass to MDX.
 const mdxComponents = {

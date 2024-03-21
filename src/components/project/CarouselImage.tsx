@@ -1,3 +1,4 @@
+"use client";
 import {
   Carousel,
   CarouselContent,
@@ -8,6 +9,10 @@ import {
 import { Image } from "@nextui-org/react";
 
 const CarouselImage = ({ img }: { img: string[] }) => {
+  const preventRightClick = (e: any) => {
+    e.preventDefault();
+  };
+
   return (
     <Carousel
       className="w-full"
@@ -25,6 +30,7 @@ const CarouselImage = ({ img }: { img: string[] }) => {
               src={item}
               alt={item}
               className="max-w-full"
+              onContextMenu={preventRightClick}
             />
           </CarouselItem>
         ))}

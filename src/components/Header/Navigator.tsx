@@ -6,7 +6,7 @@ import { Button, Divider } from "@nextui-org/react";
 import dynamic from "next/dynamic";
 import { FaGithub } from "react-icons/fa6";
 const CommandPaletteToggle = dynamic(
-  () => import("@/components/CommandPalette/CommandPaletteToggle"),
+  () => import("@/components/commandPalette/CommandPaletteToggle"),
   {
     ssr: false,
   }
