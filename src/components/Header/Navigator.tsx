@@ -42,7 +42,7 @@ const Navigator = ({ toggleShow }: IProps) => {
       setPrevPath(pathname);
       const timeout = setTimeout(() => {
         setIsRouting(false);
-      }, 1200);
+      }, 1000);
       return () => clearTimeout(timeout);
     }
   }, [isRouting]);

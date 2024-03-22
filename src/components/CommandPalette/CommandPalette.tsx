@@ -40,17 +40,17 @@ export default function CommandPalette({ children }: Props) {
         priority: Priority.HIGH,
       },
     },
-    {
-      id: "about",
-      name: "關於",
-      keywords: "about 關於",
-      perform: () => router.push("/about"),
-      icon: <HiPuzzle className="h-6 w-6" />,
-      section: {
-        name: "頁面",
-        priority: Priority.HIGH,
-      },
-    },
+    // {
+    //   id: "about",
+    //   name: "關於",
+    //   keywords: "about 關於",
+    //   perform: () => router.push("/about"),
+    //   icon: <HiPuzzle className="h-6 w-6" />,
+    //   section: {
+    //     name: "頁面",
+    //     priority: Priority.HIGH,
+    //   },
+    // },
     {
       id: "projects",
       name: "專案",
