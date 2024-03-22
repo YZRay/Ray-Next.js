@@ -83,18 +83,6 @@ const Hero = () => {
             <FaGithub className="w-6 h-6" />
           </Button>
           <Button
-            href="https://www.cakeresume.com/me/ray-yao/portfolios"
-            as={Link}
-            variant="shadow"
-            target="_blank"
-            size="lg"
-            className="font-bold"
-            rel="noopener noreferrer"
-          >
-            <FaLaptopCode className="w-6 h-6" />
-            作品集
-          </Button>
-          <Button
             href="https://www.cakeresume.com/s--0C6nGGN-GtoSZXn3EOt1nw--/ray-yao"
             as={Link}
             variant="shadow"
@@ -104,7 +92,7 @@ const Hero = () => {
             about="resume"
             rel="noopener noreferrer"
           >
-            <ImProfile className="w-6 h-6" />
+            <ImProfile className="w-6 h-6 flex-shrink-0 hidden sm:inline-block" />
             履歷
           </Button>
         </motion.div>
