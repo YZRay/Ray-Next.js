@@ -1,7 +1,19 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function NotFound() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const redirectTimer = setTimeout(() => {
+      router.push("/");
+    }, 3000);
+
+    return () => clearTimeout(redirectTimer);
+  }, []);
+
   return (
     <section className="flex items-center h-full p-16">
       <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
