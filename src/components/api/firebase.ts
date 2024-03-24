@@ -11,3 +11,14 @@ export const getData = async () => {
     throw error;
   }
 };
+
+export const getTravelData = async () => {
+  try {
+    const headerRef = ref(database, "travel");
+    const snapshot = await get(headerRef);
+    return snapshot.val();
+  } catch (error) {
+    console.error("Error getting data:", error);
+    throw error;
+  }
+};
