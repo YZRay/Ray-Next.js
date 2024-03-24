@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@nextui-org/react";
 import dynamic from "next/dynamic";
@@ -14,9 +13,7 @@ const CommandPaletteToggle = dynamic(
 const ThemeSwitch = dynamic(() => import("../ThemeSwitch"), {
   ssr: false,
 });
-const Transition = dynamic(() => import("../Transition"), {
-  ssr: false,
-});
+
 const links = [
   { path: "/", label: "首頁" },
   // { path: "/about", label: "關於" },
@@ -27,29 +24,10 @@ interface IProps {
   toggleShow: () => void;
 }
 const Navigator = ({ toggleShow }: IProps) => {
-  const [isRouting, setIsRouting] = useState(false);
   const pathname = usePathname();
-  const [prevPath, setPrevPath] = useState("/");
-
-  useEffect(() => {
-    if (prevPath !== pathname) {
-      setIsRouting(true);
-    }
-  }, [pathname, prevPath]);
-
-  useEffect(() => {
-    if (isRouting) {
-      setPrevPath(pathname);
-      const timeout = setTimeout(() => {
-        setIsRouting(false);
-      }, 1000);
-      return () => clearTimeout(timeout);
-    }
-  }, [isRouting]);
 
   return (
     <div className="w-full flex flex-col xl:flex-row gap-6 items-center justify-around">
-      {isRouting && <Transition />}
       <nav className="flex gap-4 flex-col xl:flex-row items-center">
         {links.map((link, index) => (
           <Link

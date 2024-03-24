@@ -75,14 +75,15 @@ const Hero = () => {
           <Button
             href="https://github.com/YZRay"
             as={Link}
-            isIconOnly
             variant="shadow"
             target="_blank"
             size="lg"
+            rel="noopener noreferrer"
           >
             <FaGithub className="w-6 h-6" />
+            Github
           </Button>
-          <Button
+          {/* <Button
             href="https://www.cakeresume.com/s--0C6nGGN-GtoSZXn3EOt1nw--/ray-yao"
             as={Link}
             variant="shadow"
@@ -94,7 +95,7 @@ const Hero = () => {
           >
             <ImProfile className="w-6 h-6 flex-shrink-0 hidden sm:inline-block" />
             履歷
-          </Button>
+          </Button> */}
         </motion.div>
       </div>
       <motion.div
