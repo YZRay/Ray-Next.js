@@ -3,11 +3,25 @@ import { Card, CardHeader, Image, Button, CardFooter } from "@nextui-org/react";
 import { Post } from "contentlayer/generated";
 const { compareDesc, format, parseISO } = require("date-fns");
 import { useRouter } from "next/navigation";
+import { motion, stagger } from "framer-motion";
 
 const PostCard = (post: Post) => {
   const router = useRouter();
   return (
-    <div className="relative z-0">
+    <motion.div
+      className="relative z-0"
+      variants={{
+        hidden: { opacity: 0, scale: 0.7 },
+        visible: {
+          opacity: 1,
+          scale: 1,
+        },
+      }}
+      initial="hidden"
+      animate="visible"
+      exit={{ opacity: 1, scale: 1 }}
+      transition={{ type: "spring", stiffness: 70 }}
+    >
       <Card
         isFooterBlurred
         className="w-full h-full col-span-12 sm:col-span-7 dark:border-2 dark:border-darker-200"
@@ -40,17 +54,22 @@ const PostCard = (post: Post) => {
               </p>
             </div>
           </div>
-          <Button
-            radius="full"
-            size="md"
-            onClick={() => router.push(post.url)}
-            aria-label="Read"
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            Read more
-          </Button>
+            <Button
+              radius="full"
+              size="md"
+              onClick={() => router.push(post.url)}
+              aria-label="Read"
+            >
+              Read more
+            </Button>
+          </motion.div>
         </CardFooter>
       </Card>
-    </div>
+    </motion.div>
   );
 };
 

@@ -70,7 +70,7 @@ const Hero = () => {
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="flex gap-4 items-center"
+          className="flex gap-4 items-center w-fit"
         >
           <Button
             href="https://github.com/YZRay"

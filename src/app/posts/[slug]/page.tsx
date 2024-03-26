@@ -30,27 +30,27 @@ export const generateMetadata = ({
 
   const description = excerpt;
 
-  // const ogImage = {
-  //   url: `${process.env.HOST}/blog/${slug}/og.png`,
-  // };
+  const ogImage = {
+    url: `${process.env.HOST}${post.Image}`,
+  };
 
   return {
     title,
     description,
-    // openGraph: {
-    //   type: 'article',
-    //   url: `${process.env.HOST}/blog/${slug}`,
-    //   title,
-    //   description,
-    //   publishedTime: date,
-    //   images: [ogImage],
-    // },
-    // twitter: {
-    //   title,
-    //   description,
-    //   images: ogImage,
-    //   card: 'summary_large_image',
-    // },
+    openGraph: {
+      type: "article",
+      url: `${process.env.HOST}/posts/${params.slug}`,
+      title,
+      description,
+      publishedTime: date,
+      images: [ogImage],
+    },
+    twitter: {
+      title,
+      description,
+      images: ogImage,
+      card: "summary_large_image",
+    },
   };
 };
 
