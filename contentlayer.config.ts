@@ -24,7 +24,7 @@ export const Post = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
-    author: { type: "string", required: true },
+    author: { type: "string", required: true, default: "Ray" },
     tags: {
       type: "list",
       of: { type: "string" },
