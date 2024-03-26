@@ -6,7 +6,7 @@ import PostCard from "@/components/posts/PostCard";
 import SkeletonCard from "@/components/posts/SkeletonCard";
 import { Pagination } from "@nextui-org/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Posts() {
   const router = useRouter();
@@ -42,13 +42,13 @@ export default function Posts() {
 
   return (
     <Fragment>
-      <motion.div className="mx-auto w-10/12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 py-8 gap-4">
+      <div className="mx-auto w-10/12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 py-8 gap-4">
         <Suspense fallback={<SkeletonCard />}>
           {displayPosts.map((post, idx) => (
             <PostCard key={post._id} {...post} />
           ))}
         </Suspense>
-      </motion.div>
+      </div>
       <div className="mx-auto w-4/5">
         <Pagination
           showControls

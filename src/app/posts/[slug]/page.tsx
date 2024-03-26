@@ -31,7 +31,7 @@ export const generateMetadata = ({
   const description = excerpt;
 
   const ogImage = {
-    url: `${process.env.HOST}${post.Image}`,
+    url: `${post.Image}`,
   };
 
   return {
@@ -39,7 +39,7 @@ export const generateMetadata = ({
     description,
     openGraph: {
       type: "article",
-      url: `${process.env.HOST}/posts/${params.slug}`,
+      url: `/posts/${params.slug}`,
       title,
       description,
       publishedTime: date,
