@@ -16,11 +16,13 @@ export default function ThemeSwitch() {
 
   const handleThemeChange = async () => {
     if (!ref.current) return;
-    if (document.startViewTransition()) {
+    // @ts-ignore
+    if (document.startViewTransition) {
+      // @ts-ignore
       await document.startViewTransition(() => {
         setTheme(resolvedTheme === "light" ? "dark" : "light");
       }).ready;
-
+      // @ts-ignore
       const { top, left } = ref.current.getBoundingClientRect();
       const right = window.innerWidth - left;
       const bottom = window.innerHeight - top;
@@ -29,17 +31,25 @@ export default function ThemeSwitch() {
         Math.max(top, bottom)
       );
 
+      const clipPathAnimate = [
+        `circle(0px at ${left}px ${top}px)`,
+        `circle(${maxRadius}px at ${left}px ${top}px)`,
+      ];
+
       document.documentElement.animate(
         {
-          clipPath: [
-            `circle(0px at ${left}px ${top}px)`,
-            `circle(${maxRadius}px at ${left}px ${top}px)`,
-          ],
+          clipPath:
+            resolvedTheme === "light"
+              ? clipPathAnimate
+              : clipPathAnimate.reverse(),
         },
         {
           duration: 500,
           easing: "ease-in",
-          pseudoElement: "::view-transition-new(root)",
+          pseudoElement:
+            resolvedTheme === "light"
+              ? "::view-transition-new(root)"
+              : "::view-transition-old(root)",
         }
       );
     } else {
