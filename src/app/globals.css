@@ -6,6 +6,12 @@
   color: #3e3d3d;
   background-color: transparent;
 }
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
