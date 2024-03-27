@@ -16,31 +16,36 @@ export default function ThemeSwitch() {
 
   const handleThemeChange = async () => {
     if (!ref.current) return;
+    if (document.startViewTransition()) {
+      await document.startViewTransition(() => {
+        setTheme(resolvedTheme === "light" ? "dark" : "light");
+      }).ready;
 
-    await document.startViewTransition(() => {
+      const { top, left } = ref.current.getBoundingClientRect();
+      const right = window.innerWidth - left;
+      const bottom = window.innerHeight - top;
+      const maxRadius = Math.hypot(
+        Math.max(left, right),
+        Math.max(top, bottom)
+      );
+
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${left}px ${top}px)`,
+            `circle(${maxRadius}px at ${left}px ${top}px)`,
+          ],
+        },
+        {
+          duration: 500,
+          easing: "ease-in",
+          pseudoElement: "::view-transition-new(root)",
+        }
+      );
+    } else {
       setTheme(resolvedTheme === "light" ? "dark" : "light");
-    }).ready;
-
-    const { top, left } = ref.current.getBoundingClientRect();
-    const right = window.innerWidth - left;
-    const bottom = window.innerHeight - top;
-    const maxRadius = Math.hypot(Math.max(left, right), Math.max(top, bottom));
-
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${left}px ${top}px)`,
-          `circle(${maxRadius}px at ${left}px ${top}px)`,
-        ],
-      },
-      {
-        duration: 500,
-        easing: "ease-in",
-        pseudoElement: "::view-transition-new(root)",
-      }
-    );
+    }
   };
-
   if (!mounted) return null;
   return (
     <Button
