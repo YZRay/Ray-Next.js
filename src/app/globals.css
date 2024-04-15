@@ -33,8 +33,11 @@
 }
 body {
   min-height: 100dvh;
+  height: 100%;
 }
-
+.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  text-decoration: none;
+}
 @layer components {
   * {
     @apply text-darker-400 dark:text-lighter-200;
