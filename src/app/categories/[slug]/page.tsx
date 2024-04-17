@@ -1,7 +1,7 @@
-import React from "react";
+import { allPosts } from "contentlayer/generated";
 
-const page = () => {
+const Category = () => {
   return <div>page</div>;
 };
 
-export default page;
+export default Category;

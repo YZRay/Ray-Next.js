@@ -1,12 +1,10 @@
 "use client";
 import { allPosts } from "contentlayer/generated";
 const { compareDesc } = require("date-fns");
-import { Suspense, useState, Fragment, useEffect, useCallback } from "react";
+import { useState, Fragment, useEffect, useCallback } from "react";
 import PostCard from "@/components/posts/PostCard";
-import SkeletonCard from "@/components/posts/SkeletonCard";
 import { Pagination } from "@nextui-org/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function Posts() {
   const router = useRouter();
