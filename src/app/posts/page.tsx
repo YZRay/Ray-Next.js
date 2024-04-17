@@ -43,11 +43,9 @@ export default function Posts() {
   return (
     <Fragment>
       <div className="mx-auto w-10/12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 py-8 gap-4">
-        <Suspense fallback={<SkeletonCard />}>
-          {displayPosts.map((post, idx) => (
-            <PostCard key={post._id} {...post} />
-          ))}
-        </Suspense>
+        {displayPosts.map((post, idx) => (
+          <PostCard key={post._id} {...post} />
+        ))}
       </div>
       <div className="mx-auto w-4/5">
         <Pagination

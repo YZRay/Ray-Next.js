@@ -18,18 +18,6 @@ const MobileNav = ({ show, toggleShow }: IProps) => {
     />
   );
 
-  useEffect(() => {
-    // 在 modal 打開時禁止背景滾動
-    if (show) {
-      document.body.style.overflow = "hidden";
-    } else {
-      // 在 modal 關閉時還原背景滾動
-      document.body.style.overflow = "auto";
-    }
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [show]);
   return (
     <Fragment>
       <div
