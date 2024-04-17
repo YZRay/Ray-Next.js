@@ -42,7 +42,7 @@ export default function Posts() {
 
   return (
     <Fragment>
-      <div className="mx-auto w-10/12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:grid-rows-3 py-8 gap-4">
+      <div className="mx-auto w-11/12 lg:w-[70%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:grid-rows-3 py-8 gap-4">
         {displayPosts.map((post, idx) => (
           <div
             key={post._id}
@@ -52,7 +52,7 @@ export default function Posts() {
           </div>
         ))}
       </div>
-      <div className="mx-auto w-4/5">
+      <div className="mx-auto w-4/5 mt-2 mb-6">
         <Pagination
           showControls
           classNames={{
