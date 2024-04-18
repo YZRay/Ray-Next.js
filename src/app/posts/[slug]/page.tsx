@@ -73,7 +73,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
       <div className="w-11/12 md:max-w-3xl mx-auto lg:mx-0 xl:max-w-5xl">
         <article className="w-10/12 mx-auto py-6 mt-0 prose md:prose-lg lg:prose-xl">
           <div className="pb-6 border-b-1 border-neutral-600 dark:border-neutral-100 text-center">
-            <h1 className="text-4xl text-neutral-800 dark:text-neutral-300 font-bold mt-2">
+            <h1 className="text-xl lg:text-3xl text-neutral-800 dark:text-neutral-300 font-bold mt-2">
               {post.title}
             </h1>
             <div className="flex flex-col mt-4 gap-2">
