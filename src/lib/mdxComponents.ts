@@ -9,6 +9,7 @@ import {
 } from "@/components/posts/CustomHeading";
 import CustomLink from "@/components/posts/CustomLink";
 import CustomSnippet from "@/components/MdxComponent/CustomSnippet";
+import CodeEmbed from "@/components/MdxComponent/CodeEmbed";
 
 // Custom components/renderers to pass to MDX.
 const mdxComponents = {
@@ -21,6 +22,7 @@ const mdxComponents = {
   h6: CustomH6,
   a: CustomLink,
   Snippet: CustomSnippet,
+  CodeEmbed: CodeEmbed,
 };
 
 export default mdxComponents;

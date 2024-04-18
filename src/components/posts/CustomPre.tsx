@@ -54,13 +54,15 @@ function CustomPre({ children, className, ...props }: Props) {
             )}
           >
             <FaCopy
-              className={`h-4 w-4 fill-lighter-100 ${clsx({
+              className={`h-4 w-4 fill-lighter-100 
+              ${clsx({
                 block: !copied,
                 hidden: copied,
               })}`}
             />
             <FaCheck
-              className={`h-4 w-4 fill-lighter-100 ${clsx({
+              className={`h-4 w-4 fill-lighter-100 
+              ${clsx({
                 "block fill-green-400": copied,
                 hidden: !copied,
               })}`}

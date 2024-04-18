@@ -93,7 +93,7 @@ const TableOfContents = ({ source }: Props) => {
                  : "font-normal text-gray-500 border-transparent hover:text-gray-800 hover:border-neutral-600 dark:hover:border-neutral-200 dark:text-neutral-400 dark:hover:text-neutral-200"
              }
               ${
-                heading.level === 3 && "pl-4"
+                heading.level === 3 && "pl-8"
               } text-left text-base transition-all duration-300 text-neutral-700 px-6 py-1 border-l-2`}
             onClick={(e) => {
               e.preventDefault();
