@@ -1,9 +1,9 @@
 "use client";
 import { useKBar, VisualState } from "kbar";
 import React, { useState } from "react";
-import { useCommandPalettePostActions } from "@/components/CommandPalette/useCommandPalettePostActions";
 export const KBAR_LISTBOX = "kbar-listbox";
 export const getListboxItemId = (id: number) => `kbar-listbox-item-${id}`;
+import { useCommandPalettePostActions } from "@/components/CommandPalette/useCommandPalettePostActions";
 
 export function KBarSearch(
   props: React.InputHTMLAttributes<HTMLInputElement> & {

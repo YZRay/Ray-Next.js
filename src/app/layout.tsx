@@ -5,12 +5,11 @@ import "./globals.css";
 import dynamic from "next/dynamic";
 import { QueryProviders } from "@/components/Providers/QueryProvider";
 import { ThemeProviders } from "@/components/Providers/ThemeProvider";
+import Header from "@/components/Header/Header";
 const CommandPalette = dynamic(() => import("@/components/CommandPalette"), {
   ssr: false,
 });
-const Header = dynamic(() => import("@/components/Header/Header"), {
-  ssr: false,
-});
+
 const notoSans = Noto_Sans_TC({
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],

@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import { Button } from "@nextui-org/react";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import { useTheme } from "next-themes";
-import { flushSync } from "react-dom";
 
 export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);

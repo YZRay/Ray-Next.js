@@ -2,17 +2,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@nextui-org/react";
-import dynamic from "next/dynamic";
 import { FaGithub } from "react-icons/fa6";
-const CommandPaletteToggle = dynamic(
-  () => import("@/components/CommandPalette/CommandPaletteToggle"),
-  {
-    ssr: false,
-  }
-);
-const ThemeSwitch = dynamic(() => import("../ThemeSwitch"), {
-  ssr: false,
-});
+import CommandPaletteToggle from "@/components/CommandPalette/CommandPaletteToggle";
+import ThemeSwitch from "../ThemeSwitch";
 
 const links = [
   { path: "/", label: "首頁" },

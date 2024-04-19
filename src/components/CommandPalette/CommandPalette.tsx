@@ -1,7 +1,8 @@
 "use client";
+import dynamic from "next/dynamic";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import { HiHome } from "react-icons/hi2";
-import { HiPuzzle, HiLightBulb } from "react-icons/hi";
+import { HiLightBulb } from "react-icons/hi";
 import { FaPenSquare } from "react-icons/fa";
 import { AiFillProject } from "react-icons/ai";
 import {
@@ -18,7 +19,9 @@ import {
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import React, { forwardRef, useMemo } from "react";
-import { KBarSearch } from "./KBarSearch";
+const KBarSearch = dynamic(() =>
+  import("./KBarSearch").then((mod) => mod.KBarSearch)
+);
 
 type Props = {
   children: React.ReactNode;

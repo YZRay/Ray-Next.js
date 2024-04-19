@@ -6,7 +6,6 @@ import { allPosts } from "contentlayer/generated";
 export const useCommandPalettePostActions = () => {
   const router = useRouter();
 
-  // 注册 KBar 的 actions
   useRegisterActions(
     allPosts.map((post) => ({
       id: post.title,

@@ -34,13 +34,15 @@
 body {
   height: 100%;
 }
-.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  text-decoration: none;
-}
+
 @layer components {
   * {
     @apply text-darker-400 dark:text-lighter-200;
   }
+}
+
+.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  text-decoration: none;
 }
 .snippet pre {
   @apply m-0 text-medium p-0;

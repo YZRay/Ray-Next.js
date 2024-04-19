@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import dynamic from "next/dynamic";
 import { RxCross1 } from "react-icons/rx";
 
@@ -21,8 +21,8 @@ const MobileNav = ({ show, toggleShow }: IProps) => {
   return (
     <Fragment>
       <div
-        className={`shadow-md w-1/2 sm:w-1/3 w h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-lighter-300 dark:bg-darker-400 fixed top-0 transition-all ease-linear duration-700 z-50 ${
-          show ? "right-0" : "-right-full"
+        className={`shadow-md w-1/2 sm:w-1/3 w h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-lighter-300 dark:bg-darker-400 fixed top-0 transition-all ease-linear duration-700 z-50 right-0  ${
+          show ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <button
