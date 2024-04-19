@@ -23,7 +23,7 @@ const Navigator = ({ show, toggleShow }: IProps) => {
 
   const ModalOverlay = () => (
     <div
-      className={`flex xl:hidden fixed top-0 right-0 bottom-0 h-screen left-0 bg-zinc-900/60 z-30 transition-all duration-500`}
+      className={`flex xl:hidden fixed top-0 right-0 bottom-0 h-screen left-0 bg-zinc-900/60 z-30 transition-all duration-300`}
       onClick={() => toggleShow()}
     />
   );
@@ -31,7 +31,7 @@ const Navigator = ({ show, toggleShow }: IProps) => {
   return (
     <Fragment>
       <div
-        className={`xl:w-full flex flex-col xl:flex-row xl:relative xl:gap-6 xl:justify-around xl:h-auto items-center w-1/2 sm:w-1/3 h-screen gap-2 p-4  bg-lighter-300 dark:bg-darker-400 fixed top-0 transition-all ease-linear duration-700 z-50 right-0 ${
+        className={`xl:w-full flex flex-col xl:flex-row xl:relative xl:gap-6 xl:justify-around xl:h-auto items-center w-1/2 sm:w-1/3 h-screen gap-2 p-4  bg-lighter-300 dark:bg-darker-400 fixed top-0 transition-all ease-linear duration-250 z-50 right-0 ${
           show ? "translate-x-0" : "translate-x-full xl:translate-x-0"
         }`}
       >
