@@ -1,9 +1,14 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import rehypePrism from "rehype-prism-plus";
+import rehypeAutolinkHeadings, {
+  type Options as AutolinkOptions,
+} from "rehype-autolink-headings";
 import rehypePrettyCode, {
   type Options as PrettyCodeOptions,
 } from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
+import { s } from "hastscript";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
