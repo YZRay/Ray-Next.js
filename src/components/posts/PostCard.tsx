@@ -1,7 +1,10 @@
 "use client";
-import { Card, CardHeader, Image, Button, CardFooter } from "@nextui-org/react";
+import { Image } from "@nextui-org/image";
+import { Button } from "@nextui-org/button";
+import { Card, CardHeader, CardFooter } from "@nextui-org/card";
 import { Post } from "contentlayer/generated";
-const { compareDesc, format, parseISO } = require("date-fns");
+import { parseISO } from "date-fns/parseISO";
+import { format } from "date-fns/format";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 

@@ -3,11 +3,7 @@ import React, { Fragment, useState } from "react";
 import Navigator from "./Navigator";
 import Headroom from "react-headroom";
 import { HiBars3 } from "react-icons/hi2";
-import dynamic from "next/dynamic";
 
-const MobileNav = dynamic(() => import("./MobileNav"), {
-  ssr: false,
-});
 const Header = () => {
   const [show, setShow] = useState(false);
   const toggleShow = () => {
@@ -26,15 +22,8 @@ const Header = () => {
             <HiBars3 className="w-8 h-8" />
           </button>
         </div>
+        <Navigator toggleShow={toggleShow} show={show} />
       </Headroom>
-      <Headroom>
-        <div
-          className={`hidden xl:w-full xl:flex rounded-md gap-1 justify-around items-center z-30 bg-opacity-95 bg-lighter-200 dark:bg-darker-300 shadow-md py-3`}
-        >
-          <Navigator toggleShow={toggleShow} />
-        </div>
-      </Headroom>
-      <MobileNav show={show} toggleShow={toggleShow} />
     </Fragment>
   );
 };

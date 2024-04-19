@@ -1,9 +1,9 @@
 "use client";
 import { allPosts } from "contentlayer/generated";
-const { compareDesc } = require("date-fns");
+import { compareDesc } from "date-fns/compareDesc";
 import { useState, Fragment, useEffect, useCallback } from "react";
 import PostCard from "@/components/posts/PostCard";
-import { Pagination } from "@nextui-org/react";
+import { Pagination } from "@nextui-org/pagination";
 import { useRouter, useSearchParams } from "next/navigation";
 import clsx from "clsx";
 
@@ -16,6 +16,7 @@ export default function Posts() {
   const posts = allPosts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
+
   const [currentPage, setCurrentPage] = useState(page || 1);
   const postsPerPage = 12;
 

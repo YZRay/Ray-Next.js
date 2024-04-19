@@ -1,9 +1,10 @@
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
-const { format, parseISO } = require("date-fns");
+import { parseISO } from "date-fns/parseISO";
+import { format } from "date-fns/format";
+import { compareDesc } from "date-fns/compareDesc";
 import MDXContent from "@/components/mdx-content";
 import { notFound } from "next/navigation";
-const { compareDesc } = require("date-fns");
 import dynamic from "next/dynamic";
 const TableOfContents = dynamic(() => import("@/components/TableOfContents"), {
   ssr: false,

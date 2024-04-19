@@ -6,7 +6,6 @@ import { loadSlim } from "@tsparticles/slim";
 const ParticleContainer = () => {
   const [init, setInit] = useState(false);
 
-  // this should be run only once per application lifetime
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
@@ -15,9 +14,7 @@ const ParticleContainer = () => {
     });
   }, []);
 
-  const particlesLoaded = useCallback(async () => {
-    // console.log("Particles loaded!");
-  }, []);
+  const particlesLoaded = useCallback(async () => {}, []);
 
   return (
     <div className="hidden xl:block">
