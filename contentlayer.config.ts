@@ -1,14 +1,7 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
-import rehypePrism from "rehype-prism-plus";
-import rehypeAutolinkHeadings, {
-  type Options as AutolinkOptions,
-} from "rehype-autolink-headings";
-import rehypePrettyCode, {
-  type Options as PrettyCodeOptions,
-} from "rehype-pretty-code";
+import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
-import { s } from "hastscript";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -48,6 +41,11 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
+const codeOptions = {
+  theme: "one-dark-pro",
+  grid: false,
+};
+
 export default makeSource({
   // folder in which we will store our content mdx files
   contentDirPath: "posts",
@@ -59,27 +57,7 @@ export default makeSource({
       [
         // @ts-ignore
         rehypePrettyCode,
-        {
-          theme: {
-            // light: "github-light",
-            dark: "one-dark-pro",
-          },
-          grid: false,
-          keepBackground: true,
-          onVisitLine(node: any) {
-            if (node.children.length === 0) {
-              node.children = [{ type: "text", value: " " }];
-            }
-          },
-          onVisitHighlightedLine(node: any) {
-            node.properties.className.push("highlighted");
-          },
-          onVisitHighlightedWord(node: any) {
-            node.properties.className = ["word"];
-          },
-        } as Partial<
-          PrettyCodeOptions & { onVisitHighlightedWord(node: any): void }
-        >,
+        codeOptions,
       ],
     ],
   },
