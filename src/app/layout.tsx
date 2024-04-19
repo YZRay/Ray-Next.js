@@ -3,7 +3,6 @@ import { Noto_Sans_TC } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
-import { QueryProviders } from "@/components/Providers/QueryProvider";
 import { ThemeProviders } from "@/components/Providers/ThemeProvider";
 import Header from "@/components/Header/Header";
 const CommandPalette = dynamic(() => import("@/components/CommandPalette"), {
@@ -69,11 +68,9 @@ export default function RootLayout({
       >
         <ThemeProviders>
           <CommandPalette>
-            <QueryProviders>
-              <Header />
-              <div className="rainbow absolute top-0 left-0 right-0 bottom-0 opacity-40 hidden xl:block"></div>
-              {children}
-            </QueryProviders>
+            <Header />
+            <div className="rainbow absolute top-0 left-0 right-0 bottom-0 opacity-40 hidden xl:block"></div>
+            {children}
           </CommandPalette>
         </ThemeProviders>
       </body>
