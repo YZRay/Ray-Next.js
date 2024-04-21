@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardBody, Image, Link, Button } from "@nextui-org/react";
-import GetSkillIcon from "./GetSkillIcon";
+import GetSkillIcon from "./GetSkill";
 import { useRouter } from "next/navigation";
 
 interface Props {

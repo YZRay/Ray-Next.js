@@ -2,7 +2,7 @@
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns/compareDesc";
 import { useState, Fragment, useEffect, useCallback } from "react";
-import PostCard from "@/components/posts/PostCard";
+import PostCard from "@/components/Posts/PostCard";
 import { Pagination } from "@nextui-org/pagination";
 import { useRouter, useSearchParams } from "next/navigation";
 import clsx from "clsx";

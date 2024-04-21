@@ -10,7 +10,7 @@ const TableOfContents = dynamic(() => import("@/components/TableOfContents"), {
   ssr: false,
 });
 const PreviousArticle = dynamic(
-  () => import("@/components/posts/PreviousArticle"),
+  () => import("@/components/Posts/PreviousArticle"),
   {
     ssr: false,
   }

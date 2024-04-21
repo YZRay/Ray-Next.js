@@ -1,6 +1,6 @@
 import { getData } from "@/components/api/firebase";
-import GetSkillIcon from "@/components/project/GetSkillIcon";
-import CarouselImage from "@/components/project/CarouselImage";
+import CarouselImage from "@/components/Project/CarouselImage";
+import GetSkillIcon from "@/components/Project/GetSkill";
 
 async function fetchProject() {
   try {
