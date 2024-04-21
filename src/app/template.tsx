@@ -28,7 +28,7 @@ const Template = ({ children }: { children: React.ReactNode }) => {
         exit="exit"
         transition={{ delay: 0, duration: 0.6, ease: "easeInOut" }}
       />
-      {/* <motion.div
+      <motion.div
         className="fixed top-0 right-full w-screen min-h-[100dvh] bottom-0 z-[998] bg-lighter-300 dark:bg-darker-300"
         variants={TransitionVariants}
         initial="initial"
@@ -43,7 +43,7 @@ const Template = ({ children }: { children: React.ReactNode }) => {
         animate="animate"
         exit="exit"
         transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
-      /> */}
+      />
       {children}
     </>
   );

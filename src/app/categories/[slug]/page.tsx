@@ -1,8 +1,11 @@
 import { allPosts } from "contentlayer/generated";
 import { slug } from "github-slugger";
-import { Fragment } from "react";
-import Link from "next/link";
-import { it } from "node:test";
+import { parseISO } from "date-fns/parseISO";
+import { format } from "date-fns/format";
+import { compareDesc } from "date-fns/compareDesc";
+import CategoryButton from "@/components/Categories/CategoryButton";
+import CategoryChip from "@/components/Categories/CategoryChip";
+import ReadButton from "@/components/Categories/ReadButton";
 
 type Params = {
   params: {
@@ -39,8 +42,11 @@ const Category = ({ params }: Params) => {
   });
 
   allCategories.sort();
+  const sortedPosts = allPosts.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date))
+  );
 
-  const posts = allPosts.filter((post) => {
+  const posts = sortedPosts.filter((post) => {
     if (params.slug === "all") {
       return true;
     }
@@ -48,20 +54,46 @@ const Category = ({ params }: Params) => {
   });
 
   return (
-    <Fragment>
-      <div className="flex gap-4">
+    <section className="mx-auto w-11/12 lg:w-[70%] py-8 min-h-svh">
+      <div className="flex gap-x-4 gap-y-2 mt-4 mb-6 flex-wrap">
         {allCategories.map((item, i) => {
           return (
-            <Link key={i} href={`/categories/${item}`}>
-              {item.toUpperCase()}
-            </Link>
+            <CategoryButton key={i} slug={`/categories/${item}`} text={item} />
           );
         })}
       </div>
-      {posts.map((item) => {
-        return <div key={item._id}>{item.title}</div>;
-      })}
-    </Fragment>
+      <ul>
+        {posts.map((item) => {
+          return (
+            <li
+              key={item._id}
+              className="flex sm:items-center flex-col sm:flex-row justify-between gap-4 first:border-0 border-t-1 py-3 sm:py-5 border-darker-100/30 dark:border-lighter-100/20"
+            >
+              <div className="flex-grow">
+                <div className="flex md:items-center flex-wrap gap-x-4 gap-y-1 mb-2">
+                  <h3 className="font-medium text-base sm:text-lg">
+                    {item.title}
+                  </h3>
+                  {item.tags?.map((item) => (
+                    <CategoryChip key={item} text={item} />
+                  ))}
+                </div>
+                <div className="flex items-center gap-x-4 gap-y-1 flex-wrap">
+                  <time
+                    dateTime={item.date}
+                    className="text-neutral-800 dark:text-neutral-300"
+                  >
+                    {format(parseISO(item.date), "MMM dd, yyyy")}
+                  </time>
+                  <span>{item.readTime} minutes read</span>
+                </div>
+              </div>
+              <ReadButton slug={item.url} />
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 };
 

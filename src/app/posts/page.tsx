@@ -42,16 +42,16 @@ export default function Posts() {
 
   return (
     <Fragment>
-      <div className="mx-auto w-11/12 lg:w-[70%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:grid-rows-6 py-8 gap-4">
+      <div className="mx-auto w-11/12 lg:w-[70%] grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 lg:grid-rows-6 py-8 gap-4">
         {displayPosts.map((post, idx) => (
           <div
             key={post._id}
             className={clsx(
               idx === 0 && "lg:col-span-2 lg:row-span-2",
               idx === 6 && "lg:row-span-2 lg:col-span-2 lg:col-end-4",
-              idx === 7 && "col-start-1 row-start-4",
-              idx === 8 && "row-start-5",
-              idx === 9 && "row-start-6"
+              idx === 7 && "lg:col-start-1 lg:row-start-4",
+              idx === 8 && "lg:row-start-5",
+              idx === 9 && "lg:row-start-6"
             )}
           >
             <PostCard key={post._id} {...post} />
