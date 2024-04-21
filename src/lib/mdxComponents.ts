@@ -1,4 +1,4 @@
-import CustomPre from "@/components/posts/CustomPre";
+import CustomPre from "@/components/Posts/CustomPre";
 import {
   CustomH1,
   CustomH2,
@@ -6,8 +6,8 @@ import {
   CustomH4,
   CustomH5,
   CustomH6,
-} from "@/components/posts/CustomHeading";
-import CustomLink from "@/components/posts/CustomLink";
+} from "@/components/Posts/CustomHeading";
+import CustomLink from "@/components/Posts/CustomLink";
 import CustomSnippet from "@/components/MdxComponent/CustomSnippet";
 import CodeEmbed from "@/components/MdxComponent/CodeEmbed";
 

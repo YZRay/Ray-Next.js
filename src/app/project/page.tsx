@@ -1,8 +1,8 @@
 "use client";
 import { getData } from "@/components/api/firebase";
 import { useQuery } from "@tanstack/react-query";
-import ProjectCard from "@/components/project/ProjectCard";
-import ProjectSkeletonCard from "@/components/project/ProjectSkeletonCard";
+import ProjectCard from "@/components/Project/ProjectCard";
+import ProjectSkeletonCard from "@/components/Project/ProjectSkeletonCard";
 interface Project {
   id: number;
   carousel: string[];
