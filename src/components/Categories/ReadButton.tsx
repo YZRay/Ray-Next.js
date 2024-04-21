@@ -3,7 +3,7 @@ import { Button, Link } from "@nextui-org/react";
 
 const ReadButton = ({ slug }: { slug: string }) => {
   return (
-    <Button href={slug} as={Link} color="default" variant="bordered">
+    <Button href={slug} as={Link} color="default" variant="flat">
       Read more
     </Button>
   );
