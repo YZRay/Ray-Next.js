@@ -3,10 +3,12 @@ import { Link, Button } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const CategoryButton = ({ slug, text }: { slug: string; text: string }) => {
   const pathname = usePathname();
   const slugName = pathname === slug;
+  const router = useRouter();
 
   return (
     <motion.div
@@ -24,7 +26,6 @@ const CategoryButton = ({ slug, text }: { slug: string; text: string }) => {
       }}
     >
       <Button
-        href={slug}
         as={Link}
         radius="full"
         size="lg"
@@ -35,6 +36,7 @@ const CategoryButton = ({ slug, text }: { slug: string; text: string }) => {
               slugName,
           }
         )}
+        onClick={() => router.push(slug)}
       >
         {text}
       </Button>
