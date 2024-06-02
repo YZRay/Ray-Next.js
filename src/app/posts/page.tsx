@@ -5,6 +5,7 @@ import { useState, Fragment, useEffect, useCallback } from "react";
 import PostCard from "@/components/Posts/PostCard";
 import { Pagination } from "@nextui-org/pagination";
 import { useRouter, useSearchParams } from "next/navigation";
+import { pagination } from "@/lib/pagination";
 import clsx from "clsx";
 
 export default function Posts() {
@@ -13,18 +14,17 @@ export default function Posts() {
   const queryPage = searchParams.get("page");
   const page = Number(queryPage);
 
-  const posts = allPosts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
-  );
+  const posts = allPosts
+    .filter((post) => post.isPublished)
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   const [currentPage, setCurrentPage] = useState(page || 1);
-  const postsPerPage = 12;
 
-  const startIndex = (currentPage - 1) * postsPerPage;
-
-  const endIndex = startIndex + postsPerPage;
-  const displayPosts = posts.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(posts.length / postsPerPage);
+  const { paginatedItems: displayPosts, totalPages } = pagination(
+    posts,
+    currentPage,
+    12
+  );
 
   const handlePageChange = useCallback(
     (newPage: number) => {
