@@ -22,6 +22,7 @@ export const Post = defineDocumentType(() => ({
       type: "list",
       of: { type: "string" },
     },
+    isPublished: { type: "boolean", default: true },
   },
   computedFields: {
     url: {

@@ -14,7 +14,7 @@ export default function CodeEmbed({
           height="440"
           width="100%"
           title={title}
-          src={`https://codepen.io/YZRay/embed/preview/${id}`}
+          src={`https://codepen.io/YZRay/embed/${id}`}
           frameborder="no"
           loading="lazy"
           allowtransparency="true"

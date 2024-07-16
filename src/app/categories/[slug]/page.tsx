@@ -19,8 +19,9 @@ type Params = {
 export async function generateStaticParams() {
   const categories: string[] = [];
   const paths: [{ slug: string }] = [{ slug: "all" }];
+  const displayPosts = allPosts.filter((item) => item.isPublished);
 
-  allPosts.map((item) => {
+  displayPosts.map((item) => {
     item.tags?.map((tag) => {
       const trimmedTag = tag.trim();
       if (!categories.includes(trimmedTag)) {
@@ -35,7 +36,9 @@ export async function generateStaticParams() {
 
 const Category = ({ params }: Params) => {
   const allCategories = ["all"];
-  allPosts.forEach((post) => {
+  const displayPosts = allPosts.filter((item) => item.isPublished);
+
+  displayPosts.forEach((post) => {
     post.tags?.forEach((tag) => {
       const trimmedTag = tag.trim();
       if (!allCategories.includes(trimmedTag)) {
