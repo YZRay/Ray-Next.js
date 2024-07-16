@@ -12,7 +12,7 @@ tags:
 
 > 這個 API 還在實驗性的階段，目前為止瀏覽器的支援率還不是很普及，我們可以從 Can I use 查到目前瀏覽器支援的比例
 
-![alt can i use 圖片](https://imgur.com/wCpIIch.jpeg)
+![can i use 圖片](https://imgur.com/wCpIIch.jpeg)
 
 View Transitions API 他的方法就是會在兩個檔案之間建立一個過渡的動畫，當我們呼叫他的時候，他會在我們當前的頁面建立一個快照，就像是在你當前頁面截圖，接著就會開始對網頁上的內容進行變換，然後再一次的紀錄（但這次是變化過後的），再來他會將舊的頁面讓他有一個透明到 1~0 的變化，新的則是 0~1，使用戶能夠看到這段過渡的動畫效果。
 
@@ -21,9 +21,11 @@ View Transitions API 他的方法就是會在兩個檔案之間建立一個過�
 在變化的過程，會在瀏覽器中添加這些偽元素
 
 ```html
-::view-transition └─ ::view-transition-group(root) └─
-::view-transition-image-pair(root) ├─ ::view-transition-old(root) └─
-::view-transition-new(root)
+::view-transition 
+└─ ::view-transition-group(root)
+   └─::view-transition-image-pair(root) 
+     ├─ ::view-transition-old(root) 
+     └─ ::view-transition-new(root)
 ```
 
 ::view-transition-old 就是舊的快照，::view-transition-new 則是新的被更改過後的樣子
@@ -64,11 +66,11 @@ element {
 > view-transition-name  不能是重複的，如果多個元素同時具有相同的  view-transition-name，系統會略過轉場效果。
 
 ```html
-::view-transition ├─ ::view-transition-group(root) │ └─
-::view-transition-image-pair(root) │ ├─ ::view-transition-old(root) │ └─
-::view-transition-new(root) └─ ::view-transition-group(new-element) └─
-::view-transition-image-pair(new-element) ├─ ::view-transition-old(new-element)
-└─ ::view-transition-new(new-element)
+::view-transition 
+└─ ::view-transition-group(root)
+   └─::view-transition-image-pair(root) 
+     ├─ ::view-transition-old(root)
+     └─ ::view-transition-new(root)
 ```
 
 ## 實際使用 startViewTransition()
@@ -135,7 +137,7 @@ document.documentElement.animate(
 
 大概是這樣去做計算從點擊位置到頁面的最遠處
 
-![alt 計算最遠距離圖片](https://imgur.com/Kk2h9xi.jpeg)
+![計算最遠距離圖片](https://imgur.com/Kk2h9xi.jpeg)
 
 ---
 

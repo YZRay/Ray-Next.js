@@ -1,0 +1,95 @@
+---
+title: SVG stroke animation
+date: 2024-07-12
+Image: https://i.imgur.com/tbtC8Gh.jpeg
+author: Ray
+excerpt: 紀錄一下學習 Css、SVG 的筆記
+isPublished: true
+tags:
+  - css
+---
+
+## 什麼是 Stroke dasharray
+
+stroke-dasharray 可用來劃出線段的線以及間距。
+
+假如我設定了一個值 50, 50，第一個數字代表的是線段長，第二個數則代表間隔長度。值是一個數組，數字用逗號分開，每個數字代表線段以及間隔的寬度，設的值並沒有上限
+
+![SVG-stroke](https://i.imgur.com/t8kokvK.jpeg)
+
+我們也可以設定奇數個值，如果寫上了奇數個值，則會一直循環下去，例如：15, 8, 20等同於 15, 8, 20, 15, 8, 20。
+
+直接看下方的程式範例
+
+```html
+<svg
+  width="500"
+  height="200"
+  viewPort="0 0 200 500"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg">
+  <line stroke-dasharray="10, 10" x1="10" y1="10" x2="490" y2="10" stroke="#F3CA3A" stroke-width="9" />
+  <line stroke-dasharray="10, 20" x1="10" y1="30" x2="490" y2="30" stroke="#F3CA3A" stroke-width="9" />
+  <line stroke-dasharray="15, 8, 20" x1="10" y1="50" x2="490" y2="50" stroke="#F3CA3A" stroke-width="9" />
+</svg>
+```
+
+<CodeEmbed
+  id="MWMawab?default-tab=result"
+  title="Stroke dasharray"
+  type="0"
+/>
+
+## 什麼是 Stroke dashoffset
+
+從它的名稱可以清楚的知道它是在設置一個線段的偏移量，可以在這個值設定負數，正值是向左偏移，負值則向右。
+
+再拿上面的圖當作範例，假設中間白色框的矩形範圍是 ViewBox，那當我們設置了stroke-dashoffset: 100; 線段會向左邊移100，且如果當 stroke-dasharray 一個循環的數字相加等於 stroke-dashoffset ，那麼偏移後線段的位置會剛好重疊。
+
+![SVG-stroke](https://i.imgur.com/csZZAbg.jpeg)
+
+> The viewBox attribute defines the position and dimension, in user space, of an SVG viewport.
+
+這是 MDN 上 ViewBox 的解釋，簡單來說就是 svg 的可視範圍
+
+## 線條動畫效果
+
+接著結合上面兩個屬性，來實現簡單基礎的動畫效果。
+
+直接看範例
+
+<CodeEmbed
+  id="LYKpNWB?default-tab=result"
+  title="SVG stroke animation"
+  type="0"
+/>
+
+大概介紹一下它的原理
+
+如果我們讓線段的長度跟寬度都拉長到跟原本線段一樣的長度，就會長得像下方的示意圖一樣。
+
+![SVG-stroke](https://i.imgur.com/tbtC8Gh.jpeg)
+
+因為長度跟寬度都剛好跟整個路徑一樣長，用戶看到的就是一個完整的圖形，接著我們讓它偏移的長度也跟整個線段都一樣長，就可以讓圖形整個隱藏，實際上我們看到的是路徑的間隔。
+
+![SVG-stroke](https://i.imgur.com/S7blL6x.jpeg)
+
+只要運用這兩個元素再加上 @keyframes 就可以實作出 SVG 線段的動畫，當然 SVG 還可以做出其他互動效果。
+
+最後，要怎麼拿到線段的長度，如果是一般比較簡單的圖案，可以透過 path 後面那一段來算出整個路徑長，但如果是很複雜的圖案就要透過 js 來協助取得線段長了。
+
+```javascript
+const path = document.querySelector(".star");
+const length = path.getTotalLength();
+```
+
+先拿到要計算長度的元素，接著再透過 getTotalLength() 方法，就可以拿到線段長了
+
+在 css 中設置的線段長度不需要很精確，只要確保能夠完整個顯示或是隱藏整個圖案就可以了。
+
+
+-----
+
+[MDN-stroke-dasharray](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray)
+
+[MDN-stroke-dashoffset](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray)
