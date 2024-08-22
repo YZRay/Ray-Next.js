@@ -7,6 +7,7 @@ import { Pagination } from "@nextui-org/pagination";
 import { useRouter, useSearchParams } from "next/navigation";
 import { pagination } from "@/lib/pagination";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 
 export default function Posts() {
   const router = useRouter();
@@ -42,7 +43,16 @@ export default function Posts() {
 
   return (
     <Fragment>
-      <div className="mx-auto w-11/12 lg:w-[70%] grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 lg:grid-rows-6 py-8 gap-4">
+      <motion.div
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
+        }}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        className="mx-auto w-11/12 lg:w-[70%] grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 lg:grid-rows-6 py-8 gap-4"
+      >
         {displayPosts.map((post, idx) => (
           <div
             key={post._id}
@@ -57,7 +67,7 @@ export default function Posts() {
             <PostCard key={post._id} {...post} />
           </div>
         ))}
-      </div>
+      </motion.div>
       <div className="mx-auto w-4/5 mt-2 mb-6">
         <Pagination
           showControls

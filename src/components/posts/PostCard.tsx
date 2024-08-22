@@ -15,16 +15,11 @@ const PostCard = (post: Post) => {
     <motion.div
       className="relative z-0 h-full"
       variants={{
-        hidden: { opacity: 0, scale: 0.7 },
-        visible: {
-          opacity: 1,
-          scale: 1,
-        },
+        hidden: { opacity: 0, y: 25 },
+        visible: { opacity: 1, y: 0 },
       }}
-      initial="hidden"
-      animate="visible"
-      exit={{ opacity: 1, scale: 1 }}
-      transition={{ type: "spring", stiffness: 70 }}
+      exit={{ opacity: 1, y: 25 }}
+      transition={{ type: "spring" }}
     >
       <Card
         isFooterBlurred

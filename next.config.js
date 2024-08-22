@@ -4,7 +4,6 @@ const { withContentlayer } = require("next-contentlayer");
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: "export",
   images: { unoptimized: true },
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   typescript: {
