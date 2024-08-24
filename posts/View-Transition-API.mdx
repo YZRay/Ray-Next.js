@@ -113,10 +113,12 @@ if (!document.startViewTransition) {
 ```javascript
 const toggleRef = useRef(null);
 
-const { top, left } = toggleRef.current.getBoundingClientRect(); // 用 ref 來取得當前按鈕的位置
+// 用 ref 來取得當前按鈕的位置
+const { top, left } = toggleRef.current.getBoundingClientRect(); 
 const right = window.innerWidth - left;
 const bottom = window.innerHeight - top;
-const maxRadius = Math.hypot(Math.max(left, right), Math.max(top, bottom)); // 計算出按鈕到頁面最遠的半徑距離，也就是直角三角形最長的邊
+// 計算出按鈕到頁面最遠的半徑距離，也就是直角三角形最長的邊
+const maxRadius = Math.hypot(Math.max(left, right), Math.max(top, bottom)); 
 
 const circleAnimate = [
   `circle(0px at ${left}px ${top}px)`,

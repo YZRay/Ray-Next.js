@@ -7,7 +7,7 @@ import { parseISO } from "date-fns/parseISO";
 import { format } from "date-fns/format";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-
+import Link from "next/link";
 const PostCard = (post: Post) => {
   const router = useRouter();
 
@@ -60,7 +60,7 @@ const PostCard = (post: Post) => {
             <Button
               radius="full"
               size="md"
-              onClick={() => router.push(post.url)}
+              onClick={() => router.push(post.url, { scroll: false })}
               aria-label="Read"
             >
               Read more
