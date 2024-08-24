@@ -32,7 +32,7 @@ const CustomLink = ({ href, children, ...rest }: Props) => {
       href={href}
       {...rest}
     >
-      {typeof children === "string" && <FaLink className="h-4 w-4" />}
+      {typeof children === "string" && <FaLink className="size-4 shrink-0" />}
       {children}
     </a>
   );

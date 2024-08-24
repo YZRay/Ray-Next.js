@@ -66,9 +66,9 @@ export default function ThemeSwitch() {
       ref={ref}
     >
       {resolvedTheme === "dark" ? (
-        <IoMdSunny className="w-5 h-5" />
+        <IoMdSunny className="size-5" />
       ) : (
-        <IoMdMoon className="w-5 h-5" />
+        <IoMdMoon className="size-5" />
       )}
     </Button>
   );

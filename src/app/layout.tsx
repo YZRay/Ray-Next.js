@@ -58,8 +58,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <html lang="zh-Hant-TW">
@@ -71,6 +73,8 @@ export default function RootLayout({
             <Header />
             <div className="rainbow absolute top-0 left-0 right-0 bottom-0 opacity-40 hidden xl:block"></div>
             {children}
+            {modal}
+            <div id="modal-root"></div>
           </CommandPalette>
         </ThemeProviders>
       </body>
