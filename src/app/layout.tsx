@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     //   },
     // ],
   },
-  title: "Ray's Blog",
+  title: {
+    template: "%s | Ray's Blog",
+    default: "Ray's Blog",
+  },
   description: "個人的學習筆記加紀錄一些有的沒的",
   // icons: [
   //   {
