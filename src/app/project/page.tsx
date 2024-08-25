@@ -1,6 +1,7 @@
 "use client";
 import ProjectCard from "@/components/Project/ProjectCard";
 import Data from "@/components/data/data.json";
+import { useJsonParse } from "@/components/hook/useJsonParse";
 interface Project {
   id: number;
   carousel: string[];
@@ -22,7 +23,7 @@ const ProjectPage = () => {
     content = visibleProjects.map((project: Project) => (
       <ProjectCard
         key={project.id}
-        description={project.description}
+        description={project.summary}
         imageUrl={project.imageUrl}
         name={project.name}
         skill={project.skill}

@@ -2,7 +2,7 @@ import CarouselImage from "@/components/Project/CarouselImage";
 import GetSkillIcon from "@/components/Project/GetSkill";
 import Data from "@/components/data/data.json";
 import { notFound } from "next/navigation";
-
+import { useJsonParse } from "@/components/hook/useJsonParse";
 export async function generateStaticParams() {
   return Data.project.map((post: { slug: string }) => ({
     slug: post.slug,
@@ -15,10 +15,7 @@ const ProjectPage = async ({ params }: { params: { slug: string } }) => {
 
   if (!project) notFound();
 
-  const paragraphs = project.description.split(/[\n]/);
-  const content = paragraphs.map((content: string, index: number) => {
-    return <p key={index}>{content}</p>;
-  });
+  const content = useJsonParse(project);
 
   return (
     <div className="mx-auto w-11/12 md:w-3/5 lg:w-7/12">
