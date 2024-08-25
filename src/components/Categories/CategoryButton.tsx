@@ -4,8 +4,12 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+interface ButtonProps {
+  slug: string;
+  text: string;
+}
 
-const CategoryButton = ({ slug, text }: { slug: string; text: string }) => {
+const CategoryButton: React.FC<ButtonProps> = ({ slug, text }) => {
   const pathname = usePathname();
   const slugName = pathname === slug;
   const router = useRouter();

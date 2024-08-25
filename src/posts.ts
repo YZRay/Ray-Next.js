@@ -39,8 +39,8 @@ export async function getPostsByCategory({
 }): Promise<Post[]> {
   const allPosts = await getPosts();
 
-  const posts = allPosts.filter(
-    (post) => post.categories.indexOf(category) !== -1
+  const posts = allPosts.filter((post) =>
+    post.categories.some((cat) => cat.toLowerCase() === category.toLowerCase())
   );
 
   return posts;

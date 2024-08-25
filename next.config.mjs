@@ -3,7 +3,6 @@ import createMDX from "@next/mdx";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
-import { config } from "process";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
