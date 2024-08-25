@@ -8,16 +8,13 @@
         "https://i.imgur.com/lovD49I.jpeg",
         "https://i.imgur.com/s0PMsfJ.jpeg"
       ],
-      "description": "和一位後端工程師合作，利用下班的時間額外做的 Side Project，主要負責前端的畫面建構以及 API 的串接，我使用 Next.js + TypeScript 來建構前端畫面，可以讓所有玩家上傳所遇見的魔物，透過這個網站可以讓玩家們去互相分享稀有的魔物位置，我們在這個網站中沒有任何限制條件，任何人想要分享的都可以在上面分享。\n但也因為沒有限制任何登入或是其他條件，所以我們後續又新增了按讚以及不喜歡的按鈕，讓玩家們可以透過這個小功能更好的判別是不是假的情報。\n我們也在這個專案上嘗試做多語系的功能，試圖的讓更多不同國家的人可以瀏覽這個網站以及使用這些功能，未來隨著遊戲的更新也會嘗試開發相對應的功能上去。",
+      "summary": "Developed an interactive real-time map application for the mobile game Monster Hunter Now. This web application allows players to upload and share monster sightings, enhancing the gaming experience.",
+      "description": "Developed an interactive real-time map application for the mobile game **Monster Hunter Now**. This web application allows players to upload and share monster sightings, enhancing the gaming experience.\nThis project not only enhanced my frontend development skills but also deepened my understanding of building scalable, real-time web applications. It successfully attracted over **5,000** active users.\nKey Features:\n-Real-time monster location sharing\n-Interactive map interface\n-**3 languages support**\n-Responsive design for mobile and desktop",
       "id": "1",
       "imageUrl": "https://i.imgur.com/oPMJL2H.jpg",
       "isShow": true,
       "name": "Monster Hunter Map",
-      "skill": [
-        "TypeScript",
-        "TailwindCss",
-        "Nextjs"
-      ],
+      "skill": ["TypeScript", "TailwindCss", "Nextjs"],
       "slug": "monster-hunter-map",
       "url": "https://mhnow.cc/"
     },
@@ -27,16 +24,13 @@
         "https://i.imgur.com/12Ozfu1.jpeg",
         "https://i.imgur.com/toMlOKw.jpeg"
       ],
-      "description": "和一位後端工程師合作，利用下班的空餘時間接的小校案子，這個小案子是一個團購平台的內部系統，我主要負責的部分就是建構畫面以及串接對方提供的 API，在這邊我使用了Next.js + JavaScript，這邊會採用 JavaScript 主要是因為他裏頭的資料很單一加上不需要太多的功能，所以就沒有採用 TypeScript 來做資料型別上的判斷，這個系統主要用來查看各分店的距離以及範圍是否有重疊的部分，提供搜尋地址計算兩點的位置是否合適開店。",
+      "summary": "Team up with a back-end engineer to develop an internal system for a group buying platform\n- Implemented a geolocation feature to visualize and analyze store locations, including distance calculations and overlap detection",
+      "description": "Role: Front-End Developer (Part-time)\nTechnologies: Next.js, JavaScript.\nKey Responsibilities and Achievements:\n- Team up with a back-end engineer to develop an internal system for a group buying platform\n- Implemented a geolocation feature to visualize and analyze store locations, including distance calculations and overlap detection\n- Chose Next.js and JavaScript for rapid development and simplicity, given the project's straightforward data structure and focused requirements",
       "id": "2",
       "imageUrl": "https://i.imgur.com/hzbPgLV.jpeg",
       "isShow": true,
-      "name": "團購平台內部系統",
-      "skill": [
-        "JavaScript",
-        "Nextjs",
-        "TailwindCss"
-      ],
+      "name": "Internal System for Group Buying Platform",
+      "skill": ["JavaScript", "Nextjs", "TailwindCss"],
       "slug": "group-buying-platform-internal-system",
       "url": ""
     },
@@ -47,65 +41,15 @@
         "https://i.imgur.com/SrXKKcX.jpeg",
         "https://i.imgur.com/xMTHQ2d.jpeg"
       ],
-      "description": "獨自負責開發了 2023 年 MOPCON 科技年會的官方網站前端程式，以確保和設計稿相符合。",
+      "summary": "I took charge of the frontend development for the 2023 & 2024 MOPCON conference website. I built the whole thing using React. On top of that, I also handled the SEO stuff to boost the site's visibility.",
+      "description": "Project: **2023 & 2024 MOPCON Official Website**\nRole: **Frontend Developer**\nResponsibilities:\n- Built the whole frontend using React.js and Next.js\n- Make sure the site looked like the designs we got\n- Set up **SEO** to help people find the site easier",
       "id": 3,
       "imageUrl": "https://i.imgur.com/qyBrbQJ.jpeg",
       "isShow": true,
-      "name": "行動科技年會 2023 | Mobile / Open / Platform Conference",
-      "skill": [
-        "JavaScript",
-        "React"
-      ],
+      "name": "MOPCON 行動科技年會 | Mobile / Open / Platform Conference",
+      "skill": ["JavaScript", "React", "Nextjs", "TailwindCss"],
       "slug": "mopcon-2023",
       "url": "https://mopcon.org/2023/"
-    },
-    {
-      "carousel": [
-        "2",
-        "2",
-        "2",
-        "123"
-      ],
-      "description": "",
-      "id": 4,
-      "imageUrl": "",
-      "isShow": false,
-      "name": "估價系統",
-      "skill": [
-        "JavaScript",
-        "Nextjs",
-        "tailwindcss"
-      ],
-      "slug": "valuation-system",
-      "url": ""
-    }
-  ],
-  "travel": [
-    {
-      "id": 0,
-      "images": [
-        "https://imgur.com/XlQity9.jpeg",
-        "https://imgur.com/jHfIiis.jpeg",
-        "https://imgur.com/xlF7Iwr.jpeg",
-        "https://imgur.com/JCGcwIC.jpeg",
-        "https://imgur.com/7u333nT.jpeg"
-      ],
-      "title": "臺東－花蓮",
-      "year": 2022
-    },
-    {
-      "id": 1,
-      "images": [
-        "https://i.imgur.com/47yRtXk.jpeg",
-        "https://imgur.com/6ezfpO6.jpeg",
-        "https://imgur.com/wzTRVI2.jpeg",
-        "https://imgur.com/cR31vok.jpeg",
-        "https://imgur.com/1qd5s0x.jpeg",
-        "https://imgur.com/pM7NAvz.jpeg",
-        "https://imgur.com/KAYSL5S.jpeg"
-      ],
-      "title": "蘭嶼",
-      "year": 2020
     }
   ]
 }

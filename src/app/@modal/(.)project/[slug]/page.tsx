@@ -3,6 +3,7 @@ import CarouselImage from "@/components/Project/CarouselImage";
 import GetSkillIcon from "@/components/Project/GetSkill";
 import Data from "@/components/data/data.json";
 import { notFound } from "next/navigation";
+import { useJsonParse } from "@/components/hook/useJsonParse";
 export const generateStaticParams = async () =>
   Data.project.map((project) => ({ slug: project.slug }));
 
@@ -11,17 +12,14 @@ const Page = ({ params }: { params: { slug: string } }) => {
 
   if (!project) notFound();
 
-  const paragraphs = project.description.split(/[\n]/);
-  const content = paragraphs.map((content: string, index: number) => {
-    return <p key={index}>{content}</p>;
-  });
+  const content = useJsonParse(project);
 
   return (
     <PageModal title={project?.name as string}>
       <div className="w-full my-6 md:my-8 lg:my-12">
         <CarouselImage img={project?.carousel} />
         <div className="my-6">
-          <h3 className="text-lg md:text-2xl">使用技術</h3>
+          <h3 className="text-lg md:text-2xl mb-2">使用技術</h3>
           <div className="flex items-center gap-4 flex-wrap">
             {project?.skill.map((s: string, index: number) => (
               <div

@@ -29,10 +29,10 @@ const PostsList = ({ posts }: { posts: Post[] }) => {
         <motion.li
           key={slug}
           variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1 },
+            hidden: { opacity: 0, y: 25 },
+            visible: { opacity: 1, y: 0 },
           }}
-          exit={{ opacity: 1 }}
+          exit={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 100, duration: 0.2 }}
           className="flex sm:items-center flex-col sm:flex-row justify-between gap-4 first:border-0 border-t-1 py-3 sm:py-5 border-darker-100/30 dark:border-lighter-100/20 relative px-2"
         >
