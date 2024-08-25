@@ -1,4 +1,5 @@
 import { readdir } from "fs/promises";
+
 import { type Category } from "./categories";
 
 export interface Post {

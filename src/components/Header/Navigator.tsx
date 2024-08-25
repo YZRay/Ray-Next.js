@@ -3,7 +3,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@nextui-org/react";
 import { FaGithub } from "react-icons/fa6";
-import CommandPaletteToggle from "@/components/CommandPalette/CommandPaletteToggle";
 import ThemeSwitch from "../ThemeSwitch";
 import { RxCross1 } from "react-icons/rx";
 import { Fragment } from "react";
@@ -73,7 +72,6 @@ const Navigator = ({ show, toggleShow }: IProps) => {
             ) : null}
             <ThemeSwitch />
           </div>
-          <CommandPaletteToggle />
         </div>
       </div>
       {show ? <ModalOverlay /> : <></>}
