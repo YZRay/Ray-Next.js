@@ -3,7 +3,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@nextui-org/react";
 import { FaGithub } from "react-icons/fa6";
-import CommandPaletteToggle from "@/components/CommandPalette/CommandPaletteToggle";
 import ThemeSwitch from "../ThemeSwitch";
 import { RxCross1 } from "react-icons/rx";
 import { Fragment } from "react";
@@ -13,7 +12,6 @@ const links = [
   // { path: "/about", label: "關於" },
   { path: "/posts", label: "筆記" },
   { path: "/project", label: "專案" },
-  { path: "/categories/all", label: "分類" },
 ];
 interface IProps {
   show: boolean;
@@ -74,7 +72,6 @@ const Navigator = ({ show, toggleShow }: IProps) => {
             ) : null}
             <ThemeSwitch />
           </div>
-          <CommandPaletteToggle />
         </div>
       </div>
       {show ? <ModalOverlay /> : <></>}

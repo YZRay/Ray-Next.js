@@ -1,12 +1,15 @@
-import { allPosts } from "contentlayer/generated";
 import { MetadataRoute } from "next";
 
-const postsSitemap: MetadataRoute.Sitemap = allPosts.map((post) => ({
-  url: `${process.env.HOST}/posts/${post._raw.flattenedPath}` || "",
-  lastModified: post.date,
-}));
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const { getPosts } = await import("@/posts");
 
-export default function sitemap(): MetadataRoute.Sitemap {
+  const posts = await getPosts();
+
+  const postsSitemap: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${process.env.HOST}/posts/${post.slug}`,
+    lastModified: new Date(),
+  }));
+
   return [
     {
       url: process.env.HOST || "",

@@ -1,8 +1,6 @@
 "use client";
-import { getData } from "@/components/api/firebase";
-import { useQuery } from "@tanstack/react-query";
 import ProjectCard from "@/components/Project/ProjectCard";
-import ProjectSkeletonCard from "@/components/Project/ProjectSkeletonCard";
+import Data from "@/components/data/data.json";
 interface Project {
   id: number;
   carousel: string[];
@@ -16,15 +14,11 @@ interface Project {
 }
 
 const ProjectPage = () => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["project"],
-    queryFn: () => getData(),
-  });
-
   let content;
-  if (data) {
-    const visibleProjects = data.filter((project: Project) => project.isShow);
-
+  const visibleProjects = (Data.project as Project[]).filter(
+    (project: Project) => project.isShow
+  );
+  if (Data.project) {
     content = visibleProjects.map((project: Project) => (
       <ProjectCard
         key={project.id}
@@ -36,16 +30,6 @@ const ProjectPage = () => {
         slug={project.slug}
       />
     ));
-  }
-
-  if (isLoading) {
-    content = Array.from({ length: 2 }).map((_, index) => (
-      <ProjectSkeletonCard key={index} />
-    ));
-  }
-
-  if (isError) {
-    content = <h4 className="text-2xl text-center">Something went wrong</h4>;
   }
 
   return (

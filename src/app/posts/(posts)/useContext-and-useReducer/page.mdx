@@ -1,0 +1,194 @@
+export const metadata = {
+  title: 'useContext & useReducer',
+  publishDate: '2024-02-13T00:00:00Z',
+  categories: ['react'],
+  author: "Ray",
+};
+
+
+## useContext
+
+在 react 裡面，狀態的傳遞都是透過 props 一層一層傳遞的，但當專案越來越大時，可能會有些狀態是要傳遞好幾層，那這樣的情況下就會造成不好管理，得一直往上找才能找到狀態的來源。
+
+這時可以透過 useContext 這個 hook 來達到不用一層一層的傳遞，而是直接共享在需要的地方呼叫他就可以了
+
+簡單用個進行加減來當作範例
+
+首先先建立一個 context 檔案，把 createContext 給 import 進來
+
+接著定義好你的 Context，裡面放置你想要傳遞的任何狀態或數值，他們將會變成初始值傳遞到你想要使用的 components 上
+
+```js
+//./stores/count-context.jsx
+import { createContext } from "react";
+
+export const CountContext = createContext({
+  count: 0,
+});
+```
+
+接著需要創建一個 Provider，來包住 App，讓他可以提供給下方所有想要使用這些狀態的 component
+
+```js
+//./stores/count-context.jsx
+export default function CountContextProvider({ children }) {
+  const ctxValue = {
+    count: 0,
+  };
+
+  return (
+    <CountContext.Provider value={ctxValue}>{children}</CountContext.Provider>
+  );
+}
+```
+
+需要使用這個 Provider 去把 app 給包起來，被 Provider 包住的 component 都能夠共享狀態跟數值。
+
+```js
+//App.jsx
+import CountContextProvider from "./stores/count-context.jsx";
+import Header from "./components/Header.jsx";
+import Count from "./components/Count.jsx";
+
+function App() {
+  return (
+    <CountContextProvider>
+      <Header />
+      <Count />
+    </CountContextProvider>
+  );
+}
+
+export default App;
+```
+
+接著就能夠在裡面的使用它了
+
+```js
+//component.jsx
+import { CountContext } from "./stores/count-context.jsx";
+import { useContext } from "react";
+
+export default function Page() {
+  const { count } = useContext(CountContext);
+
+  return <div>{count}</div>;
+}
+```
+
+## useReducer
+
+useReducer 這個 hook，可以算是 useState 的進階版，useReducer 可以更好的管理複雜的狀態，useState 要管理複雜的狀態的話會很麻煩，也不好維護、管理
+
+useReducer 搭配 useContext 可以讓狀態進行更好的管理，像是 Vue 的 Vuex、Pinia 也有類似的用法
+
+把上面的稍微更改一下
+
+```js
+//./stores/count-context.jsx
+import { createContext, useReducer } from "react";
+
+export const CountContext = createContext({
+  count: 0,
+  increment: () => {},
+  decrement: () => {},
+});
+
+function countReducer(state, action) {
+  //do something...
+}
+
+export default function CountContextProvider({ children }) {
+  const [countState, countDispatch] = useReducer(countReducer, { count: 0 });
+
+  const handleIncrement = () => {
+    //do something...
+  };
+
+  const handleDecrement = () => {
+    //do something...
+  };
+
+  const ctxValue = {
+    count: countState.count,
+    increment: handleIncrement,
+    decrement: handleDecrement,
+  };
+
+  return (
+    <CountContext.Provider value={ctxValue}>{children}</CountContext.Provider>
+  );
+}
+```
+
+基本上這樣一個狀態管理的架構大致上就完成了
+
+1. 先呼叫出 useReducer 這個 hook，接著需要把這個 hook 給設定好(14 行)
+2. useReducer() 裏頭有兩個參數，(reducer, initialState)，一個是 reducer 一個則是初始值
+3. 再來會在 reducer 裡面寫上邏輯的判斷(9~11 行)
+4. 下方的 handleIncrement 和 handleDecrement 裡面則是要加上 dispatch 才能夠讓上方的 reducer 進行判斷
+
+```js
+//./stores/count-context.jsx
+const handleIncrement = () => {
+  countDispatch({
+    type: "INCREMENT",
+  });
+};
+
+const handleDecrement = () => {
+  countDispatch({
+    type: "DECREMENT",
+  });
+};
+```
+
+像是這樣定義好他們觸發的 type，就可以到上方的 reducer 寫上邏輯判斷
+
+下方使用展開運算符，它用來複製 state 物件的所有屬性，然後只針對想要修改的參數進行修改
+
+```js
+//./stores/count-context.jsx
+function countReducer(state, action) {
+  switch (action.type) {
+    case "INCREMENT":
+      return {
+        ...state,
+        count: state.count + 1,
+      };
+    case "DECREMENT":
+      return {
+        ...state,
+        count: state.count - 1,
+      };
+    default:
+      return state;
+  }
+}
+```
+
+這樣子就都設定好了，那接著就是要在元件裡面導入，一樣是先把需要的檔案都給 import 進來
+
+接著可以透過解構的方式，把 context 所傳入的值都給解構出來
+
+看要在哪個地方引用，這樣就透過 useReducer 和 useContext 完成基本的加減按鈕了
+
+```js
+//button.jsx
+import { useContext } from "react";
+import { CountContext } from "../stores/count-context";
+
+const Count = () => {
+  const { count, increment, decrement } = useContext(CountContext);
+
+  return (
+    <>
+      <button onClick={increment}>Increment</button>
+      <span>{count}</span>
+      <button onClick={decrement}>Increment</button>
+    </>
+  );
+};
+
+export default Count;
+```

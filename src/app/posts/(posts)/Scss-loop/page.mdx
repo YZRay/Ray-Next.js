@@ -1,0 +1,114 @@
+export const metadata = {
+  title: 'Scss 迴圈與變數',
+  publishDate: '2023-10-05T00:00:00Z',
+  categories: ['css'],
+  author: "Ray",
+};
+
+
+## SCSS 設定變數及迴圈
+
+### @each 迴圈--list
+
+網頁上會有許多需要重複套用的物件，先介紹 List
+List 需要設定的東西比較少。
+
+先寫好你想要的參數值
+
+```sass
+$font-size: 10px, 25px, 40px;
+```
+
+再透過迴圈的方式快速生成
+
+```sass
+@each $size in $font-size {
+    .size-#{$size} {
+        font-size: $size;
+    }
+}
+```
+
+這種方式比較簡單，設定的東西比較少
+生成後的 css 長這樣
+
+```sass
+.size-10px {
+  font-size: 10px;
+}
+
+.size-25px {
+  font-size: 25px;
+}
+
+.size-40px {
+  font-size: 40px;
+}
+```
+
+---
+
+### @each 迴圈--map
+
+map 相較於 list 要設定的東西多了一點，這方法也可以透過迴圈的方式快速生成幾個不同顏色的樣式。
+
+先將想要的顏色設定好
+
+```sass
+$main-color01: #106b57;
+$main-color02: #5fb7a4;
+$main-color03: #e9ecef;
+```
+
+接著就可以在其他地方透過名稱來使用這些參數。
+如果需要透過迴圈生成樣式可以透過以下方法。
+
+```sass
+$types: (
+    main-color01: $main-color01,
+    main-color02: $main-color02,
+    main-color03: $main-color03,
+);
+
+@each $name, $color in $types {
+    .btn-#{$name} {
+        background-color: $color;
+        color: #fff;
+        border: 1px solid $color;
+        &:hover,
+        &:active,
+        &:focus {
+            color: #fff;
+            background-color: darken($color, 8%);
+            border-color: darken($color, 8%);
+        }
+    }
+}
+```
+
+1-5 行：
+types 可以自己命名，接著裡面放上你想要生成的顏色
+
+7-29 行：
+裡面接著就是寫上你想要的樣式，他就會去 types 裡面跑迴圈自動生成樣式出來。
+迴圈裡面的 class 名稱可以自己隨意命名，但一定要寫 #{} 裡面再帶入 $name
+
+> 第一個變數 $name 會去找冒號左邊的名稱，第二個變數 $color 會找冒號右邊的值。
+
+自動生成出來的結果就會是這樣
+
+```sass
+.btn-main-color01 {
+  background-color: #106b57;
+  color: #fff;
+  border: 1px solid #106b57;
+}
+
+.btn-main-color01:hover,
+.btn-main-color01:active,
+.btn-main-color01:focus {
+  color: #fff;
+  background-color: #0b483a;
+  border-color: #0b483a;
+}
+```
