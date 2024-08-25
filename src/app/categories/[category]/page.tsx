@@ -16,9 +16,9 @@ export function generateStaticParams() {
 export default async function Category({
   params,
 }: {
-  params: { slug: Category };
+  params: { category: Category };
 }) {
-  const { slug: category } = params;
+  const { category: category } = params;
 
   if (categories.indexOf(category) == -1) notFound();
 
@@ -36,7 +36,11 @@ export default async function Category({
           />
         ))}
       </CategoryButtonGroup>
-      <PostsList posts={posts} />
+      {posts && posts.length > 0 ? (
+        <PostsList posts={posts} />
+      ) : (
+        <div>Page not found</div>
+      )}
     </section>
   );
 }
