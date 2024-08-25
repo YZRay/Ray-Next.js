@@ -1,6 +1,5 @@
 "use client";
-import { getTravelData } from "@/components/api/firebase";
-import { useQuery } from "@tanstack/react-query";
+import Data from "@/components/data/data.json";
 import { Image } from "@nextui-org/react";
 
 interface Props {
@@ -11,14 +10,9 @@ interface Props {
 }
 
 const TravelPage = () => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["travel"],
-    queryFn: () => getTravelData(),
-  });
-
   let content;
-  if (data) {
-    content = data.map((item: Props) => (
+  if (Data.travel) {
+    content = Data.travel.map((item: Props) => (
       <div key={item.id} className="mb-6 z-0 relative">
         <div className="flex items-center gap-4 mb-2">
           <h2 className="text-xl font-bold">{item.title}</h2>
@@ -48,10 +42,6 @@ const TravelPage = () => {
         </div>
       </div>
     ));
-  }
-
-  if (isError) {
-    content = <h4 className="text-2xl text-center">Something went wrong</h4>;
   }
 
   return <div className="mx-auto w-11/12 md:w-9/12 my-8">{content}</div>;

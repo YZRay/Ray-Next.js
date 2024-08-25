@@ -31,11 +31,11 @@ const ProjectCard: React.FC<Props> = ({
     >
       <CardBody>
         <div className="grid grid-cols-6 lg:grid-cols-12 gap-6 lg:gap-4 items-center justify-center">
-          <div className="relative col-span-6 lg:col-span-4 h-auto overflow-clip rounded-lg">
+          <div className="relative col-span-6 lg:col-span-4 overflow-clip rounded-lg h-56">
             <Image
               alt="Album cover"
               className="object-cover h-full w-full"
-              height={540}
+              height={240}
               shadow="md"
               src={imageUrl}
               loading="lazy"

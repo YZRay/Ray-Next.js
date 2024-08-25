@@ -1,92 +1,15 @@
-"use client";
-import { allPosts } from "contentlayer/generated";
-import { compareDesc } from "date-fns/compareDesc";
-import { useState, Fragment, useEffect, useCallback } from "react";
-import PostCard from "@/components/Posts/PostCard";
-import { Pagination } from "@nextui-org/pagination";
-import { useRouter, useSearchParams } from "next/navigation";
-import { pagination } from "@/lib/pagination";
-import clsx from "clsx";
-import { motion } from "framer-motion";
+import { Fragment } from "react";
+import { getPosts } from "@/posts";
+import PostsList from "@/components/Posts/PostsList";
 
-export default function Posts() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const queryPage = searchParams.get("page");
-  const page = Number(queryPage);
-
-  const posts = allPosts
-    .filter((post) => post.isPublished)
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
-
-  const [currentPage, setCurrentPage] = useState(page || 1);
-
-  const { paginatedItems: displayPosts, totalPages } = pagination(
-    posts,
-    currentPage,
-    12
-  );
-
-  const handlePageChange = useCallback(
-    (newPage: number) => {
-      setCurrentPage(newPage);
-      router.push(`/posts?page=${newPage}`);
-    },
-    [setCurrentPage, router]
-  );
-
-  useEffect(() => {
-    if (currentPage > totalPages) {
-      handlePageChange(1);
-    }
-  }, [currentPage, totalPages, handlePageChange]);
+export default async function Posts() {
+  const posts = await getPosts();
 
   return (
     <Fragment>
-      <motion.div
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-        }}
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        className="mx-auto w-11/12 lg:w-[70%] grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 lg:grid-rows-6 py-8 gap-4"
-      >
-        {displayPosts.map((post, idx) => (
-          <div
-            key={post._id}
-            className={clsx(
-              idx === 0 && "lg:col-span-2 lg:row-span-2",
-              idx === 6 && "lg:row-span-2 lg:col-span-2 lg:col-end-4",
-              idx === 7 && "lg:col-start-1 lg:row-start-4",
-              idx === 8 && "lg:row-start-5",
-              idx === 9 && "lg:row-start-6"
-            )}
-          >
-            <PostCard key={post._id} {...post} />
-          </div>
-        ))}
-      </motion.div>
-      <div className="mx-auto w-4/5 mt-2 mb-6">
-        <Pagination
-          showControls
-          classNames={{
-            wrapper: "mx-auto z-[0]",
-            item: "bg-lighter-400 dark:bg-darker-100/20 border border-transparent text-darker-300 dark:text-lighter-200",
-            prev: "bg-lighter-400 dark:bg-darker-100/20 border border-transparent text-darker-300 dark:text-lighter-200",
-            next: "bg-lighter-400 dark:bg-darker-100/20 border border-transparent text-darker-300 dark:text-lighter-200",
-          }}
-          loop={true}
-          total={totalPages}
-          initialPage={currentPage}
-          size="lg"
-          color="primary"
-          boundaries={2}
-          variant="bordered"
-          onChange={handlePageChange}
-        />
-      </div>
+      <section className="mx-auto w-11/12 lg:w-[70%] py-8 min-h-svh">
+        <PostsList posts={posts} />
+      </section>
     </Fragment>
   );
 }

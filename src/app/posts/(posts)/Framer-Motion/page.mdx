@@ -1,0 +1,124 @@
+export const metadata = {
+  title: 'Framer motion',
+  publishDate: '2024-03-27T00:00:00Z',
+  categories: ['react'],
+  author: "Ray",
+};
+
+
+### Framer Motion
+
+Framer Motion 是一個可以在 react 裡面執行動畫的一個套件，它裡面提供了很多 Hook 來讓動畫變得更簡單，很多的 UI 框架裡面也都會使用到他
+
+<Snippet text="npm install framer-motion" />
+
+他的基本用法也很簡單，要先 import 官方提供的 component ，他是整個 framer-motion 的核心，需要透過他來讓各種元素執行動畫
+
+```js
+import { motion } from "framer-motion";
+
+export default function Modal({}) {
+  return (
+    <motion.div>
+      <h2>Title</h2>
+    </motion.div>
+  );
+}
+```
+
+接著就可以來定義動畫了，需要傳遞 props 給他，讓他可以執行裡面的值
+
+```js
+<motion.div animate={{ x: 100 }}>
+	h2>Title</h2>
+</motion.div>
+```
+
+當然也可以傳遞多種 props 來執行更複雜有趣的動畫，像是還可以傳遞 transition 、 initial 、exit 等等各種不同的參數
+回到原本的 modal 這個 component 當點擊按鈕時，想要讓 modal 有動畫呈現而不是直接顯示跟消失，就可以使用 framer-motion 來製作動畫，製作一個 modal 的動畫，可以想到的有 初始值、顯示過程以及關掉時這三個狀態
+
+```js
+<motion.div
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: 50 }}
+>
+  <h2>Title</h2>
+</motion.div>
+```
+
+這樣就定義好了這三個分別的狀態
+
+1. intial ⇒ 初始狀態 透明度為 0 ，y 為 50
+2. animate⇒ 透明度從 0 ~ 1，位置從 50 ~ 0
+3. exit ⇒ 離開時回到初始狀態
+
+這些數值除了直接寫上之外，還可以設置成數組的形式，當用數組的形式時就會變成像是在設定關鍵影格一樣。
+
+### AnimatePresence
+
+接著可以回到視窗來看看，會發現顯示 modal 的時候是會有進入的動畫，但是一旦點擊取消離開，modal 就會直接消失，而不會有動畫，這是因為 react 並不會知道有這個動畫，當點擊取消時 react 就是直接的把 modal 給移除掉，所以在動畫出來之前這個 modal 就已經被移除了
+所以 Framer-motion 提供了另一個 component ⇒ AnimatePresence
+
+```js
+import { motion, AnimatePresence } from "framer-motion"
+
+export default function Modal = ({ isVisible }) => (
+  <AnimatePresence>
+    {isVisible && (
+      <motion.div
+		initial={{ opacity: 0, y: 50 }}
+		animate={{ opacity: 1, y: 0 }}
+		exit={{ opacity: 0, y: 50 }}
+      />
+      	<h2>Title</h2>
+	  </motion.div>
+    )}
+  </AnimatePresence>
+)
+```
+
+AnimatePresence 允許在 components 被移除前執行退出的動畫，這樣在回到瀏覽器就可以看到不會像剛剛一樣一點擊取消就消失
+
+### 互動效果
+
+framer-motion 裡面還提供了一些參數可以讓我們去針對用戶的操作執行特定的動畫
+
+1. whileHover
+2. whileTap
+3. whileFocus
+4. whileDrag
+5. whileInView
+
+像這樣就有了一個當用戶 hover 到這個按紐時會像彈簧一樣的效果，stiffness 的參數會影響到他彈簧的效果預設值是 100
+
+```js
+<motion.button
+  whileHover={{ scale: 1.1 }}
+  transition={{ type: "spring", stiffness: 300 }}
+>
+  Cancel
+</motion.button>
+```
+
+### Variants
+
+像剛剛上述的寫法，modal 初始值跟離開時的值是一樣的，我們寫了兩次一模一樣的值，這樣在當動畫如果很複雜值就會變得難以管理，所以可以使用 Variants 來幫助我們，向下面這樣子修改，把 variants 寫成一個物件的形式，接著在 initial、animate、exit 等地方傳上 variants 裡面的 key。
+
+```js
+<motion.div
+  variants={{
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0 },
+  }}
+  initial="hidden"
+  animate="show"
+  exit="hidden"
+>
+  <h2>Title</h2>
+</motion.div>
+```
+
+variants 還可以把他的值往下傳遞，那就是他可以讓裡面的子元素都可以使用到父層所定義好的動畫
+
+[Motion components | Framer for Developers](https://www.framer.com/motion/)

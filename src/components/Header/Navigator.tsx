@@ -13,7 +13,6 @@ const links = [
   // { path: "/about", label: "關於" },
   { path: "/posts", label: "筆記" },
   { path: "/project", label: "專案" },
-  { path: "/categories/all", label: "分類" },
 ];
 interface IProps {
   show: boolean;
