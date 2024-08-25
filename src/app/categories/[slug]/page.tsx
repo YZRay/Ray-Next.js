@@ -1,80 +1,42 @@
-import { allPosts } from "contentlayer/generated";
-import { slug } from "github-slugger";
-import { compareDesc } from "date-fns/compareDesc";
+import { categories, type Category } from "@/categories";
+import { notFound } from "next/navigation";
+import PostsList from "@/components/Posts/PostsList";
+import { getPostsByCategory } from "@/posts";
 import {
-  CategoryButton,
   CategoryButtonGroup,
+  CategoryButton,
 } from "@/components/Categories/CategoryButton";
-import {
-  CategoriesList,
-  CategoriesItem,
-} from "@/components/Categories/CategoriesList";
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function generateStaticParams() {
-  const categories: string[] = [];
-  const paths: [{ slug: string }] = [{ slug: "all" }];
-  const displayPosts = allPosts.filter((item) => item.isPublished);
-
-  displayPosts.map((item) => {
-    item.tags?.map((tag) => {
-      const trimmedTag = tag.trim();
-      if (!categories.includes(trimmedTag)) {
-        categories.push(trimmedTag);
-        paths.push({ slug: trimmedTag });
-      }
-    });
-  });
-
-  return paths;
+export function generateStaticParams() {
+  return categories.map((category) => ({
+    category,
+  }));
 }
 
-const Category = ({ params }: Params) => {
-  const allCategories = ["all"];
-  const displayPosts = allPosts.filter((item) => item.isPublished);
+export default async function Category({
+  params,
+}: {
+  params: { slug: Category };
+}) {
+  const { slug: category } = params;
 
-  displayPosts.forEach((post) => {
-    post.tags?.forEach((tag) => {
-      const trimmedTag = tag.trim();
-      if (!allCategories.includes(trimmedTag)) {
-        allCategories.push(trimmedTag);
-      }
-    });
-  });
+  if (categories.indexOf(category) == -1) notFound();
 
-  allCategories.sort();
-  const sortedPosts = allPosts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
-  );
-
-  const posts = sortedPosts.filter((post) => {
-    if (params.slug === "all") {
-      return true;
-    }
-    return post.tags?.some((tag) => slug(tag) === params.slug);
-  });
+  const posts = await getPostsByCategory({ category });
 
   return (
     <section className="mx-auto w-11/12 lg:w-[70%] py-8 min-h-svh">
       <CategoryButtonGroup>
-        {allCategories.map((item, i) => {
-          return (
-            <CategoryButton key={i} slug={`/categories/${item}`} text={item} />
-          );
-        })}
+        <CategoryButton slug="/posts" text="All" />
+        {categories.map((category: Category) => (
+          <CategoryButton
+            key={category}
+            slug={`/categories/${category}`}
+            text={category}
+          />
+        ))}
       </CategoryButtonGroup>
-      <CategoriesList>
-        {posts.map((item) => {
-          return <CategoriesItem {...item} key={item._id} />;
-        })}
-      </CategoriesList>
+      <PostsList posts={posts} />
     </section>
   );
-};
-
-export default Category;
+}

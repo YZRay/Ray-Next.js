@@ -1,4 +1,4 @@
-type CustomHeadingProps = React.ComponentPropsWithRef<
+type CustomHeadingProps = React.ComponentPropsWithoutRef<
   "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 > & { Component: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" };
 import { GoHash } from "react-icons/go";
@@ -27,21 +27,21 @@ function CustomHeading({
   );
 }
 
-export const CustomH1 = (props: React.ComponentPropsWithRef<"h1">) => (
+export const CustomH1 = (props: React.ComponentPropsWithoutRef<"h1">) => (
   <CustomHeading Component="h1" {...props} />
 );
-export const CustomH2 = (props: React.ComponentPropsWithRef<"h2">) => (
+export const CustomH2 = (props: React.ComponentPropsWithoutRef<"h2">) => (
   <CustomHeading Component="h2" {...props} />
 );
-export const CustomH3 = (props: React.ComponentPropsWithRef<"h3">) => (
+export const CustomH3 = (props: React.ComponentPropsWithoutRef<"h3">) => (
   <CustomHeading Component="h3" {...props} />
 );
-export const CustomH4 = (props: React.ComponentPropsWithRef<"h4">) => (
+export const CustomH4 = (props: React.ComponentPropsWithoutRef<"h4">) => (
   <CustomHeading Component="h4" {...props} />
 );
-export const CustomH5 = (props: React.ComponentPropsWithRef<"h5">) => (
+export const CustomH5 = (props: React.ComponentPropsWithoutRef<"h5">) => (
   <CustomHeading Component="h5" {...props} />
 );
-export const CustomH6 = (props: React.ComponentPropsWithRef<"h6">) => (
+export const CustomH6 = (props: React.ComponentPropsWithoutRef<"h6">) => (
   <CustomHeading Component="h6" {...props} />
 );

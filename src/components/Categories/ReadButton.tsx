@@ -1,9 +1,21 @@
 "use client";
 import { Button, Link } from "@nextui-org/react";
 
-const ReadButton = ({ slug }: { slug: string }) => {
+const ReadButton = ({
+  slug,
+  className,
+}: {
+  slug: string;
+  className?: string;
+}) => {
   return (
-    <Button href={slug} as={Link} color="default" variant="flat">
+    <Button
+      className={className}
+      href={slug}
+      as={Link}
+      color="default"
+      variant="flat"
+    >
       Read more
     </Button>
   );
