@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <Fragment>
-      <Headroom className="mb-4 xl:mb-0">
+      <Headroom className="mb-4 xl:mb-0 relative z-50">
         <div className="px-2 md:px-6 lg:px-8 z-30 xl:hidden flex items-center justify-between bg-opacity-95 bg-lighter-200 dark:bg-darker-300 shadow-md py-2">
           <button
             className="text-lg p-2 right-0"

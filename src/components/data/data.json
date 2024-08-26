@@ -48,8 +48,8 @@
       "isShow": true,
       "name": "MOPCON 行動科技年會 | Mobile / Open / Platform Conference",
       "skill": ["JavaScript", "React", "Nextjs", "TailwindCss"],
-      "slug": "mopcon-2023",
-      "url": "https://mopcon.org/2023/"
+      "slug": "mopcon",
+      "url": "https://mopcon.org/"
     }
   ]
 }
