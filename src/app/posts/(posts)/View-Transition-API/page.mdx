@@ -5,9 +5,15 @@ export const metadata = {
   author: "Ray",
   isPublished: true,
 };
-
+import ThemeSwitch from "@/components/ThemeSwitch";
+import { FaArrowDown } from "react-icons/fa";
 
 ## startViewTransition() API 介紹
+
+<div className='flex-col flex items-center justify-center'>
+ <span className="animate-bounce flex flex-col items-center">可以先點擊這顆按鈕試試<FaArrowDown /></span>
+ <ThemeSwitch />
+</div>
 
 > 這個 API 還在實驗性的階段，目前為止瀏覽器的支援率還不是很普及，我們可以從 Can I use 查到目前瀏覽器支援的比例
 
@@ -100,6 +106,7 @@ if (!document.startViewTransition) {
 }
 //如果瀏覽器不支援這個 API 就直接執行
 ```
+
 
 <CodeEmbed
   id="preview/OJGjWdE?default-tab=result&theme-id=dark"
