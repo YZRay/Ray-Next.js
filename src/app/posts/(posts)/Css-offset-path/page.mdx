@@ -3,17 +3,147 @@ export const metadata = {
   publishDate: '2024-06-02T00:00:00Z',
   categories: ['css'],
   author: "Ray",
+  isPublished: true,
 };
+import  CollapseButton from "./_components/Button.tsx"
 
+# Css offset-path
 
 先來看一下最後的 Demo 結果，透過 offset-path 可以輕鬆的實現一些動畫互動效果。
 
-<CodeEmbed
-  id="KKLpryN?default-tab=result&theme-id=dark"
-  title="css offset 按鈕"
-  type="0"
-/>
+<CollapseButton />
 
-Css 的發展越來越多變化，有許多的效果都可以透過 Css 來做到，而在 Css 裡面支援了路徑，可以讓開發者定義好路徑後在讓物件跟隨著路徑做移動，而這些路徑的寫法也跟 SVG Path 一樣，現在的繪圖軟體也很方便，都可以透過它來幫助我們取得路徑，例如 Figma。
+Css 的發展越來越多變化，有許多的效果都可以透過 Css 來做到，而在 Css 裡面支援了路徑，可以讓開發者定義好路徑後在讓物件跟隨著路徑做移動，而這些路徑的寫法也跟 SVG Path 一樣，現在的繪圖軟體也很方便，都可以透過它來幫助我們取得路徑，例如 Figma。像下圖一樣取得 SVG 路徑。
 
 ![Figma 取得路徑](https://i.imgur.com/8zFieBd.png)
+
+我們會拿到像下面這種東西，而裡面的 path 就是 svg 的路徑，可以透過搭配 @keyframes 或是 js 來完成一些交互效果。
+
+```css
+<svg width="909" height="909" viewBox="0 0 909 909" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M908.5 454.5C908.5 705.237 705.237 908.5 454.5 908.5C203.763 908.5 0.5 705.237 0.5 454.5C0.5 203.763 203.763 0.5 454.5 0.5C705.237 0.5 908.5 203.763 908.5 454.5Z" stroke="black"/>
+</svg>
+```
+
+path 這路徑很難直接用手寫出來，幾乎都是透過繪圖軟體轉換過來的。
+
+在 css 中可以這樣去使用他，這樣再透過 js 等等...這個物件就會照著這個看不到的路徑去做移動
+```css
+.item{
+  offset-path: (M908.5 454.5C908.5 705.237 705.237 908.5 454.5 908.5C203.763 908.5 0.5 705.237 0.5 454.5C0.5 203.763 203.763 0.5 454.5 0.5C705.237 0.5 908.5 203.763 908.5 454.5Z);
+}
+```
+這路徑每次都需要去繪圖軟體裡面生成出來有點太麻煩了，如果說不是什麼太複雜的路徑，則可以透過其他參數來使用，像是我上面的按鈕我也不是畫個圓去取得他的路徑再來做的，再加上這個路徑不會有響應式的效果，因為裡面的值都是固定的，假如有些地方需要符合個個螢幕尺寸，那就有可能會造成其他問題。
+
+### 基本形狀\<basic-shape\>
+
+> The \<basic-shape\> CSS data type represents a shape used in the clip-path, shape-outside, and offset-path properties.
+
+MDN上有寫那些可以做使用
+
+- inset()
+- circle()
+- ellipse()
+- polygon()
+- rect()
+- xywh()
+
+看名稱滿清楚的知道作用， demo 也是用 circle 這個屬性來完成的
+
+circle 的用法 circle( [\<shape-radius\>]? [at \<position\>]? )
+shape-radius => 指的就是圓形的大小
+position => 就是圓心的位置
+用法跟 clip-path 一模一樣，只是效果不一樣而已。
+有了這些就可以很輕易的達到上面點開後繞著圓形開啟的選單效果。
+
+直接來看程式的部分，就只是單純的一個 react component ，第一個 button 就是中間打開菜單的那個 button ，下方的 nav 裡面包的就是展開後的 button，透過絕對定位的方式訂為讓選單中的按鈕一起置中，接著就是點擊的時候切換 class 樣式
+
+```js
+"use client";
+import React, { useState } from "react";
+import classes from "./button.module.css";
+import { Button } from "@/components/ui/button";
+import { FaArrowDown } from "react-icons/fa";
+
+const CollapseButton = () => {
+  const buttonContent = ["😂", "😒", "😎", "😵", "😴"];
+  const [collapse, setCollapse] = useState(false);
+
+  return (
+      <div className="flex items-center justify-center">
+        <Button
+          className={`rounded-[50%] relative z-[1] ${classes["toggle-btn"]} transition-all duration-300`}
+          size="icon"
+          variant="default"
+          aria-label="demo"
+          onClick={() => {setCollapse(!collapse);}}
+        >✖️</Button>
+        <nav
+          className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
+            classes["nav-item"]
+          } ${collapse ? classes["collapse"] : ""}`}
+        >{buttonContent.map((item, index) => (
+            <Button
+              key={index}
+              variant="default"
+              aria-label="demo"
+              size="icon"
+              className={`rounded-[50%] ${classes["btn-item"]}`}
+            >{item}</Button>
+          ))}
+        </nav>
+      </div>
+  );
+};
+```
+
+這邊就是主要的 css ，其中達成這個效果最重要的就是  offset-distance 以及 offset-path: circle 這兩個來做搭配，其他的部分只是單純的讓動畫有前後延遲的效果而已，這部分就隨意調整。
+offset-path 這個數值就是和中間那顆按鈕的距離，而 offset-distance 這個就是它會位於圓形的哪個點上。
+
+其他比較不重要的就是過渡時間，每顆按鈕都額外設定了他展開後跟收起來時的時間。
+```css
+.nav-item.collapse .btn-item {
+  offset-distance: 120%;
+  opacity: 0;
+  transition: all 0.3s var(--delay) ease;
+  visibility: hidden;
+}
+
+.btn-item {
+  offset-path: circle(100px);
+  transition: all 0.3s var(--show-delay) ease;
+  offset-rotate: 0deg;
+}
+
+.btn-item:nth-child(1) {
+  offset-distance: 100%;
+  --delay: 0.1s;
+  --show-delay: 0.5s;
+}
+
+.btn-item:nth-child(2) {
+  offset-distance: 87.5%;
+  --delay: 0.2s;
+  --show-delay: 0.4s;
+}
+
+.btn-item:nth-child(3) {
+  offset-distance: 75%;
+  --delay: 0.3s;
+  --show-delay: 0.3s;
+}
+
+.btn-item:nth-child(4) {
+  offset-distance: 62.5%;
+  --delay: 0.4s;
+  --show-delay: 0.2s;
+}
+
+.btn-item:nth-child(5) {
+  offset-distance: 50%;
+  --delay: 0.5s;
+  --show-delay: 0.1s;
+}
+```
+
+[developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/CSS/basic-shape)
