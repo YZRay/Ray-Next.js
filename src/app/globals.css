@@ -56,6 +56,7 @@ body {
 
 code {
   counter-reset: line;
+  line-height: 1.5;
 }
 
 code > [data-line]::before {
@@ -63,7 +64,7 @@ code > [data-line]::before {
   content: counter(line);
   display: inline-block;
   width: 1rem;
-  margin-right: 2rem;
+  margin-right: 1.5rem;
   text-align: right;
   color: gray;
 }

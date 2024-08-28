@@ -36,7 +36,7 @@ const CollapseButton = () => {
               variant="default"
               aria-label="demo"
               size="icon"
-              className={`offset-path-[100px] rounded-[50%] ${classes["btn-item"]}`}
+              className={`rounded-[50%] ${classes["btn-item"]}`}
             >
               {item}
             </Button>
