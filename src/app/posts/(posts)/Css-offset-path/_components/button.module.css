@@ -1,0 +1,46 @@
+.nav-item.collapse .btn-item {
+  offset-distance: 120%;
+  opacity: 0;
+  transition: all 0.3s var(--delay) ease;
+  visibility: hidden;
+}
+
+.toggle-btn:has(+ .collapse) {
+  transform: rotate(-45deg);
+}
+
+.btn-item {
+  offset-path: circle(100px);
+  transition: all 0.3s var(--show-delay) ease;
+  offset-rotate: 0deg;
+}
+
+.btn-item:nth-child(1) {
+  offset-distance: 100%;
+  --delay: 0.1s;
+  --show-delay: 0.5s;
+}
+
+.btn-item:nth-child(2) {
+  offset-distance: 87.5%;
+  --delay: 0.2s;
+  --show-delay: 0.4s;
+}
+
+.btn-item:nth-child(3) {
+  offset-distance: 75%;
+  --delay: 0.3s;
+  --show-delay: 0.3s;
+}
+
+.btn-item:nth-child(4) {
+  offset-distance: 62.5%;
+  --delay: 0.4s;
+  --show-delay: 0.2s;
+}
+
+.btn-item:nth-child(5) {
+  offset-distance: 50%;
+  --delay: 0.5s;
+  --show-delay: 0.1s;
+}

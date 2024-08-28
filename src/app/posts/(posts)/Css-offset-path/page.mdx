@@ -3,17 +3,55 @@ export const metadata = {
   publishDate: '2024-06-02T00:00:00Z',
   categories: ['css'],
   author: "Ray",
+  isPublished: false,
 };
+import  CollapseButton from "./_components/Button.tsx"
 
+# Css offset-path
 
 先來看一下最後的 Demo 結果，透過 offset-path 可以輕鬆的實現一些動畫互動效果。
 
-<CodeEmbed
-  id="KKLpryN?default-tab=result&theme-id=dark"
-  title="css offset 按鈕"
-  type="0"
-/>
+<CollapseButton />
 
-Css 的發展越來越多變化，有許多的效果都可以透過 Css 來做到，而在 Css 裡面支援了路徑，可以讓開發者定義好路徑後在讓物件跟隨著路徑做移動，而這些路徑的寫法也跟 SVG Path 一樣，現在的繪圖軟體也很方便，都可以透過它來幫助我們取得路徑，例如 Figma。
+Css 的發展越來越多變化，有許多的效果都可以透過 Css 來做到，而在 Css 裡面支援了路徑，可以讓開發者定義好路徑後在讓物件跟隨著路徑做移動，而這些路徑的寫法也跟 SVG Path 一樣，現在的繪圖軟體也很方便，都可以透過它來幫助我們取得路徑，例如 Figma。像下圖一樣取得 SVG 路徑。
 
 ![Figma 取得路徑](https://i.imgur.com/8zFieBd.png)
+
+我們會拿到像下面這種東西，而裡面的 path 就是 svg 的路徑，可以透過搭配 @keyframes 或是 js 來完成一些交互效果。
+
+```css
+<svg width="909" height="909" viewBox="0 0 909 909" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M908.5 454.5C908.5 705.237 705.237 908.5 454.5 908.5C203.763 908.5 0.5 705.237 0.5 454.5C0.5 203.763 203.763 0.5 454.5 0.5C705.237 0.5 908.5 203.763 908.5 454.5Z" stroke="black"/>
+</svg>
+```
+
+path 這路徑很難直接用手寫出來，幾乎都是透過繪圖軟體轉換過來的。
+
+在 css 中可以這樣去使用他，這樣再透過 js 等等...這個物件就會照著這個看不到的路徑去做移動
+```css
+.item{
+  offset-path: (M908.5 454.5C908.5 705.237 705.237 908.5 454.5 908.5C203.763 908.5 0.5 705.237 0.5 454.5C0.5 203.763 203.763 0.5 454.5 0.5C705.237 0.5 908.5 203.763 908.5 454.5Z);
+}
+```
+這路徑每次都需要去繪圖軟體裡面生成出來有點太麻煩了，如果說不是什麼太複雜的路徑，則可以透過其他參數來使用，像是我上面的按鈕我也不是畫個圓去取得他的路徑再來做的，再加上這個路徑不會有響應式的效果，因為裡面的值都是固定的，假如有些地方需要符合個個螢幕尺寸，那就有可能會造成其他問題。
+
+### 基本形狀\<basic-shape\>
+
+> The \<basic-shape\> CSS data type represents a shape used in the clip-path, shape-outside, and offset-path properties.
+
+MDN上有寫那些可以做使用
+
+- inset()
+- circle()
+- ellipse()
+- polygon()
+- rect()
+- xywh()
+
+看名稱滿清楚的知道作用， demo 也是用 circle 這個屬性來完成的
+
+circle 的用法 circle( [\<shape-radius\>]? [at \<position\>]? )
+
+```css
+
+```
