@@ -1,4 +1,4 @@
-// const { withContentlayer } = require("next-contentlayer");
+
 import createMDX from "@next/mdx";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
