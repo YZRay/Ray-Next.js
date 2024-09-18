@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { Image } from "@nextui-org/react";
 
-const CarouselImage = ({ img }: { img: string[] }) => {
+const CarouselImage: React.FC<{ img: string[] }> = ({ img }) => {
   const preventRightClick = (e: any) => {
     e.preventDefault();
   };

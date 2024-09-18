@@ -1,11 +1,12 @@
-export default function CodeEmbed({
-  id,
-  title,
-  type,
-}: {
+type CodeEmbedProps = {
   id: string;
   title: string;
   type: string;
+};
+const CodeEmbed: React.FC<CodeEmbedProps> = function CodeEmbed({
+  id,
+  title,
+  type,
 }) {
   return (
     <div>
@@ -41,4 +42,6 @@ export default function CodeEmbed({
       )}
     </div>
   );
-}
+};
+
+export default CodeEmbed;
