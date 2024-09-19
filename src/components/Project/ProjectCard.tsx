@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardBody, Image, Link, Button } from "@nextui-org/react";
 import GetSkillIcon from "./GetSkill";
 import { useRouter } from "next/navigation";
+import { useJsonParse } from "../hook/useJsonParse";
 
 interface Props {
   summary: string;
