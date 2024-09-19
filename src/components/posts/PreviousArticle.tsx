@@ -1,41 +1,29 @@
 import Link from "next/link";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { getPosts } from "@/posts";
 
-interface Post {
-  _raw: {
-    flattenedPath: string;
-  };
-  title: string;
-  url: string;
-  excerpt: string;
-  author: string;
-}
-const PreviousArticle = ({
-  allPosts,
-  params,
-}: {
-  allPosts: Post[];
-  params: { slug: string };
-}) => {
-  const postIndex = allPosts.findIndex(
-    (post) => post._raw.flattenedPath === params.slug
-  );
+const PreviousArticle: React.FC<{
+  params: { slug: string | undefined };
+}> = async ({ params }) => {
+  const allPosts = await getPosts();
+  const postIndex = allPosts.findIndex((post) => post.slug === params.slug);
+
   const postLength = allPosts.length;
 
   //設定上下篇文章
   const prevPostIndex = allPosts[postIndex - 1];
 
   const prePost = prevPostIndex
-    ? { title: prevPostIndex.title, url: prevPostIndex._raw.flattenedPath }
+    ? { title: prevPostIndex.title, url: prevPostIndex.slug }
     : {
         title: allPosts[postLength - 1].title,
-        url: allPosts[postLength - 1].url,
+        url: allPosts[postLength - 1].slug,
       };
 
   const nextPostIndex = allPosts[postIndex + 1];
   const nextPost = nextPostIndex
-    ? { title: nextPostIndex.title, url: nextPostIndex._raw.flattenedPath }
-    : { title: allPosts[0].title, url: allPosts[0].url };
+    ? { title: nextPostIndex.title, url: nextPostIndex.slug }
+    : { title: allPosts[0].title, url: allPosts[0].slug };
 
   return (
     <div className="w-10/12 mx-auto py-8 mb-12 border-t-2 border-neutral-400 flex flex-col justify-between md:flex-row">

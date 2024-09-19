@@ -63,7 +63,7 @@ export default function RootLayout({
   modal: React.ReactNode;
 }) {
   return (
-    <html lang="zh-Hant-TW">
+    <html lang="zh-Hant-TW" suppressHydrationWarning={true}>
       <body
         className={`${notoSans.className} overflow-x-hidden bg-theme-light dark:bg-theme-dark`}
       >

@@ -1,35 +1,14 @@
 "use client";
 import ProjectCard from "@/components/Project/ProjectCard";
 import Data from "@/components/data/data.json";
-import { useJsonParse } from "@/components/hook/useJsonParse";
-interface Project {
-  id: number;
-  carousel: string[];
-  description: string;
-  imageUrl: string;
-  name: string;
-  skill: string[];
-  slug: string;
-  url: string;
-  isShow: boolean;
-}
-
 const ProjectPage = () => {
   let content;
-  const visibleProjects = (Data.project as Project[]).filter(
-    (project: Project) => project.isShow
-  );
+
+  const visibleProjects = Data.project.filter((project) => project.isShow);
+
   if (Data.project) {
-    content = visibleProjects.map((project: Project) => (
-      <ProjectCard
-        key={project.id}
-        description={project.summary}
-        imageUrl={project.imageUrl}
-        name={project.name}
-        skill={project.skill}
-        url={project.url}
-        slug={project.slug}
-      />
+    content = visibleProjects.map((project) => (
+      <ProjectCard key={project.id} {...project} />
     ));
   }
 
