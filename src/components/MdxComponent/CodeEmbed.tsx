@@ -1,11 +1,12 @@
-export default function CodeEmbed({
-  id,
-  title,
-  type,
-}: {
+type CodeEmbedProps = {
   id: string;
   title: string;
   type: string;
+};
+const CodeEmbed: React.FC<CodeEmbedProps> = function CodeEmbed({
+  id,
+  title,
+  type,
 }) {
   return (
     <div>
@@ -15,14 +16,27 @@ export default function CodeEmbed({
           width="100%"
           title={title}
           src={`https://codepen.io/YZRay/embed/${id}`}
-          frameborder="no"
+          frameBorder="no"
           loading="lazy"
-          allowtransparency="true"
-          allowfullscreen="true"
+          allowTransparency={true}
+          allowFullScreen={true}
         >
-          See the Pen <a href="https://codepen.io/YZRay/pen/BaMeQZO">{title}</a>{" "}
-          by YZRay (<a href="https://codepen.io/YZRay">@YZRay</a>) on{" "}
-          <a href="https://codepen.io">CodePen</a>.
+          See the Pen{" "}
+          <a
+            rel="noreferrer noopener"
+            href="https://codepen.io/YZRay/pen/BaMeQZO"
+          >
+            {title}
+          </a>{" "}
+          by YZRay (
+          <a rel="noreferrer noopener" href="https://codepen.io/YZRay">
+            @YZRay
+          </a>
+          ) on{" "}
+          <a rel="noreferrer noopener" href="https://codepen.io">
+            CodePen
+          </a>
+          .
         </iframe>
       ) : (
         <iframe
@@ -41,4 +55,6 @@ export default function CodeEmbed({
       )}
     </div>
   );
-}
+};
+
+export default CodeEmbed;

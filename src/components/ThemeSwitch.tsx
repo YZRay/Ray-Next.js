@@ -43,7 +43,7 @@ export default function ThemeSwitch() {
               : clipPathAnimate.reverse(),
         },
         {
-          duration: 500,
+          duration: 400,
           easing: "ease-in",
           pseudoElement:
             resolvedTheme === "light"

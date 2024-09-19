@@ -1,10 +1,9 @@
 "use client";
-import React from "react";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { fadeIn } from "../fadeIn";
 import { Link, Button, Divider } from "@nextui-org/react";
-import { FaGithub } from "react-icons/fa6";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 const Hero = () => {
   return (
@@ -17,7 +16,7 @@ const Hero = () => {
     >
       <div className="flex flex-col gap-2 md:gap-4 lg:gap-5 justify-center mx-auto">
         <h1 className="font-bold sm:text-2xl text-3xl xl:text-4xl flex flex-col md:flex-row">
-          Hello,
+          Hi there,
           <div>
             I&apos;m{" "}
             <TypeAnimation
@@ -29,6 +28,8 @@ const Hero = () => {
                 "Frontend Developer",
                 1000,
                 "Pokemon holic",
+                1000,
+                "Artist",
                 1000,
               ]}
               wrapper="span"
@@ -48,7 +49,7 @@ const Hero = () => {
           in frontend development.
         </p>
         <Divider className="my-4" />
-        <div>
+        <div className="flex gap-4 flex-wrap">
           <Button
             href="https://github.com/YZRay"
             as={Link}
@@ -59,6 +60,17 @@ const Hero = () => {
           >
             <FaGithub className="size-6" />
             Github
+          </Button>
+          <Button
+            href="https://www.linkedin.com/in/yzray-82374b26b/"
+            as={Link}
+            variant="shadow"
+            target="_blank"
+            size="lg"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className="size-6" />
+            LinkedIn
           </Button>
         </div>
       </div>

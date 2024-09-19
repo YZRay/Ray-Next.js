@@ -2,22 +2,27 @@ import React from "react";
 import { Card, CardBody, Image, Link, Button } from "@nextui-org/react";
 import GetSkillIcon from "./GetSkill";
 import { useRouter } from "next/navigation";
+import { useJsonParse } from "../hook/useJsonParse";
 
 interface Props {
-  description: string;
+  summary: string;
   imageUrl: string;
   name: string;
   skill: Array<string>;
   url: string;
   slug: string;
+  startAt?: string;
+  endAt?: string;
 }
 const ProjectCard: React.FC<Props> = ({
-  description,
+  summary,
   imageUrl,
   name,
   skill,
   url,
   slug,
+  startAt,
+  endAt,
 }) => {
   const router = useRouter();
 
@@ -43,8 +48,15 @@ const ProjectCard: React.FC<Props> = ({
           </div>
           <div className="flex flex-col col-span-6 lg:col-span-8 gap-6 px-0 md:px-5">
             <div className="flex flex-col gap-3">
-              <h1 className="font-semibold text-foreground/90">{name}</h1>
-              <p className="line-clamp-2">{description}</p>
+              <div>
+                <h2 className="font-semibold text-foreground/90 text-xl mb-1">
+                  {name}
+                </h2>
+                <time dateTime={startAt} className="text-neutral-700">
+                  {startAt} - {endAt}
+                </time>
+              </div>
+              <p className="line-clamp-2">{summary}</p>
               <div className="flex align-center gap-2 flex-wrap">
                 {skill.map((s, index) => (
                   <div key={index} className="flex gap-1 items-center">

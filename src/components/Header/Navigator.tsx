@@ -14,11 +14,11 @@ const links = [
   { path: "/project", label: "小專案" },
   // { path: "/art", label: "繪畫" },
 ];
-interface IProps {
+type props = {
   show: boolean;
   toggleShow: () => void;
-}
-const Navigator = ({ show, toggleShow }: IProps) => {
+};
+const Navigator: React.FC<props> = ({ show, toggleShow }) => {
   const pathname = usePathname();
 
   const ModalOverlay = () => (

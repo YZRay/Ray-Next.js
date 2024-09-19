@@ -2,12 +2,9 @@ import React from "react";
 import { Snippet } from "@nextui-org/react";
 import { FaCopy } from "react-icons/fa6";
 
-const CustomSnippet = ({
+const CustomSnippet: React.FC<{ children: React.ReactNode; text: string }> = ({
   children,
   text,
-}: {
-  children: React.ReactNode;
-  text: string;
 }) => {
   return (
     <Snippet
