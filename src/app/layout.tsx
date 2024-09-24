@@ -3,7 +3,7 @@ import { Noto_Sans_TC } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { ThemeProviders } from "@/components/Providers/ThemeProvider";
-import Header from "@/components/Header/Header";
+import BurgerMenu from "@/components/Header/BurgerMenu";
 
 const notoSans = Noto_Sans_TC({
   subsets: ["latin"],
@@ -68,7 +68,7 @@ export default function RootLayout({
         className={`${notoSans.className} overflow-x-hidden bg-theme-light dark:bg-theme-dark`}
       >
         <ThemeProviders>
-          <Header />
+          <BurgerMenu />
           <div className="rainbow absolute top-0 left-0 right-0 bottom-0 opacity-40 hidden xl:block"></div>
           {children}
           {modal}
