@@ -10,6 +10,7 @@ export const fadeIn = (direction: string, delay: number) => {
         delay: delay,
         ease: [0.25, 0.6, 0.3, 0.8],
       },
+      filter: "blur(4px)",
     },
     show: {
       y: 0,
@@ -21,6 +22,7 @@ export const fadeIn = (direction: string, delay: number) => {
         delay: delay,
         ease: [0.25, 0.25, 0.25, 0.75],
       },
+      filter: "none",
     },
   };
 };

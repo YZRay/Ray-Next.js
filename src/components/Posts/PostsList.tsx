@@ -29,8 +29,8 @@ const PostsList = ({ posts }: { posts: Post[] }) => {
         <motion.li
           key={slug}
           variants={{
-            hidden: { opacity: 0, y: 25 },
-            visible: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: 25, filter: "blur(4px)" },
+            visible: { opacity: 1, y: 0, filter: "none" },
           }}
           exit={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 100, duration: 0.2 }}
